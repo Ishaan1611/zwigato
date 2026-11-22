@@ -11,55 +11,55 @@
 :root {
   --bg: #FAF7F2;
   --surface: #FFFFFF;
-  --surface-alt: #F3EDE2;
-  --glass: rgba(255, 255, 255, 0.84);
+  --surface-alt: #F3ECE2;
+  --glass: rgba(255, 255, 255, 0.86);
   --ink: #18181B;
-  --muted: #57534E;
-  --border: #E6DFD3;
-  --border-strong: #D4C9B8;
+  --muted: #6B655E;
+  --border: rgba(24, 24, 27, 0.09);
+  --border-strong: rgba(24, 24, 27, 0.18);
   --acc: #E04E2A;
   --acc-hover: #C93E1C;
   --acc-soft: rgba(224, 78, 42, 0.11);
   --acc-glow: rgba(224, 78, 42, 0.28);
-  --saffron: #F59E0B;
-  --saffron-soft: rgba(245, 158, 11, 0.16);
-  --green: #16A34A;
-  --green-soft: rgba(22, 163, 74, 0.13);
-  --err: #DC2626;
-  --err-soft: rgba(220, 38, 38, 0.12);
+  --gold: #F59E0B;
+  --gold-soft: rgba(245, 158, 11, 0.16);
+  --veg: #16A34A;
+  --veg-soft: rgba(22, 163, 74, 0.13);
+  --nonveg: #DC2626;
+  --nonveg-soft: rgba(220, 38, 38, 0.12);
   --sh: 0 10px 30px rgba(24, 24, 27, 0.06);
-  --sh-lg: 0 22px 54px rgba(24, 24, 27, 0.13);
+  --sh-lg: 0 22px 54px rgba(24, 24, 27, 0.14);
   --serif: 'Fraunces', Georgia, serif;
   --sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #121110;
-  --surface: #1C1A18;
-  --surface-alt: #262320;
-  --glass: rgba(28, 26, 24, 0.86);
-  --ink: #F5F2EB;
-  --muted: #A8A29E;
-  --border: #302C28;
-  --border-strong: #443E38;
+  --bg: #0F1115;
+  --surface: #171A21;
+  --surface-alt: #1F232D;
+  --glass: rgba(23, 26, 33, 0.88);
+  --ink: #F4F2EE;
+  --muted: #9CA3AF;
+  --border: rgba(244, 242, 238, 0.1);
+  --border-strong: rgba(244, 242, 238, 0.2);
   --acc: #F05D38;
   --acc-hover: #FF704D;
   --acc-soft: rgba(240, 93, 56, 0.16);
   --acc-glow: rgba(240, 93, 56, 0.34);
-  --saffron: #FBBF24;
-  --saffron-soft: rgba(251, 191, 36, 0.16);
-  --green: #22C55E;
-  --green-soft: rgba(34, 197, 94, 0.16);
-  --err: #F87171;
-  --err-soft: rgba(248, 113, 113, 0.16);
-  --sh: 0 12px 34px rgba(0, 0, 0, 0.38);
-  --sh-lg: 0 24px 60px rgba(0, 0, 0, 0.58);
+  --gold: #FBBF24;
+  --gold-soft: rgba(251, 191, 36, 0.16);
+  --veg: #22C55E;
+  --veg-soft: rgba(34, 197, 94, 0.16);
+  --nonveg: #F87171;
+  --nonveg-soft: rgba(248, 113, 113, 0.16);
+  --sh: 0 12px 34px rgba(0, 0, 0, 0.42);
+  --sh-lg: 0 24px 60px rgba(0, 0, 0, 0.62);
 }
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 
 body {
   margin: 0;
@@ -106,7 +106,7 @@ body {
   transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.55s ease;
 }
 .splash.zoom-out {
-  animation: netflixPushThrough 0.72s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: netflixPushThrough 0.68s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 .splash.out {
   opacity: 0;
@@ -139,31 +139,31 @@ body {
 .nf-bar-top {
   opacity: 0;
   transform-origin: left center;
-  animation: ribbonSlideX 0.4s 0.08s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ribbonSlideX 0.38s 0.08s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .nf-bar-diag {
   opacity: 0;
   transform-origin: center;
-  animation: ribbonDiag 0.46s 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ribbonDiag 0.44s 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .nf-bar-bot {
   opacity: 0;
   transform-origin: left center;
-  animation: ribbonSlideX 0.4s 0.58s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ribbonSlideX 0.38s 0.56s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .nf-spark {
   opacity: 0;
   transform: scale(0);
   transform-origin: 92px 22px;
-  animation: sparkPop 0.38s 0.84s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: sparkPop 0.36s 0.82s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 .nf-sheen {
   position: absolute;
   inset: -10px;
-  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.44) 50%, transparent 70%);
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
   transform: translateX(-140%);
   pointer-events: none;
-  animation: sheenSweep 0.82s 0.88s ease-in-out forwards;
+  animation: sheenSweep 0.8s 0.85s ease-in-out forwards;
 }
 @keyframes ribbonSlideX {
   0% { opacity: 0; transform: scaleX(0.05); }
@@ -188,7 +188,7 @@ body {
   text-transform: uppercase;
   margin: 22px 0 8px;
   opacity: 0;
-  animation: wordmarkExpand 0.72s 0.78s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: wordmarkExpand 0.7s 0.76s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   text-shadow: 0 6px 28px rgba(224, 78, 42, 0.55);
 }
 @keyframes wordmarkExpand {
@@ -196,12 +196,12 @@ body {
   100% { opacity: 1; letter-spacing: 0.14em; transform: translateY(0) scale(1); }
 }
 .splash-sub {
-  color: #A8A29E;
+  color: #9CA3AF;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
   opacity: 0;
-  animation: fadeSub 0.45s 1.05s ease forwards;
+  animation: fadeSub 0.42s 1.02s ease forwards;
 }
 @keyframes fadeSub { to { opacity: 1; } }
 
@@ -253,17 +253,17 @@ h2 { font-size: clamp(22px, 3vw, 28px); font-weight: 700; margin: 0; }
 }
 
 .btn {
-  font: 700 13.5px/1 var(--sans);
+  font: 700 13px/1 var(--sans);
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--ink);
   border-radius: 99px;
-  padding: 10px 16px;
+  padding: 9px 15px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 6px;
   transition: transform 0.15s ease, background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 .btn:hover:not(:disabled) { transform: translateY(-1px); border-color: var(--acc); }
@@ -276,7 +276,7 @@ h2 { font-size: clamp(22px, 3vw, 28px); font-weight: 700; margin: 0; }
   box-shadow: 0 6px 18px var(--acc-glow);
 }
 .btn.primary:hover:not(:disabled) { background: var(--acc-hover); border-color: var(--acc-hover); }
-.btn.green { background: var(--green); border-color: var(--green); color: #FFF; }
+.btn.veg { background: var(--veg); border-color: var(--veg); color: #FFF; }
 .btn.ai {
   background: linear-gradient(135deg, #18181B, #3F3F46);
   border-color: #18181B;
@@ -307,9 +307,9 @@ nav.topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
 }
-.nav-left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.nav-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .loc-pill {
   display: inline-flex;
   align-items: center;
@@ -321,14 +321,14 @@ nav.topbar {
   color: var(--ink);
   font: 700 12.5px var(--sans);
   cursor: pointer;
-  max-width: 240px;
+  max-width: 230px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .loc-pill:hover { border-color: var(--acc); }
-.nav-right { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
-.user-chip { font-size: 13px; font-weight: 700; color: var(--muted); padding: 0 4px; }
+.nav-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.user-chip { font-size: 12.5px; font-weight: 700; color: var(--muted); padding: 0 4px; }
 
 /* =========================================================
    SPLIT-PANEL AUTHENTICATION SCREEN
@@ -348,9 +348,9 @@ nav.topbar {
   gap: 8px;
 }
 .auth-shell {
-  width: min(940px, 100%);
+  width: min(950px, 100%);
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 0.94fr 1.06fr;
   overflow: hidden;
 }
 @media (max-width: 820px) {
@@ -373,21 +373,21 @@ nav.topbar {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.34;
+  opacity: 0.35;
 }
 .auth-visual-inner { position: relative; z-index: 2; }
-.auth-card { padding: 32px 30px; }
-.auth-card h1 { font-size: 29px; margin: 14px 0 4px; }
-.auth-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; }
+.auth-card { padding: 30px 28px; }
+.auth-card h1 { font-size: 28px; margin: 14px 0 4px; }
+.auth-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 16px; }
 
 .role-switch {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .role-opt {
-  padding: 12px 13px;
+  padding: 11px 12px;
   border-radius: 16px;
   border: 1.5px solid var(--border);
   background: var(--surface-alt);
@@ -397,10 +397,10 @@ nav.topbar {
   transition: all 0.18s ease;
 }
 .role-opt.on { border-color: var(--acc); background: var(--acc-soft); }
-.role-opt strong { display: block; font-size: 13.5px; font-weight: 800; margin-top: 3px; }
+.role-opt strong { display: block; font-size: 13.5px; font-weight: 800; margin-top: 2px; }
 .role-opt span { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; }
 
-.field { margin-bottom: 12px; }
+.field { margin-bottom: 11px; }
 .field label {
   display: block;
   font-size: 12px;
@@ -422,9 +422,9 @@ nav.topbar {
   border-color: var(--acc);
   box-shadow: 0 0 0 3px var(--acc-soft);
 }
-.auth-err { min-height: 18px; color: var(--err); font-size: 12.5px; font-weight: 700; margin-bottom: 8px; }
-.demo-box { margin-top: 15px; padding-top: 14px; border-top: 1px dashed var(--border-strong); }
-.demo-box p { font-size: 11.5px; font-weight: 800; color: var(--muted); margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+.auth-err { min-height: 18px; color: var(--nonveg); font-size: 12.5px; font-weight: 700; margin-bottom: 8px; }
+.demo-box { margin-top: 14px; padding-top: 13px; border-top: 1px dashed var(--border-strong); }
+.demo-box p { font-size: 11px; font-weight: 800; color: var(--muted); margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.05em; }
 .demo-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
 /* =========================================================
@@ -450,8 +450,8 @@ nav.topbar {
   gap: 7px;
   padding: 5px 12px;
   border-radius: 99px;
-  background: var(--green-soft);
-  color: var(--green);
+  background: var(--veg-soft);
+  color: var(--veg);
   font-size: 12px;
   font-weight: 800;
 }
@@ -459,7 +459,7 @@ nav.topbar {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--veg);
   animation: pulseDot 1.6s infinite;
 }
 @keyframes pulseDot {
@@ -488,7 +488,7 @@ nav.topbar {
   color: var(--muted);
   transition: all 0.25s ease;
 }
-.step-node.done { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+.step-node.done { border-color: var(--veg); background: var(--veg-soft); color: var(--veg); }
 .step-node.curr { border-color: var(--acc); background: var(--acc-soft); color: var(--acc); box-shadow: 0 4px 14px var(--acc-glow); }
 .step-node span { display: block; font-size: 18px; margin-bottom: 3px; }
 
@@ -539,7 +539,7 @@ nav.topbar {
   gap: 8px;
   padding: 6px 14px;
   border-radius: 99px;
-  background: var(--saffron-soft);
+  background: var(--gold-soft);
   border: 1px solid rgba(245, 158, 11, 0.35);
   font-size: 12.5px;
   font-weight: 800;
@@ -551,7 +551,7 @@ nav.topbar {
 .hero h1 em { font-style: italic; color: var(--acc); font-weight: 700; }
 .hero p.sub { color: var(--muted); font-size: 16px; max-width: 58ch; margin: 0 0 22px; }
 
-.search-row { display: flex; flex-wrap: wrap; gap: 12px; max-width: 760px; }
+.search-row { display: flex; flex-wrap: wrap; gap: 12px; max-width: 780px; }
 .search-box {
   flex: 1;
   min-width: 260px;
@@ -658,7 +658,7 @@ nav.topbar {
 .gem-content { padding: 15px 18px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
 
 .trend-card {
-  flex: 0 0 min(275px, 80vw);
+  flex: 0 0 min(285px, 82vw);
   scroll-snap-align: start;
   padding: 14px;
   display: flex;
@@ -688,7 +688,7 @@ nav.topbar {
 }
 .chip-btn:hover { color: var(--ink); border-color: var(--acc); }
 .chip-btn.on { background: var(--acc); border-color: var(--acc); color: #FFF; }
-.chip-btn.diet.on { background: var(--green); border-color: var(--green); color: #FFF; }
+.chip-btn.diet.on { background: var(--veg); border-color: var(--veg); color: #FFF; }
 
 .rest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
 .rest-card {
@@ -721,13 +721,13 @@ nav.topbar {
   color: #FAF7F2;
 }
 .c-badge.flash { background: var(--acc); color: #FFF; }
-.c-badge.fast { background: var(--green); color: #FFF; }
+.c-badge.fast { background: var(--veg); color: #FFF; }
 
 .rest-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
 .rest-title { font: 700 19px/1.25 var(--serif); margin: 0; }
 .rest-sub { color: var(--muted); font-size: 13px; margin-top: 3px; }
 .rest-meta { display: flex; align-items: center; gap: 10px; margin-top: 8px; font-size: 12.5px; font-weight: 700; }
-.rate-pill { padding: 2px 8px; border-radius: 99px; background: var(--green-soft); color: var(--green); }
+.rate-pill { padding: 2px 8px; border-radius: 99px; background: var(--veg-soft); color: var(--veg); }
 .rest-foot {
   display: flex;
   align-items: center;
@@ -738,16 +738,45 @@ nav.topbar {
 }
 
 /* =========================================================
-   MENU DETAIL VIEW
+   MENU DETAIL VIEW WITH IN-MENU SEARCH & FILTERING
    ========================================================= */
 .menu-header {
   padding: 20px 24px;
-  margin: 14px 0 16px;
+  margin: 14px 0 14px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+}
+.in-menu-bar {
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.in-menu-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 99px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  min-width: 230px;
+  flex: 1;
+  max-width: 340px;
+}
+.in-menu-search input {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 600 13px var(--sans);
+  width: 100%;
+  outline: none;
 }
 .menu-list { overflow: hidden; }
 .dish-row {
@@ -772,14 +801,14 @@ nav.topbar {
   width: 15px;
   height: 15px;
   border-radius: 4px;
-  border: 1.5px solid var(--green);
+  border: 1.5px solid var(--veg);
   display: inline-grid;
   place-items: center;
   flex: none;
 }
-.veg-mark::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
-.veg-mark.nonveg { border-color: var(--err); }
-.veg-mark.nonveg::after { background: var(--err); }
+.veg-mark::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--veg); }
+.veg-mark.nonveg { border-color: var(--nonveg); }
+.veg-mark.nonveg::after { background: var(--nonveg); }
 
 .mini-tag {
   font-size: 10px;
@@ -789,10 +818,11 @@ nav.topbar {
   padding: 2px 8px;
   border-radius: 99px;
 }
-.mini-tag.diet { background: var(--green-soft); color: var(--green); }
+.mini-tag.diet { background: var(--veg-soft); color: var(--veg); }
+.mini-tag.course { background: var(--surface-alt); color: var(--muted); }
 .mini-tag.flash { background: var(--acc); color: #FFF; }
-.mini-tag.special { background: var(--saffron-soft); color: var(--ink); }
-.mini-tag.out { background: var(--err-soft); color: var(--err); }
+.mini-tag.special { background: var(--gold-soft); color: var(--ink); }
+.mini-tag.out { background: var(--nonveg-soft); color: var(--nonveg); }
 
 .stepper-ctrl {
   display: inline-flex;
@@ -817,7 +847,7 @@ nav.topbar {
 .stepper-ctrl b { min-width: 20px; text-align: center; font-size: 13.5px; }
 
 /* =========================================================
-   CHECKOUT & CART DRAWER
+   CHECKOUT & CUSTOMER CARE DRAWERS
    ========================================================= */
 .backdrop {
   position: fixed;
@@ -834,7 +864,7 @@ nav.topbar {
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(460px, 100%);
+  width: min(470px, 100%);
   z-index: 70;
   background: var(--surface);
   border-left: 1px solid var(--border);
@@ -849,7 +879,7 @@ nav.topbar {
 .drawer.on { transform: translateX(0); }
 
 .checkout-sec {
-  margin-top: 16px;
+  margin-top: 15px;
   padding: 15px;
   border-radius: 16px;
   background: var(--bg);
@@ -857,7 +887,7 @@ nav.topbar {
 }
 .checkout-sec h4 {
   margin: 0 0 10px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -874,14 +904,14 @@ nav.topbar {
   font: 700 13px var(--sans);
   text-transform: uppercase;
 }
-.tip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.tip-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
 .tip-btn {
-  padding: 8px;
+  padding: 8px 6px;
   border-radius: 12px;
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--ink);
-  font: 700 13px var(--sans);
+  font: 700 12.5px var(--sans);
   cursor: pointer;
 }
 .tip-btn.on { border-color: var(--acc); background: var(--acc-soft); color: var(--acc); }
@@ -909,6 +939,73 @@ nav.topbar {
   padding-top: 10px;
   margin-top: 8px;
   border-top: 1px dashed var(--border-strong);
+}
+
+/* =========================================================
+   24x7 CUSTOMER CARE & HELP CENTER
+   ========================================================= */
+.care-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.care-action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 10px;
+}
+.care-action-btn {
+  padding: 11px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.care-action-btn:hover { border-color: var(--acc); background: var(--acc-soft); }
+.care-action-btn strong { display: block; font-size: 12.5px; font-weight: 800; margin-top: 3px; }
+.care-action-btn span { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+}
+.faq-item:last-child { border-bottom: 0; }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: 0;
+  color: var(--ink);
+  font: 700 13px var(--sans);
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0;
+  cursor: pointer;
+}
+.faq-a {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.care-chat-box {
+  height: 310px;
+  overflow-y: auto;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 /* =========================================================
@@ -964,7 +1061,7 @@ nav.topbar {
 }
 .ai-key-bar {
   padding: 8px 14px;
-  background: var(--saffron-soft);
+  background: var(--gold-soft);
   border-bottom: 1px solid var(--border);
   display: flex;
   gap: 6px;
@@ -1010,14 +1107,14 @@ nav.topbar {
   gap: 11px;
 }
 .bubble { padding: 11px 14px; border-radius: 16px; font-size: 13.5px; line-height: 1.48; max-width: 90%; }
-.bubble.bot { align-self: flex-start; background: var(--bg); border: 1px solid var(--border); }
+.bubble.bot { align-self: flex-start; background: var(--surface); border: 1px solid var(--border); }
 .bubble.usr { align-self: flex-end; background: var(--acc); color: #FFF; font-weight: 600; }
 
 .ai-dish-rec {
   margin-top: 8px;
   padding: 9px 12px;
   border-radius: 12px;
-  background: var(--surface);
+  background: var(--bg);
   border: 1px solid var(--border-strong);
   display: flex;
   justify-content: space-between;
@@ -1047,7 +1144,7 @@ nav.topbar {
 .kpi-card { padding: 20px; }
 .kpi-card span { font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
 .kpi-card strong { display: block; font: 800 30px/1.15 var(--serif); margin: 6px 0 4px; }
-.kpi-card small { font-size: 12px; font-weight: 700; color: var(--green); }
+.kpi-card small { font-size: 12px; font-weight: 700; color: var(--veg); }
 
 .kds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; margin-bottom: 30px; }
 .kds-col { padding: 18px; }
@@ -1082,12 +1179,8 @@ footer.brand-footer {
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 28px;
 }
-@media (max-width: 820px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 500px) {
-  .footer-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 820px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
 .footer-col h4 {
   margin: 0 0 12px;
   font-size: 13px;
@@ -1105,7 +1198,7 @@ footer.brand-footer {
   bottom: 22px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 90;
+  z-index: 95;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1167,7 +1260,7 @@ footer.brand-footer {
       <div class="nf-sheen"></div>
     </div>
     <div class="splash-title">ZWIGATO</div>
-    <div class="splash-sub">Artisanal Kitchens · Live Rider Dispatch · Mood Concierge</div>
+    <div class="splash-sub">Pantnagar’s Artisanal Kitchens · Live Rider Dispatch · 24×7 Care</div>
   </div>
   <button type="button" class="skip-intro-btn" id="skipIntroBtn">Skip Intro ›</button>
 </div>
@@ -1185,30 +1278,30 @@ footer.brand-footer {
     <div class="auth-visual">
       <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80" alt="Artisanal Indian Feast">
       <div class="auth-visual-inner">
-        <span class="badge-pill" style="background:rgba(245,158,11,0.22);color:#FBBF24">Pantnagar &amp; North India</span>
-        <h2 style="font-size:32px;margin:14px 0 10px;line-height:1.12;color:#FAF7F2">Handcrafted meals from neighborhood kitchens, delivered warm.</h2>
-        <p style="font-size:14px;color:#D6D3D1;margin:0">Order from top-rated campus &amp; city eateries, track your scooter rider live, or register your own restaurant kitchen in seconds.</p>
+        <span class="badge-pill" style="background:rgba(245,158,11,0.22);color:#FBBF24">Pantnagar, Uttarakhand</span>
+        <h2 style="font-size:32px;margin:14px 0 10px;line-height:1.12;color:#FAF7F2">92+ handcrafted dishes from campus &amp; Kumaon kitchens.</h2>
+        <p style="font-size:14px;color:#D6D3D1;margin:0">Order from beloved local eateries, track your scooter rider live on the map, or register your own restaurant kitchen in seconds.</p>
       </div>
-      <div class="auth-visual-inner" style="display:flex;gap:14px;font-size:12.5px;color:#E7E5E4">
-        <span>⚡ 15–25 min Express</span>
+      <div class="auth-visual-inner" style="display:flex;gap:14px;font-size:12.5px;color:#E7E5E4;flex-wrap:wrap">
+        <span>⚡ 14–25 min Express</span>
         <span>🛡️ 100% FSSAI Verified</span>
-        <span>✨ AI Mood Pairing</span>
+        <span>🎧 24×7 Live Care</span>
       </div>
     </div>
 
     <div class="auth-card">
       <a class="brand" href="#top"><svg><use href="#z-logo"/></svg>Zwigato</a>
       <h1 id="authHeading">Sign in to your table</h1>
-      <p class="auth-sub">Order delicious food or manage your restaurant kitchen.</p>
+      <p class="auth-sub">Order fresh meals or manage your restaurant partner console.</p>
 
       <div class="role-switch" role="radiogroup" aria-label="Select Role">
         <button type="button" class="role-opt on" id="optCust">
           <div>🛵 <strong>Customer</strong></div>
-          <span>Browse menus, flash deals &amp; live rider map</span>
+          <span>Browse 92 dishes, flash deals &amp; live map</span>
         </button>
         <button type="button" class="role-opt" id="optPartner">
           <div>👨‍🍳 <strong>Restaurant Partner</strong></div>
-          <span>Register/manage kitchen, orders &amp; analytics</span>
+          <span>Register/manage kitchen, orders &amp; sales</span>
         </button>
       </div>
 
@@ -1243,28 +1336,34 @@ footer.brand-footer {
           </div>
 
           <div id="newKitchenWrap" hidden style="padding:12px;border-radius:14px;background:var(--surface-alt);border:1px solid var(--border);margin-bottom:12px">
-            <div class="field">
-              <label for="nkName">New Restaurant Name</label>
-              <input id="nkName" type="text" placeholder="e.g. Saffron &amp; Clay Kitchen">
+            <div style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:8px">
+              <div class="field">
+                <label for="nkName">New Restaurant Name</label>
+                <input id="nkName" type="text" placeholder="e.g. Saffron &amp; Clay Kitchen">
+              </div>
+              <div class="field">
+                <label for="nkEta">Prep Time (mins)</label>
+                <input id="nkEta" type="number" min="10" max="60" value="20">
+              </div>
             </div>
             <div class="field">
-              <label for="nkLoc">Kitchen Location / Neighborhood</label>
-              <input id="nkLoc" type="text" placeholder="e.g. Main Market, Pantnagar">
+              <label for="nkCat">Primary Cuisine</label>
+              <select id="nkCat">
+                <option value="North Indian">North Indian</option>
+                <option value="Italian & Pizza">Italian &amp; Pizza</option>
+                <option value="Fast Food & Chinese">Fast Food &amp; Chinese</option>
+                <option value="Cafe & Shakes">Cafe &amp; Shakes</option>
+                <option value="Street Food & Mithai">Street Food &amp; Mithai</option>
+              </select>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="display:grid;grid-template-columns:1.4fr 0.6fr;gap:8px">
               <div class="field" style="margin:0">
-                <label for="nkCat">Primary Cuisine</label>
-                <select id="nkCat">
-                  <option value="North Indian">North Indian</option>
-                  <option value="Pizza & Italian">Pizza &amp; Italian</option>
-                  <option value="Momos & Chinese">Momos &amp; Chinese</option>
-                  <option value="Cafe & Beverages">Cafe &amp; Beverages</option>
-                  <option value="South Indian">South Indian</option>
-                </select>
+                <label for="nkDish">Starting Signature Dish</label>
+                <input id="nkDish" type="text" placeholder="e.g. Smoked Paneer Platter">
               </div>
               <div class="field" style="margin:0">
-                <label for="nkEta">Prep ETA (mins)</label>
-                <input id="nkEta" type="number" min="10" max="60" value="22">
+                <label for="nkDishPrice">Price (₹)</label>
+                <input id="nkDishPrice" type="number" min="20" value="180">
               </div>
             </div>
           </div>
@@ -1308,9 +1407,10 @@ footer.brand-footer {
       </button>
     </div>
     <div class="nav-right">
-      <button type="button" class="btn xs green" id="navLiveTrackerPill" hidden>🛵 Live Order</button>
+      <button type="button" class="btn xs veg" id="navLiveTrackerPill" hidden>🛵 Live Order</button>
       <span class="user-chip" id="navUserText"></span>
-      <button type="button" class="btn sm" id="quickRoleSwitch">⇄ Switch Portal</button>
+      <button type="button" class="btn sm" id="navHelpBtn">🎧 Help</button>
+      <button type="button" class="btn sm" id="quickRoleSwitch">⇄ Switch Role</button>
       <button type="button" class="btn sm" id="themeNavBtn" aria-label="Toggle theme">🌓</button>
       <button type="button" class="btn primary sm" id="openCartBtn">🛒 Cart · 0</button>
       <button type="button" class="btn sm" id="logoutBtn">Log out</button>
@@ -1325,16 +1425,16 @@ footer.brand-footer {
     <!-- HERO & CONSUMER SEARCH -->
     <section class="hero">
       <div class="hero-kicker">
-        <span class="editorial-tag">✨ Express Delivery across Pantnagar &amp; North India</span>
+        <span class="editorial-tag">✨ Express Delivery across Pantnagar Campus &amp; Kumaon</span>
         <span class="flash-pill">⚡ Flash Drops Live · Ends in <span class="timer" id="flashTimer">14:59</span></span>
       </div>
       <h1>Crafted meals, <em>delivered warm.</em></h1>
-      <p class="sub">Discover top-rated neighborhood kitchens, unlock instant flash savings, track your scooter rider live, or ask Zwigato AI what matches your mood.</p>
+      <p class="sub">Explore 92+ dishes across 12 curated kitchens, grab -25% flash deals, track your scooter rider live, or ask Zwigato AI what matches your mood.</p>
 
       <div class="search-row">
         <div class="search-box">
           <span aria-hidden="true">🔍</span>
-          <input id="searchInput" type="search" autocomplete="off" placeholder="Search for dishes, cuisines, or restaurants…">
+          <input id="searchInput" type="search" autocomplete="off" placeholder="Search 92 dishes, cuisines, or Pantnagar kitchens…">
           <button type="button" class="btn xs" id="clearSearchBtn" hidden>Clear</button>
         </div>
         <button type="button" class="btn ai" id="heroAiBtn">✨ Ask Zwigato AI</button>
@@ -1365,8 +1465,8 @@ footer.brand-footer {
     <section aria-label="Trending Dishes">
       <div class="sec-bar">
         <div>
-          <h2>🔥 Trending &amp; Most Ordered</h2>
-          <p style="margin:2px 0 0;font-size:13px;color:var(--muted)">Loved by foodies across Pantnagar today.</p>
+          <h2>🔥 Trending &amp; Most Ordered Today</h2>
+          <p style="margin:2px 0 0;font-size:13px;color:var(--muted)">Top campus &amp; city favorites ordered across Pantnagar right now.</p>
         </div>
       </div>
       <div class="carousel" id="trendingCarousel"></div>
@@ -1404,7 +1504,7 @@ footer.brand-footer {
       <div>
         <span class="badge-pill">Restaurant Partner Console</span>
         <h1 style="font-size:clamp(28px,4.5vw,42px);margin:8px 0 4px">Kitchen <em>Command Center</em></h1>
-        <p style="margin:0;color:var(--muted);font-size:14px">Manage incoming customer orders, update menu availability &amp; flash deals, and track sales performance.</p>
+        <p style="margin:0;color:var(--muted);font-size:14px">Manage incoming customer orders, update menu items &amp; flash sales, and monitor demand analytics.</p>
       </div>
       <div class="card" style="padding:12px 16px;min-width:260px">
         <label for="partnerRestSelect" style="display:block;font-size:11px;font-weight:800;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Managing Kitchen</label>
@@ -1415,7 +1515,7 @@ footer.brand-footer {
     <div class="partner-kpis" id="partnerKpis"></div>
 
     <div class="sec-bar">
-      <h2>🔥 Live Kitchen Order Queue</h2>
+      <h2>🔥 Live Kitchen Order Board</h2>
       <span style="font-size:12.5px;color:var(--muted);font-weight:600">Status updates appear immediately on the customer's live tracking map</span>
     </div>
     <div class="kds-grid" id="partnerKdsGrid"></div>
@@ -1434,7 +1534,7 @@ footer.brand-footer {
               <input id="ndPrice" type="number" min="15" required placeholder="175">
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px">
             <div class="field" style="margin:0">
               <label for="ndDiet">Dietary Tag</label>
               <select id="ndDiet">
@@ -1445,22 +1545,30 @@ footer.brand-footer {
               </select>
             </div>
             <div class="field" style="margin:0">
+              <label for="ndCourse">Course</label>
+              <select id="ndCourse">
+                <option value="Mains">Mains</option>
+                <option value="Starters">Starters</option>
+                <option value="Breads">Breads</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Momos">Momos</option>
+                <option value="Desserts">Desserts</option>
+                <option value="Beverages">Beverages</option>
+              </select>
+            </div>
+            <div class="field" style="margin:0">
               <label for="ndImgPreset">Photo Preset</label>
               <select id="ndImgPreset">
                 <option value="paneer">Paneer &amp; Curry</option>
                 <option value="pizza">Artisan Pizza</option>
                 <option value="momos">Steamed Momos</option>
                 <option value="biryani">Royal Biryani</option>
-                <option value="coffee">Cafe &amp; Beverages</option>
-                <option value="dosa">South Indian Dosa</option>
+                <option value="coffee">Cafe &amp; Shakes</option>
+                <option value="dessert">Desserts &amp; Mithai</option>
               </select>
             </div>
           </div>
-          <div class="field" style="margin-top:10px">
-            <label for="ndDesc">Short Description</label>
-            <input id="ndDesc" type="text" placeholder="Charcoal-roasted cottage cheese with mint chutney">
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:12px">
             <div style="display:flex;gap:14px;flex-wrap:wrap">
               <label style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;cursor:pointer">
                 <input type="checkbox" id="ndSpecial" checked> ★ Daily Special
@@ -1477,11 +1585,11 @@ footer.brand-footer {
 
       <div style="display:flex;flex-direction:column;gap:20px">
         <div class="card" style="padding:22px">
-          <h3 style="margin:0 0 14px;font-size:19px">📊 Top Selling Dishes</h3>
+          <h3 style="margin:0 0 14px;font-size:19px">📊 Customer Demand &amp; Top Dishes</h3>
           <div id="analyticsTopDishes"></div>
         </div>
         <div class="card" style="padding:22px">
-          <h3 style="margin:0 0 14px;font-size:19px">💳 Payment Mode Breakdown</h3>
+          <h3 style="margin:0 0 14px;font-size:19px">🥗 Dietary Mix &amp; Payments</h3>
           <div id="analyticsPayments"></div>
         </div>
       </div>
@@ -1494,13 +1602,13 @@ footer.brand-footer {
       <div class="footer-grid">
         <div class="footer-col">
           <a class="brand" href="#top" style="margin-bottom:10px"><svg><use href="#z-logo"/></svg>Zwigato</a>
-          <p style="margin:0 0 14px;line-height:1.6">Bringing artisanal neighborhood kitchens, farm-fresh ingredients, and fast scooter delivery to Pantnagar &amp; North India.</p>
+          <p style="margin:0 0 14px;line-height:1.6">Bringing Pantnagar’s favorite local kitchens, Kumaoni delicacies, and express scooter delivery right to your doorstep.</p>
           <button type="button" class="btn sm" id="replayIntroBtn">▶ Replay Intro</button>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
           <ul>
-            <li><a onclick="window.scrollTo({top:0,behavior:'smooth'})">All Partner Kitchens</a></li>
+            <li><a onclick="window.scrollTo({top:0,behavior:'smooth'})">All 12 Kitchens</a></li>
             <li><a onclick="setDietFilter('Flash Deals')">⚡ Live Flash Deals</a></li>
             <li><a onclick="setDietFilter('Pure Veg')">🌿 Pure Veg Kitchens</a></li>
             <li><a onclick="setAiOpen(true)">✨ AI Mood Concierge</a></li>
@@ -1509,22 +1617,22 @@ footer.brand-footer {
         <div class="footer-col">
           <h4>Partner With Us</h4>
           <ul>
-            <li><a onclick="$('#quickRoleSwitch').click()">Restaurant Partner Portal</a></li>
+            <li><a onclick="$('#quickRoleSwitch').click()">Restaurant Partner Console</a></li>
             <li><a onclick="toast('Rider onboarding open across Pantnagar & Rudrapur!')">Become a Delivery Valet</a></li>
-            <li><a onclick="toast('Corporate & campus bulk catering desk: care@zwigato.in')">Campus &amp; Event Catering</a></li>
+            <li><a onclick="toast('Hostel & campus bulk catering desk: care@zwigato.in')">Campus &amp; Event Catering</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Hygiene &amp; Support</h4>
+          <h4>Hygiene &amp; 24×7 Support</h4>
           <ul>
+            <li><a onclick="openCareDrawer('instant')">🎧 24×7 Customer Care Center</a></li>
             <li><a onclick="toast('All Zwigato kitchens maintain verified FSSAI hygiene audits.')">🛡️ FSSAI Hygiene Standards</a></li>
-            <li><a onclick="toast('24×7 Live Rider & Order Support: 1800-120-9442')">📞 24×7 Customer Support</a></li>
             <li><a onclick="toast('Tamper-evident eco-friendly packaging on every order.')">♻️ Tamper-Evident Packaging</a></li>
           </ul>
         </div>
       </div>
       <div style="margin-top:28px;padding-top:18px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12.5px">
-        <span>© 2026 Zwigato Foods Pvt. Ltd. All rights reserved.</span>
+        <span>© 2026 Zwigato Foods Pvt. Ltd. · Pantnagar, Uttarakhand</span>
         <span>FSSAI Central Lic. No. 10026012000418</span>
       </div>
     </div>
@@ -1541,6 +1649,20 @@ footer.brand-footer {
     <button type="button" class="btn sm" id="closeDrawerBtn">Close ✕</button>
   </div>
   <div id="drawerBody"></div>
+</aside>
+
+<!-- =========================================================
+     24x7 CUSTOMER CARE & HELP CENTER DRAWER
+     ========================================================= -->
+<aside class="drawer" id="careDrawer" aria-label="24x7 Customer Care" aria-hidden="true">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+    <div>
+      <h2 style="margin:0;font-size:23px">🎧 24×7 Customer Care</h2>
+      <div style="font-size:12px;color:var(--veg);font-weight:700">● Specialist Ananya &amp; Instant Resolution Desk Online</div>
+    </div>
+    <button type="button" class="btn sm" id="closeCareBtn">Close ✕</button>
+  </div>
+  <div id="careBody"></div>
 </aside>
 
 <!-- =========================================================
@@ -1561,15 +1683,15 @@ footer.brand-footer {
     <button type="button" class="btn xs primary" id="saveKeyBtn">Save</button>
   </div>
   <div class="mood-strip">
-    <button type="button" class="mood-pill" data-q="I'm feeling super happy and want to celebrate!">😊 Celebrating</button>
-    <button type="button" class="mood-pill" data-q="I'm stressed and need warm comfort food">😫 Stressed &amp; Comfort</button>
-    <button type="button" class="mood-pill" data-q="High protein post-workout meal options">⚡ Post-Workout Protein</button>
-    <button type="button" class="mood-pill" data-q="Which restaurants have the fastest delivery under 25 mins?">🚀 Fastest Under 25m</button>
+    <button type="button" class="mood-pill" data-q="I'm feeling super happy and want to celebrate!">😊 Happy &amp; Celebratory</button>
+    <button type="button" class="mood-pill" data-q="I'm tired and need warm comfort food">😴 Tired / Comfort Food</button>
+    <button type="button" class="mood-pill" data-q="I want something energetic and light">⚡ Energetic &amp; Light</button>
+    <button type="button" class="mood-pill" data-q="Which restaurants have the fastest delivery under 20 mins?">🚀 Fastest Delivery (&lt;20m)</button>
     <button type="button" class="mood-pill" data-q="Show me the best vegan or gluten-free dishes">🌱 Vegan / Gluten-Free</button>
   </div>
   <div class="ai-feed" id="aiFeed">
     <div class="bubble bot">
-      Namaste! Tell me how you're feeling today or ask for our <b>fastest kitchens</b>, and I'll recommend fresh dishes you can add right to your bag.
+      Namaste! Tell me how you're feeling today or ask for our <b>fastest Pantnagar kitchens (&lt;20m)</b>, and I'll recommend fresh dishes you can add straight to your cart.
     </div>
   </div>
   <form class="ai-form" id="aiChatForm">
@@ -1584,10 +1706,10 @@ footer.brand-footer {
 // =========================================================
 // 1. SANDBOX-SAFE PERSISTENT STORAGE
 // =========================================================
-const DB_KEY = "zwigato_consumer_v2";
+const DB_KEY = "zwigato_pantnagar_v3";
 const memoryStore = new Map();
 
-function safeStorageGet(key) {
+function safeGet(key) {
   try {
     return window.localStorage.getItem(key);
   } catch (e) {
@@ -1595,10 +1717,17 @@ function safeStorageGet(key) {
   }
 }
 
-function safeStorageSet(key, value) {
+function safeSet(key, value) {
   memoryStore.set(key, value);
   try {
     window.localStorage.setItem(key, value);
+  } catch (e) {}
+}
+
+function safeRemove(key) {
+  memoryStore.delete(key);
+  try {
+    window.localStorage.removeItem(key);
   } catch (e) {}
 }
 
@@ -1624,18 +1753,21 @@ const FALLBACK_SVG = "data:image/svg+xml," + encodeURIComponent(
 const PHOTOS = {
   dal: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
   paneer: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=80",
-  roti: "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=800&q=80",
+  naan: "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=800&q=80",
+  thali: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800&q=80",
   pizza: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80",
   pasta: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80",
   momos: "https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&w=800&q=80",
   burger: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80",
+  noodles: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80",
   coffee: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
-  choco: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=800&q=80",
+  dessert: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=800&q=80",
   biryani: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
   samosa: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
-  dosa: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=800&q=80",
+  soup: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80",
   sushi: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80",
-  kebab: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80"
+  kebab: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80",
+  vegan: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
 };
 
 function simpleHash(str) {
@@ -1647,83 +1779,194 @@ function simpleHash(str) {
   return "zh_" + (h >>> 0).toString(16);
 }
 
+// Helper to concisely build rich dish items
+const D = (id, name, price, course, tags, img, flash = false, special = false, orders = 80) => ({
+  id, name, price, course, tags, img, flash, special, inStock: true, ordersToday: orders
+});
+
+// =========================================================
+// 2. COMPLETE 92-DISH CATALOG ACROSS 12 RESTAURANTS
+// =========================================================
 const DEFAULT_DB = {
   users: [
     {email: "ishaan@zwigato.in", passHash: simpleHash("zwigato123"), name: "Ishaan Verma", address: "Subhash Bhawan, Pantnagar", role: "customer", restaurantId: null},
-    {email: "welcome@zwigato.in", passHash: simpleHash("kitchen123"), name: "Chef Rajendra", address: "Main Market, Pantnagar", role: "partner", restaurantId: 101}
+    {email: "welcome@zwigato.in", passHash: simpleHash("kitchen123"), name: "Chef Rajendra", address: "Main Market, Pantnagar", role: "partner", restaurantId: 1}
   ],
   restaurants: [
+    // 1. Welcome Restaurant (8 dishes)
     {
-      id: 101, name: "Welcome Artisanal Kitchen", cuisine: "North Indian", location: "Main Market, Pantnagar", tag: "North Indian · Royal Thali",
-      rating: 4.7, etaMins: 18, distanceKm: 0.9, isFar: false, fssai: "12624001000841", banner: PHOTOS.dal,
+      id: 1, name: "Welcome Restaurant", cuisine: "North Indian", location: "Main Market, Pantnagar",
+      rating: 4.7, etaMins: 22, distanceKm: 1.1, isFar: false, fssai: "12624001000841", banner: PHOTOS.dal,
       menu: [
-        {id: 1, name: "Dal Makhani Handi", price: 190, desc: "24-hour slow-simmered black urad lentils finished with white butter", diet: "Veg", img: PHOTOS.dal, inStock: true, isFlash: false, isSpecial: true, ordersToday: 142},
-        {id: 2, name: "Charcoal Paneer Tikka", price: 240, desc: "Cottage cheese cubes marinated in hung curd & Kashmiri chilli", diet: "Gluten-Free", img: PHOTOS.paneer, inStock: true, isFlash: true, isSpecial: false, ordersToday: 98},
-        {id: 3, name: "Whole-Wheat Tandoori Roti", price: 25, desc: "Crisp clay-oven baked multigrain roti", diet: "Vegan", img: PHOTOS.roti, inStock: true, isFlash: false, isSpecial: false, ordersToday: 210}
+        D(101, "Dal Makhani", 190, "Mains", ["Veg", "Bestseller"], PHOTOS.dal, false, true, 165),
+        D(102, "Paneer Tikka Masala", 240, "Mains", ["Veg", "Gluten-Free", "Bestseller"], PHOTOS.paneer, true, false, 134),
+        D(103, "Garlic Butter Naan", 55, "Breads", ["Veg"], PHOTOS.naan, false, false, 190),
+        D(104, "Tandoori Platter", 290, "Starters", ["Veg", "Gluten-Free"], PHOTOS.paneer, true, true, 92),
+        D(105, "Shahi Paneer", 230, "Mains", ["Veg", "Gluten-Free"], PHOTOS.paneer, false, false, 88),
+        D(106, "Jeera Rice", 120, "Mains", ["Vegan", "Gluten-Free"], PHOTOS.biryani, false, false, 110),
+        D(107, "Gulab Jamun", 70, "Desserts", ["Veg", "Bestseller"], PHOTOS.dessert, false, false, 145),
+        D(108, "Masala Chaas", 45, "Beverages", ["Veg", "Gluten-Free"], PHOTOS.coffee, false, false, 96)
       ]
     },
+    // 2. Fartyal Restaurant (8 dishes)
     {
-      id: 102, name: "Satnaam Ji Momos & Bao", cuisine: "Momos & Chinese", location: "Gate 1, Pantnagar", tag: "Momos & Chinese · Street Craft",
-      rating: 4.8, etaMins: 14, distanceKm: 0.5, isFar: false, fssai: "12624001000912", banner: PHOTOS.momos,
+      id: 2, name: "Fartyal Restaurant", cuisine: "Homestyle Thali", location: "Nagla Road, Pantnagar",
+      rating: 4.5, etaMins: 18, distanceKm: 0.8, isFar: false, fssai: "12624001000912", banner: PHOTOS.thali,
       menu: [
-        {id: 1, name: "Himalayan Steamed Veg Momos", price: 80, desc: "8 hand-pleated dumplings with roasted sesame-tomato chutney", diet: "Vegan", img: PHOTOS.momos, inStock: true, isFlash: false, isSpecial: true, ordersToday: 186},
-        {id: 2, name: "Wok-Tossed Chilli Garlic Momos", price: 110, desc: "Pan-seared dumplings glazed in burnt garlic & Sichuan pepper", diet: "Veg", img: PHOTOS.momos, inStock: true, isFlash: true, isSpecial: false, ordersToday: 124},
-        {id: 3, name: "Crispy Aloo Herb Burger", price: 75, desc: "Spiced potato-pea patty with pickled onions & mint aioli", diet: "Veg", img: PHOTOS.burger, inStock: true, isFlash: false, isSpecial: false, ordersToday: 76}
+        D(201, "Kumaoni Rajma Chawal", 130, "Mains", ["Vegan", "Gluten-Free", "Bestseller"], PHOTOS.thali, false, true, 178),
+        D(202, "Deluxe Veg Thali", 180, "Mains", ["Veg", "Bestseller"], PHOTOS.thali, true, true, 152),
+        D(203, "Aloo Gutke", 110, "Starters", ["Vegan", "Gluten-Free"], PHOTOS.samosa, false, false, 94),
+        D(204, "Ghee Butter Roti", 20, "Breads", ["Veg"], PHOTOS.naan, false, false, 230),
+        D(205, "Kadhi Pakora", 120, "Mains", ["Veg"], PHOTOS.dal, false, false, 86),
+        D(206, "Pahadi Raita", 50, "Starters", ["Veg", "Gluten-Free"], PHOTOS.thali, false, false, 78),
+        D(207, "Sweet Lassi", 65, "Beverages", ["Veg", "Gluten-Free"], PHOTOS.coffee, false, false, 112),
+        D(208, "Bal Mithai", 95, "Desserts", ["Veg", "Bestseller"], PHOTOS.dessert, true, false, 104)
       ]
     },
+    // 3. The Pizza Bite (8 dishes)
     {
-      id: 103, name: "The Woodfire Pizza Bite", cuisine: "Pizza & Italian", location: "Colony Crossing, Pantnagar", tag: "Pizza & Italian · Sourdough",
-      rating: 4.6, etaMins: 22, distanceKm: 1.4, isFar: false, fssai: "12624001001105", banner: PHOTOS.pizza,
+      id: 3, name: "The Pizza Bite", cuisine: "Italian & Pizza", location: "Colony Crossing, Pantnagar",
+      rating: 4.6, etaMins: 25, distanceKm: 1.5, isFar: false, fssai: "12624001001105", banner: PHOTOS.pizza,
       menu: [
-        {id: 1, name: "Farmhouse Sourdough Pizza", price: 240, desc: "San Marzano tomato sauce, roasted peppers, olives & mozzarella", diet: "Veg", img: PHOTOS.pizza, inStock: true, isFlash: true, isSpecial: true, ordersToday: 115},
-        {id: 2, name: "Truffle Cream Penne Pasta", price: 180, desc: "Al dente penne folded in parmesan & roasted mushroom cream", diet: "Veg", img: PHOTOS.pasta, inStock: true, isFlash: false, isSpecial: false, ordersToday: 68},
-        {id: 3, name: "Roasted Garlic Herb Bread", price: 110, desc: "Crusty ciabatta brushed with confit garlic & rosemary oil", diet: "Vegan", img: PHOTOS.roti, inStock: true, isFlash: false, isSpecial: false, ordersToday: 54}
+        D(301, "Farmhouse Overload Pizza", 260, "Pizza", ["Veg", "Bestseller"], PHOTOS.pizza, true, true, 148),
+        D(302, "Peri Peri Paneer Pizza", 280, "Pizza", ["Veg", "Bestseller"], PHOTOS.pizza, false, false, 126),
+        D(303, "Stuffed Cheese Garlic Bread", 130, "Starters", ["Veg"], PHOTOS.naan, false, false, 138),
+        D(304, "White Sauce Alfredo Pasta", 190, "Mains", ["Veg"], PHOTOS.pasta, false, true, 98),
+        D(305, "Margherita Classic", 199, "Pizza", ["Veg"], PHOTOS.pizza, true, false, 115),
+        D(306, "Jalapeno Cheese Poppers", 140, "Starters", ["Veg"], PHOTOS.samosa, false, false, 84),
+        D(307, "Choco Lava Cake", 95, "Desserts", ["Veg", "Bestseller"], PHOTOS.dessert, false, false, 142),
+        D(308, "Peach Iced Tea", 75, "Beverages", ["Vegan", "Gluten-Free"], PHOTOS.coffee, false, false, 90)
       ]
     },
+    // 4. Satnaam Ji Burger & Momos (8 dishes)
     {
-      id: 104, name: "Moments Roastery & Cafe", cuisine: "Cafe & Beverages", location: "Library Road, Pantnagar", tag: "Cafe & Beverages · Specialty Brews",
-      rating: 4.7, etaMins: 15, distanceKm: 0.8, isFar: false, fssai: "12624001001420", banner: PHOTOS.coffee,
+      id: 4, name: "Satnaam Ji Burger & Momos", cuisine: "Fast Food & Chinese", location: "Gate 1, Pantnagar",
+      rating: 4.4, etaMins: 16, distanceKm: 0.5, isFar: false, fssai: "12624001001420", banner: PHOTOS.momos,
       menu: [
-        {id: 1, name: "Hazelnut Cold Brew Frappe", price: 130, desc: "18-hour steeped Arabica coffee blended with roasted hazelnut", diet: "Veg", img: PHOTOS.coffee, inStock: true, isFlash: false, isSpecial: true, ordersToday: 158},
-        {id: 2, name: "70% Dark Belgian Hot Chocolate", price: 150, desc: "Velvety single-origin melted chocolate with toasted marshmallow", diet: "Veg", img: PHOTOS.choco, inStock: true, isFlash: true, isSpecial: false, ordersToday: 92}
+        D(401, "Crispy Aloo Tikki Burger", 70, "Starters", ["Veg", "Bestseller"], PHOTOS.burger, false, false, 162),
+        D(402, "Steamed Veg Momos (8 pcs)", 80, "Momos", ["Vegan", "Bestseller"], PHOTOS.momos, false, true, 215),
+        D(403, "Tandoori Kurkure Momos", 120, "Momos", ["Veg", "Bestseller"], PHOTOS.momos, true, false, 174),
+        D(404, "Paneer Makhani Burger", 110, "Starters", ["Veg"], PHOTOS.burger, false, false, 96),
+        D(405, "Schezwan Hakka Noodles", 140, "Mains", ["Vegan"], PHOTOS.noodles, false, false, 118),
+        D(406, "Chilli Potato", 115, "Starters", ["Vegan"], PHOTOS.samosa, true, false, 108),
+        D(407, "Loaded Peri Peri Fries", 95, "Starters", ["Vegan", "Gluten-Free"], PHOTOS.samosa, false, false, 129),
+        D(408, "Virgin Mojito", 80, "Beverages", ["Vegan", "Gluten-Free"], PHOTOS.coffee, false, false, 95)
       ]
     },
+    // 5. Moments Cafe (8 dishes)
     {
-      id: 105, name: "Dakshin Tiffin & Dosa Co.", cuisine: "South Indian", location: "Nagla Road, Pantnagar", tag: "South Indian · Filter Coffee",
-      rating: 4.6, etaMins: 16, distanceKm: 1.1, isFar: false, fssai: "12624001001888", banner: PHOTOS.dosa,
+      id: 5, name: "Moments Cafe", cuisine: "Cafe & Shakes", location: "Library Road, Pantnagar",
+      rating: 4.8, etaMins: 20, distanceKm: 0.9, isFar: false, fssai: "12624001001888", banner: PHOTOS.coffee,
       menu: [
-        {id: 1, name: "Ghee Roast Masala Dosa", price: 130, desc: "Crisp fermented rice-lentil crepe with spiced potato masala & sambar", diet: "Vegan", img: PHOTOS.dosa, inStock: true, isFlash: false, isSpecial: true, ordersToday: 134},
-        {id: 2, name: "Steamed Podi Idli Platter", price: 90, desc: "3 fluffy rice cakes tossed in gunpowder spice & coconut chutney", diet: "Gluten-Free", img: PHOTOS.dosa, inStock: true, isFlash: true, isSpecial: false, ordersToday: 88}
+        D(501, "Hazelnut Cold Coffee", 130, "Beverages", ["Veg", "Gluten-Free", "Bestseller"], PHOTOS.coffee, false, true, 184),
+        D(502, "Pesto Penne Pasta", 195, "Mains", ["Veg", "Bestseller"], PHOTOS.pasta, true, false, 112),
+        D(503, "Belgian Chocolate Shake", 150, "Beverages", ["Veg", "Gluten-Free"], PHOTOS.dessert, false, false, 146),
+        D(504, "Club Grilled Sandwich", 135, "Starters", ["Veg"], PHOTOS.burger, false, false, 128),
+        D(505, "Avocado & Herb Toast", 165, "Starters", ["Vegan"], PHOTOS.vegan, false, true, 88),
+        D(506, "Caramel Frappe", 140, "Beverages", ["Veg", "Gluten-Free"], PHOTOS.coffee, false, false, 102),
+        D(507, "Blueberry Cheesecake", 160, "Desserts", ["Veg", "Bestseller"], PHOTOS.dessert, true, false, 119),
+        D(508, "Classic Cold Brew", 115, "Beverages", ["Vegan", "Gluten-Free"], PHOTOS.coffee, false, false, 94)
       ]
     },
+    // 6. Kesari Sweets & Snacks (8 dishes)
     {
-      id: 106, name: "Kesari Chaat & Biryani House", cuisine: "North Indian", location: "Central Chowk, Pantnagar", tag: "North Indian · Dum Biryani",
-      rating: 4.5, etaMins: 17, distanceKm: 1.2, isFar: false, fssai: "12624001002011", banner: PHOTOS.biryani,
+      id: 6, name: "Kesari Sweets & Snacks", cuisine: "Street Food & Mithai", location: "Central Chowk, Pantnagar",
+      rating: 4.7, etaMins: 15, distanceKm: 0.7, isFar: false, fssai: "12624001002011", banner: PHOTOS.samosa,
       menu: [
-        {id: 1, name: "Subz Dum Pukht Biryani", price: 160, desc: "Saffron-infused aged basmati layered with garden vegetables & burani raita", diet: "Gluten-Free", img: PHOTOS.biryani, inStock: true, isFlash: true, isSpecial: true, ordersToday: 121},
-        {id: 2, name: "Punjabi Samosa & Ginger Chai", price: 55, desc: "2 flaky spiced potato samosas paired with cardamom masala chai", diet: "Veg", img: PHOTOS.samosa, inStock: true, isFlash: false, isSpecial: false, ordersToday: 174}
+        D(601, "Hyderabadi Veg Dum Biryani", 165, "Mains", ["Veg", "Gluten-Free", "Bestseller"], PHOTOS.biryani, true, true, 156),
+        D(602, "Crispy Punjabi Samosa (2 pcs)", 40, "Starters", ["Vegan", "Bestseller"], PHOTOS.samosa, false, false, 240),
+        D(603, "Kulhad Masala Chai", 30, "Beverages", ["Veg", "Gluten-Free", "Bestseller"], PHOTOS.coffee, false, false, 260),
+        D(604, "Chole Bhature", 110, "Mains", ["Veg", "Bestseller"], PHOTOS.thali, false, true, 168),
+        D(605, "Raj Kachori", 95, "Starters", ["Veg"], PHOTOS.samosa, false, false, 104),
+        D(606, "Paneer Jalebi", 85, "Desserts", ["Veg"], PHOTOS.dessert, true, false, 118),
+        D(607, "Kesar Rasmalai (2 pcs)", 90, "Desserts", ["Veg", "Gluten-Free"], PHOTOS.dessert, false, false, 132),
+        D(608, "Aloo Tikki Chaat", 75, "Starters", ["Veg", "Gluten-Free"], PHOTOS.samosa, false, false, 121)
       ]
     },
-    // Farther Gems Carousel
+    // 7. The Chocolate Room (8 dishes)
     {
-      id: 201, name: "Nainital Lakeview Sushi & Bowls", cuisine: "Momos & Chinese", location: "Rudrapur Highway", tag: "Japanese & Asian · Gourmet",
-      rating: 4.9, etaMins: 32, distanceKm: 6.2, isFar: true, fssai: "12624001009901", banner: PHOTOS.sushi,
+      id: 7, name: "The Chocolate Room", cuisine: "Desserts & Cafe", location: "TDC Market, Pantnagar",
+      rating: 4.6, etaMins: 24, distanceKm: 1.4, isFar: false, fssai: "12624001002310", banner: PHOTOS.dessert,
       menu: [
-        {id: 1, name: "Avocado Cucumber Maki Roll", price: 280, desc: "8 pcs hand-rolled sushi with Hass avocado, toasted sesame & wasabi", diet: "Vegan", img: PHOTOS.sushi, inStock: true, isFlash: true, isSpecial: true, ordersToday: 64}
+        D(701, "Signature Belgian Hot Chocolate", 155, "Beverages", ["Veg", "Gluten-Free", "Bestseller"], PHOTOS.dessert, false, true, 154),
+        D(702, "Mexican Salsa Fries", 125, "Starters", ["Vegan", "Gluten-Free"], PHOTOS.samosa, false, false, 98),
+        D(703, "Four-Cheese Margherita", 230, "Pizza", ["Veg"], PHOTOS.pizza, true, false, 108),
+        D(704, "Nutella Waffle Sundae", 185, "Desserts", ["Veg", "Bestseller"], PHOTOS.dessert, true, true, 142),
+        D(705, "Brownie Sizzler", 210, "Desserts", ["Veg", "Bestseller"], PHOTOS.dessert, false, false, 126),
+        D(706, "Classic Pancake Stack", 165, "Desserts", ["Veg"], PHOTOS.dessert, false, false, 89),
+        D(707, "Dark Mocha Shake", 150, "Beverages", ["Veg", "Gluten-Free"], PHOTOS.coffee, false, false, 101),
+        D(708, "KitKat Crunch Jar", 145, "Desserts", ["Veg"], PHOTOS.dessert, false, false, 94)
       ]
     },
+    // 8. Chotu Momos (8 dishes)
     {
-      id: 202, name: "Kumaon Charcoal Kebab & Grill", cuisine: "North Indian", location: "Lalkuan Bypass", tag: "Mughlai · High Protein",
-      rating: 4.8, etaMins: 30, distanceKm: 5.4, isFar: true, fssai: "12624001009902", banner: PHOTOS.kebab,
+      id: 8, name: "Chotu Momos", cuisine: "Momos & Soups", location: "Hostel Crossing, Pantnagar",
+      rating: 4.5, etaMins: 14, distanceKm: 0.4, isFar: false, fssai: "12624001002744", banner: PHOTOS.momos,
       menu: [
-        {id: 1, name: "Smoked Chicken Seekh & Tikka Box", price: 290, desc: "High-protein charcoal grilled skewers with mint-walnut chutney", diet: "Non-Veg", img: PHOTOS.kebab, inStock: true, isFlash: true, isSpecial: true, ordersToday: 89}
+        D(801, "Juicy Chicken Steamed Momos", 95, "Momos", ["Non-Veg", "Bestseller"], PHOTOS.momos, false, true, 198),
+        D(802, "Fiery Chilli Garlic Momos", 110, "Momos", ["Vegan", "Bestseller"], PHOTOS.momos, true, false, 165),
+        D(803, "Himalayan Hot & Sour Soup", 75, "Starters", ["Vegan", "Gluten-Free"], PHOTOS.soup, false, false, 114),
+        D(804, "Paneer Afghani Momos", 125, "Momos", ["Veg", "Bestseller"], PHOTOS.momos, false, true, 144),
+        D(805, "Pan-Fried Schezwan Momos", 115, "Momos", ["Vegan"], PHOTOS.momos, true, false, 119),
+        D(806, "Veg Thukpa Bowl", 130, "Mains", ["Vegan"], PHOTOS.noodles, false, false, 108),
+        D(807, "Crispy Spring Rolls", 90, "Starters", ["Vegan"], PHOTOS.samosa, false, false, 122),
+        D(808, "Lemon Coriander Soup", 70, "Starters", ["Vegan", "Gluten-Free"], PHOTOS.soup, false, false, 92)
       ]
     },
+    // 9. Farther Gem: Nainital Lakeview Sushi & Bowls (7 dishes)
     {
-      id: 203, name: "Haldwani Neapolitan Oven", cuisine: "Pizza & Italian", location: "Civil Lines", tag: "Artisan Neapolitan · Woodfired",
-      rating: 4.9, etaMins: 34, distanceKm: 6.8, isFar: true, fssai: "12624001009903", banner: PHOTOS.pizza,
+      id: 9, name: "Nainital Lakeview Sushi & Bowls", cuisine: "Asian & Sushi", location: "Rudrapur Highway (6.2 km)",
+      rating: 4.9, etaMins: 38, distanceKm: 6.2, isFar: true, fssai: "12624001009901", banner: PHOTOS.sushi,
       menu: [
-        {id: 1, name: "Burrata & Basil Margherita", price: 320, desc: "48-hr fermented crust topped with fresh creamy burrata & sweet basil", diet: "Veg", img: PHOTOS.pizza, inStock: true, isFlash: true, isSpecial: true, ordersToday: 72}
+        D(901, "Avocado Cucumber Maki Roll", 290, "Starters", ["Vegan", "Gluten-Free", "Bestseller"], PHOTOS.sushi, true, true, 96),
+        D(902, "Spicy Salmon Crunch Roll", 360, "Starters", ["Non-Veg", "Bestseller"], PHOTOS.sushi, true, false, 84),
+        D(903, "Teriyaki Tofu Donburi Bowl", 260, "Mains", ["Vegan", "Gluten-Free"], PHOTOS.vegan, false, true, 78),
+        D(904, "Edamame Truffle Dumplings", 220, "Momos", ["Vegan"], PHOTOS.momos, false, false, 72),
+        D(905, "Miso Wakame Soup", 120, "Starters", ["Vegan", "Gluten-Free"], PHOTOS.soup, false, false, 64),
+        D(906, "Crispy Tempura Udon Bowl", 275, "Mains", ["Veg"], PHOTOS.noodles, true, false, 69),
+        D(907, "Matcha Tiramisu Cup", 180, "Desserts", ["Veg"], PHOTOS.dessert, false, false, 74)
+      ]
+    },
+    // 10. Farther Gem: Rudrapur Woodfire Artisans (7 dishes)
+    {
+      id: 10, name: "Rudrapur Woodfire Artisans", cuisine: "Italian & Pizza", location: "Civil Lines, Rudrapur (5.8 km)",
+      rating: 4.8, etaMins: 35, distanceKm: 5.8, isFar: true, fssai: "12624001009902", banner: PHOTOS.pizza,
+      menu: [
+        D(1001, "Burrata & Sweet Basil Pizza", 340, "Pizza", ["Veg", "Bestseller"], PHOTOS.pizza, true, true, 108),
+        D(1002, "Truffle Mushroom Sourdough", 320, "Pizza", ["Veg"], PHOTOS.pizza, true, false, 88),
+        D(1003, "Smoked Chicken Pesto Pizza", 360, "Pizza", ["Non-Veg", "Bestseller"], PHOTOS.pizza, false, true, 92),
+        D(1004, "Rosemary Sea-Salt Focaccia", 145, "Breads", ["Vegan"], PHOTOS.naan, false, false, 76),
+        D(1005, "Arrabbiata Rigatoni Bowl", 230, "Mains", ["Vegan"], PHOTOS.pasta, false, false, 81),
+        D(1006, "Roasted Bell Pepper Bruschetta", 165, "Starters", ["Vegan"], PHOTOS.vegan, true, false, 70),
+        D(1007, "Classic Espresso Tiramisu", 190, "Desserts", ["Veg", "Bestseller"], PHOTOS.dessert, false, false, 95)
+      ]
+    },
+    // 11. Farther Gem: Kumaon Royal Kebabs (7 dishes)
+    {
+      id: 11, name: "Kumaon Royal Kebabs", cuisine: "North Indian", location: "Lalkuan Bypass (6.5 km)",
+      rating: 4.7, etaMins: 40, distanceKm: 6.5, isFar: true, fssai: "12624001009903", banner: PHOTOS.kebab,
+      menu: [
+        D(1101, "Charcoal Chicken Seekh Platter", 310, "Starters", ["Non-Veg", "Gluten-Free", "Bestseller"], PHOTOS.kebab, true, true, 114),
+        D(1102, "Awadhi Mutton Dum Biryani", 340, "Mains", ["Non-Veg", "Gluten-Free", "Bestseller"], PHOTOS.biryani, true, false, 106),
+        D(1103, "Dahi Ke Sholay", 210, "Starters", ["Veg"], PHOTOS.samosa, false, true, 84),
+        D(1104, "Ulte Tawe Ka Paratha", 65, "Breads", ["Veg"], PHOTOS.naan, false, false, 92),
+        D(1105, "Malai Broccoli Tikka", 230, "Starters", ["Veg", "Gluten-Free"], PHOTOS.paneer, true, false, 78),
+        D(1106, "Nihari Gosht", 330, "Mains", ["Non-Veg", "Gluten-Free"], PHOTOS.dal, false, false, 72),
+        D(1107, "Shahi Tukda", 130, "Desserts", ["Veg"], PHOTOS.dessert, false, false, 86)
+      ]
+    },
+    // 12. Farther Gem: Haldwani Vegan Kitchen (7 dishes)
+    {
+      id: 12, name: "Haldwani Vegan Kitchen", cuisine: "Homestyle Thali", location: "Kathgodam Road (6.9 km)",
+      rating: 4.8, etaMins: 36, distanceKm: 6.9, isFar: true, fssai: "12624001009904", banner: PHOTOS.vegan,
+      menu: [
+        D(1201, "Quinoa & Roasted Millet Bowl", 240, "Mains", ["Vegan", "Gluten-Free", "Bestseller"], PHOTOS.vegan, true, true, 94),
+        D(1202, "Jackfruit Kathal Biryani", 220, "Mains", ["Vegan", "Gluten-Free", "Bestseller"], PHOTOS.biryani, true, false, 88),
+        D(1203, "Almond-Milk Matcha Latte", 155, "Beverages", ["Vegan", "Gluten-Free"], PHOTOS.coffee, false, true, 76),
+        D(1204, "Ragi & Flaxseed Roti (2 pcs)", 55, "Breads", ["Vegan", "Gluten-Free"], PHOTOS.naan, false, false, 82),
+        D(1205, "Crispy Tofu & Sesame Salad", 195, "Starters", ["Vegan", "Gluten-Free"], PHOTOS.vegan, true, false, 71),
+        D(1206, "Coconut Jaggery Chia Pudding", 145, "Desserts", ["Vegan", "Gluten-Free"], PHOTOS.dessert, false, false, 79),
+        D(1207, "Cold-Pressed Valencia Detox", 110, "Beverages", ["Vegan", "Gluten-Free"], PHOTOS.coffee, false, false, 68)
       ]
     }
   ],
@@ -1732,20 +1975,30 @@ const DEFAULT_DB = {
       id: "ZWG-4810",
       customerEmail: "ishaan@zwigato.in",
       customerName: "Ishaan Verma",
-      restaurantId: 101,
-      restaurantName: "Welcome Artisanal Kitchen",
-      items: [{name: "Dal Makhani Handi", qty: 1, price: 190}],
-      subtotal: 190,
+      restaurantId: 1,
+      restaurantName: "Welcome Restaurant",
+      items: [{name: "Dal Makhani", qty: 1, price: 190}, {name: "Garlic Butter Naan", qty: 2, price: 55}],
+      subtotal: 300,
       discount: 0,
       deliveryFee: 20,
       tip: 20,
-      total: 230,
+      total: 355,
       address: "Subhash Bhawan, Pantnagar",
-      instructions: "Leave at security desk",
+      instructions: "Leave at hostel security gate",
       paymentMethod: "UPI / GPay",
       status: "DELIVERED",
       createdAt: "Yesterday, 8:42 PM",
       rider: {name: "Rohan Negi", bike: "UK-06-AW-4192", rating: "4.9"}
+    }
+  ],
+  tickets: [
+    {
+      id: "TCK-1042",
+      orderId: "ZWG-4810",
+      subject: "Extra mint chutney request on past order",
+      status: "Resolved",
+      note: "Added priority kitchen note & ₹25 Zwigato Care voucher to your profile.",
+      createdAt: "Yesterday, 9:05 PM"
     }
   ],
   session: null
@@ -1753,10 +2006,11 @@ const DEFAULT_DB = {
 
 function loadDB() {
   try {
-    const raw = safeStorageGet(DB_KEY);
+    const raw = safeGet(DB_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
-      if (parsed && Array.isArray(parsed.restaurants) && Array.isArray(parsed.users)) {
+      if (parsed && Array.isArray(parsed.restaurants) && parsed.restaurants.length >= 12) {
+        if (!Array.isArray(parsed.tickets)) parsed.tickets = cloneData(DEFAULT_DB.tickets);
         return parsed;
       }
     }
@@ -1766,21 +2020,26 @@ function loadDB() {
 
 let db = loadDB();
 function saveDB() {
-  try { safeStorageSet(DB_KEY, JSON.stringify(db)); } catch (e) {}
+  try { safeSet(DB_KEY, JSON.stringify(db)); } catch (e) {}
 }
 
 // =========================================================
-// 2. UI, CHECKOUT & SEARCH STATE
+// 3. UI, CHECKOUT & CUSTOMER CARE STATE
 // =========================================================
 let authRole = "customer";
 let authMode = "login";
 let activeViewRole = "customer";
-let managedRestId = 101;
+let managedRestId = 1;
 let selectedRestId = null;
 let searchQuery = "";
 let filterCuisine = "All";
 let filterDiet = "All";
 
+// In-menu filtering state
+let inMenuSearch = "";
+let inMenuTag = "All";
+
+// Cart & Checkout
 let cart = {restaurantId: null, items: []};
 let checkoutState = {
   promoCode: "",
@@ -1790,6 +2049,14 @@ let checkoutState = {
   paymentMethod: "UPI / GPay",
   processing: false
 };
+
+// Customer Care state
+let careTab = "instant";
+let careOrderId = "";
+let openFaqIdx = 0;
+let careMessages = [
+  {from: "agent", text: "Hi! I'm Ananya from Zwigato 24×7 Priority Care in Pantnagar. How can I help with your order or delivery today?"}
+];
 
 let flashRemaining = 14 * 60 + 59;
 let autoProgressionTimer = null;
@@ -1808,11 +2075,11 @@ function toast(msg) {
 }
 
 function getEffectivePrice(item) {
-  return item.isFlash ? Math.round(item.price * 0.75) : item.price;
+  return item.flash ? Math.round(item.price * 0.75) : item.price;
 }
 
 // =========================================================
-// 3. BULLETPROOF NETFLIX-STYLE INTRO & WEB AUDIO CHIME
+// 4. BULLETPROOF NETFLIX-STYLE INTRO & WEB AUDIO CHIME
 // =========================================================
 let splashTimers = [];
 
@@ -1821,9 +2088,7 @@ function playTaDumChime() {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     if (!AudioCtx) return;
     const ctx = new AudioCtx();
-    if (ctx.state === "suspended") {
-      ctx.resume().catch(() => {});
-    }
+    if (ctx.state === "suspended") ctx.resume().catch(() => {});
     const now = ctx.currentTime;
 
     const osc1 = ctx.createOscillator();
@@ -1887,7 +2152,7 @@ function playNetflixIntro(withSound = false) {
 
   splashTimers.push(setTimeout(() => {
     dismissSplashImmediate();
-  }, 2500));
+  }, 2450));
 }
 
 playNetflixIntro(false);
@@ -1904,9 +2169,9 @@ $("#replayAuthIntroBtn").onclick = () => playNetflixIntro(true);
 function toggleTheme() {
   const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
   document.documentElement.setAttribute("data-theme", next);
-  safeStorageSet("zwigato_theme", next);
+  safeSet("zwigato_theme", next);
 }
-const savedTheme = safeStorageGet("zwigato_theme");
+const savedTheme = safeGet("zwigato_theme");
 if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
 $("#themeAuthBtn").onclick = toggleTheme;
 $("#themeNavBtn").onclick = toggleTheme;
@@ -1920,7 +2185,7 @@ setInterval(() => {
 }, 1000);
 
 // =========================================================
-// 4. DUAL-ROLE AUTHENTICATION
+// 5. DUAL-ROLE AUTHENTICATION
 // =========================================================
 function syncKitchenDropdowns() {
   const opts = db.restaurants.map(r => `<option value="${r.id}">${esc(r.name)}</option>`).join("");
@@ -1998,17 +2263,18 @@ $("#authForm").onsubmit = e => {
           errEl.textContent = "Enter your new restaurant name.";
           return;
         }
-        const nkLoc = $("#nkLoc").value.trim() || "Main Market, Pantnagar";
         const nkCat = $("#nkCat").value;
-        const nkEta = Math.max(10, Number($("#nkEta").value) || 22);
+        const nkEta = Math.max(10, Number($("#nkEta").value) || 20);
+        const nkDish = $("#nkDish").value.trim() || `${nkName} Signature Thali`;
+        const nkDishPrice = Math.max(20, Number($("#nkDishPrice").value) || 180);
         const newRestId = Date.now();
-        const presetImg = nkCat.includes("Pizza") ? PHOTOS.pizza : nkCat.includes("Momos") ? PHOTOS.momos : nkCat.includes("Cafe") ? PHOTOS.coffee : nkCat.includes("South") ? PHOTOS.dosa : PHOTOS.dal;
+        const presetImg = nkCat.includes("Pizza") ? PHOTOS.pizza : nkCat.includes("Chinese") ? PHOTOS.momos : nkCat.includes("Cafe") ? PHOTOS.coffee : nkCat.includes("Street") ? PHOTOS.samosa : PHOTOS.dal;
+
         db.restaurants.unshift({
           id: newRestId,
           name: nkName,
           cuisine: nkCat,
-          location: nkLoc,
-          tag: `${nkCat} · Newly Listed`,
+          location: "Main Market, Pantnagar",
           rating: 4.8,
           etaMins: nkEta,
           distanceKm: 1.0,
@@ -2016,14 +2282,14 @@ $("#authForm").onsubmit = e => {
           fssai: "1262600100" + Math.floor(1000 + Math.random() * 8999),
           banner: presetImg,
           menu: [
-            {id: 1, name: `${nkName} Signature Platter`, price: 185, desc: "House specialty crafted fresh to order", diet: "Veg", img: presetImg, inStock: true, isFlash: true, isSpecial: true, ordersToday: 24}
+            D(Date.now() + 1, nkDish, nkDishPrice, "Mains", ["Veg", "Bestseller"], presetImg, true, true, 32)
           ]
         });
         assignedRestId = newRestId;
         syncKitchenDropdowns();
-        toast(`Registered "${nkName}" on Zwigato!`);
+        toast(`Published "${nkName}" to Pantnagar marketplace!`);
       } else {
-        assignedRestId = Number($("#existingKitchenSel").value) || 101;
+        assignedRestId = Number($("#existingKitchenSel").value) || 1;
       }
     }
 
@@ -2039,7 +2305,7 @@ $("#authForm").onsubmit = e => {
       return;
     }
     if (authRole === "partner" && found.role === "partner" && $("#partnerMode").value === "existing") {
-      found.restaurantId = Number($("#existingKitchenSel").value) || found.restaurantId || 101;
+      found.restaurantId = Number($("#existingKitchenSel").value) || found.restaurantId || 1;
     }
     db.session = found;
     saveDB();
@@ -2055,7 +2321,7 @@ $("#demoCustBtn").onclick = () => {
 };
 
 $("#demoPartnerBtn").onclick = () => {
-  const u = db.users.find(x => x.email === "welcome@zwigato.in") || {email: "welcome@zwigato.in", name: "Chef Rajendra", address: "Main Market, Pantnagar", role: "partner", restaurantId: 101};
+  const u = db.users.find(x => x.email === "welcome@zwigato.in") || {email: "welcome@zwigato.in", name: "Chef Rajendra", address: "Main Market, Pantnagar", role: "partner", restaurantId: 1};
   db.session = u;
   saveDB();
   launchSession(u);
@@ -2080,7 +2346,7 @@ function syncPortalUI() {
   $("#aiFabBtn").hidden = isPartner;
   $("#navLocationBtn").hidden = isPartner;
   if (isPartner) $("#aiBox").classList.remove("on");
-  $("#quickRoleSwitch").textContent = isPartner ? "⇄ Customer App" : "⇄ Partner Portal";
+  $("#quickRoleSwitch").textContent = isPartner ? "⇄ Customer App" : "⇄ Switch Role";
   $("#navAddressLabel").textContent = checkoutState.address;
   syncKitchenDropdowns();
 }
@@ -2088,7 +2354,7 @@ function syncPortalUI() {
 $("#quickRoleSwitch").onclick = () => {
   activeViewRole = activeViewRole === "customer" ? "partner" : "customer";
   syncPortalUI();
-  toast(`Switched to ${activeViewRole === "partner" ? "Restaurant Partner Portal" : "Customer Marketplace"}`);
+  toast(`Switched to ${activeViewRole === "partner" ? "Restaurant Partner Console" : "Customer Marketplace"}`);
   renderAll();
 };
 
@@ -2098,7 +2364,7 @@ $("#logoutBtn").onclick = () => {
   $("#appShell").hidden = true;
   $("#authScreen").hidden = false;
   $("#aiBox").classList.remove("on");
-  closeDrawer();
+  closeAllDrawers();
 };
 
 $("#navLocationBtn").onclick = () => {
@@ -2112,7 +2378,7 @@ $("#navLiveTrackerPill").onclick = () => {
 };
 
 // =========================================================
-// 5. CART & CHECKOUT LOGIC
+// 6. CART & CHECKOUT LOGIC
 // =========================================================
 function addToCart(restId, itemId, delta = 1) {
   const rest = db.restaurants.find(r => r.id === restId);
@@ -2129,9 +2395,7 @@ function addToCart(restId, itemId, delta = 1) {
   const existing = cart.items.find(i => i.itemId === itemId);
   if (existing) {
     existing.qty += delta;
-    if (existing.qty <= 0) {
-      cart.items = cart.items.filter(i => i.itemId !== itemId);
-    }
+    if (existing.qty <= 0) cart.items = cart.items.filter(i => i.itemId !== itemId);
   } else if (delta > 0) {
     cart.items.push({itemId, qty: delta});
   }
@@ -2214,7 +2478,7 @@ function confirmCheckoutOrder() {
     const riders = [
       {name: "Rohan Negi", bike: "UK-06-AW-4192", rating: "4.9"},
       {name: "Vikram Bisht", bike: "UK-04-BC-8821", rating: "4.8"},
-      {name: "Deepak Joshi", bike: "DL-3S-EM-1904", rating: "4.9"}
+      {name: "Deepak Joshi", bike: "UK-06-EM-1904", rating: "4.9"}
     ];
     const newOrder = {
       id: "ZWG-" + Math.floor(5000 + Math.random() * 4999),
@@ -2247,7 +2511,7 @@ function confirmCheckoutOrder() {
     cart = {restaurantId: null, items: []};
     checkoutState.processing = false;
     checkoutState.promoCode = "";
-    closeDrawer();
+    closeAllDrawers();
     toast(`Payment via ${newOrder.paymentMethod} confirmed! Order ${newOrder.id} placed.`);
     startLiveOrderSimulation(newOrder.id);
     renderAll();
@@ -2256,7 +2520,7 @@ function confirmCheckoutOrder() {
 }
 
 // =========================================================
-// 6. REAL-TIME ORDER TRACKING & RIDER PROGRESSION
+// 7. REAL-TIME ORDER TRACKING & RIDER PROGRESSION
 // =========================================================
 function advanceOrderStage(orderId) {
   const ord = db.orders.find(o => o.id === orderId);
@@ -2280,18 +2544,215 @@ function startLiveOrderSimulation(orderId) {
       return;
     }
     advanceOrderStage(orderId);
-  }, 9000);
+  }, 9500);
 }
 
 // =========================================================
-// 7. LIVE GEMINI AI CONCIERGE
+// 8. 24x7 CUSTOMER CARE & HELP CENTER
+// =========================================================
+const CARE_FAQS = [
+  {q: "How do I apply a promo code to my Pantnagar order?", a: "Open your Cart drawer and enter ZWIGATO50 (₹50 off orders ₹149+), FIRST20 (20% off), or FREEDEL (₹0 delivery fee) before checkout."},
+  {q: "What happens if an item is missing or spilled?", a: "Tap 'Missing Item ₹50 Credit' in Instant Help above for an immediate wallet credit, or chat live with Specialist Ananya for a replacement dispatch."},
+  {q: "How fast do Farther Gems from Rudrapur & Haldwani arrive?", a: "Farther Gems travel via insulated thermal bags in 35–40 mins and automatically include a 25% Flash Sale discount on signature dishes."}
+];
+
+function openCareDrawer(tab = "instant", preselectedOrderId = null) {
+  careTab = tab;
+  if (preselectedOrderId) careOrderId = preselectedOrderId;
+  else if (!careOrderId && db.orders.length) careOrderId = db.orders[0].id;
+
+  $("#drawerBackdrop").classList.add("on");
+  $("#checkoutDrawer").classList.remove("on");
+  $("#careDrawer").classList.add("on");
+  $("#careDrawer").setAttribute("aria-hidden", "false");
+  renderCareDrawer();
+}
+
+function createCareTicket(orderId, subject, note) {
+  const tck = {
+    id: "TCK-" + Math.floor(1100 + Math.random() * 8800),
+    orderId: orderId || "General",
+    subject,
+    status: "Resolved",
+    note,
+    createdAt: new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})
+  };
+  db.tickets.unshift(tck);
+  saveDB();
+  return tck;
+}
+
+function handleCareAction(action) {
+  const ord = db.orders.find(o => o.id === careOrderId) || db.orders[0];
+  const oid = ord ? ord.id : "General";
+
+  if (action === "track") {
+    closeAllDrawers();
+    const sec = $("#liveTrackerSec");
+    if (sec && !sec.hidden) {
+      sec.scrollIntoView({behavior: "smooth"});
+      toast(`Tracking rider ${ord.rider.name} live on map`);
+    } else {
+      toast(`Order ${oid} is already ${ord ? ord.status : "completed"}`);
+    }
+    return;
+  }
+
+  if (action === "refund") {
+    const t = createCareTicket(oid, "Instant ₹50 Missing-Item Wallet Credit", "₹50 instant goodwill credit applied to your Zwigato wallet.");
+    toast(`₹50 Wallet Credit issued! Ticket ${t.id} logged.`);
+    careTab = "tickets";
+    renderCareDrawer();
+    return;
+  }
+
+  if (action === "cancel") {
+    if (ord && ord.status === "PENDING") {
+      ord.status = "CANCELLED";
+      saveDB();
+      const t = createCareTicket(oid, "Order Cancelled Before Kitchen Prep", `Full refund of ${inr(ord.total)} initiated to ${ord.paymentMethod}.`);
+      toast(`Order ${oid} cancelled & full refund initiated (${t.id})`);
+      renderAll();
+    } else {
+      toast("Kitchen is already preparing this order. Chat with Ananya for urgent help.");
+      careTab = "chat";
+    }
+    renderCareDrawer();
+    return;
+  }
+
+  if (action === "hygiene") {
+    const t = createCareTicket(oid, "Packaging / Tamper-Seal Report", "Escalated to Pantnagar Quality Assurance Lead; priority replacement coupon unlocked.");
+    toast(`Quality report ${t.id} logged with priority`);
+    careTab = "tickets";
+    renderCareDrawer();
+    return;
+  }
+
+  if (action === "callback") {
+    const t = createCareTicket(oid, "2-Minute Priority Agent Callback", "Senior Care Specialist Ananya scheduled a call to your registered number within 2 mins.");
+    toast(`Callback requested! Ticket ${t.id} confirmed.`);
+    careTab = "tickets";
+    renderCareDrawer();
+  }
+}
+
+function sendCareChat(msgText) {
+  const clean = msgText.trim();
+  if (!clean) return;
+  careMessages.push({from: "user", text: clean});
+
+  const q = clean.toLowerCase();
+  const activeOrd = db.orders.find(o => o.status !== "DELIVERED" && o.status !== "CANCELLED") || db.orders[0];
+  let reply = `I've checked your profile${activeOrd ? ` (latest order ${activeOrd.id} from ${activeOrd.restaurantName} is ${activeOrd.status.replaceAll("_", " ")})` : ""}. I can issue an instant ₹50 adjustment, ping your rider, or raise a priority ticket—just let me know!`;
+
+  if (q.includes("where") || q.includes("eta") || q.includes("rider") || q.includes("late")) {
+    reply = activeOrd
+      ? `Your order ${activeOrd.id} is currently ${activeOrd.status.replaceAll("_", " ")} with partner ${activeOrd.rider.name} (${activeOrd.rider.bike}). I've sent an express priority ping to speed up handoff!`
+      : "You don't have an active order in transit right now, but our Pantnagar kitchens are averaging 16–22 mins delivery!";
+  } else if (q.includes("refund") || q.includes("missing") || q.includes("spill") || q.includes("cold")) {
+    const t = createCareTicket(activeOrd?.id, "Live Chat Instant Refund Adjustment", "₹50 instant wallet refund credited by Specialist Ananya.");
+    reply = `I'm sorry about that! I've immediately credited ₹50 to your Zwigato Wallet and logged priority ticket ${t.id}.`;
+  } else if (q.includes("promo") || q.includes("coupon") || q.includes("discount")) {
+    reply = "You can use ZWIGATO50 for ₹50 off (orders ₹149+), FIRST20 for 20% off, or FREEDEL for zero delivery charges at checkout!";
+  }
+
+  careMessages.push({from: "agent", text: reply});
+  renderCareDrawer();
+}
+
+function renderCareDrawer() {
+  const orderOpts = db.orders.map(o => `<option value="${esc(o.id)}" ${careOrderId === o.id ? "selected" : ""}>${esc(o.id)} · ${esc(o.restaurantName)} (${esc(o.status)})</option>`).join("");
+
+  $("#careBody").innerHTML = `
+    <div class="care-tabs">
+      <button type="button" class="btn sm ${careTab === "instant" ? "active" : ""}" onclick="careTab='instant';renderCareDrawer()">⚡ Instant Help</button>
+      <button type="button" class="btn sm ${careTab === "chat" ? "active" : ""}" onclick="careTab='chat';renderCareDrawer()">💬 Live Chat</button>
+      <button type="button" class="btn sm ${careTab === "tickets" ? "active" : ""}" onclick="careTab='tickets';renderCareDrawer()">🎫 My Tickets (${db.tickets.length})</button>
+    </div>
+
+    ${careTab === "instant" ? `
+      <div class="checkout-sec" style="margin-top:0">
+        <h4>Select Order for Quick Resolution</h4>
+        <select onchange="careOrderId=this.value" style="width:100%;padding:9px 11px;border-radius:11px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font:700 13px var(--sans)">
+          ${orderOpts || `<option value="">No orders yet</option>`}
+        </select>
+
+        <div class="care-action-grid">
+          <button type="button" class="care-action-btn" onclick="handleCareAction('track')">
+            <div>🛵 <strong>Track Rider Live</strong></div>
+            <span>Open live route map &amp; rider contact</span>
+          </button>
+          <button type="button" class="care-action-btn" onclick="handleCareAction('refund')">
+            <div>💸 <strong>Missing Item ₹50</strong></div>
+            <span>Instant wallet credit for missing items</span>
+          </button>
+          <button type="button" class="care-action-btn" onclick="handleCareAction('cancel')">
+            <div>✖️ <strong>Cancel Pending Order</strong></div>
+            <span>Instant refund before cooking starts</span>
+          </button>
+          <button type="button" class="care-action-btn" onclick="handleCareAction('hygiene')">
+            <div>🛡️ <strong>Report Seal / Hygiene</strong></div>
+            <span>Flag tampered bag or quality issue</span>
+          </button>
+        </div>
+
+        <button type="button" class="btn primary wide" style="margin-top:10px" onclick="handleCareAction('callback')">
+          📞 Request 2-Minute Priority Callback
+        </button>
+      </div>
+
+      <div class="checkout-sec">
+        <h4>Frequently Asked Questions</h4>
+        ${CARE_FAQS.map((f, idx) => `
+          <div class="faq-item">
+            <button type="button" class="faq-q" onclick="openFaqIdx=${openFaqIdx === idx ? -1 : idx};renderCareDrawer()">
+              <span>${esc(f.q)}</span>
+              <span>${openFaqIdx === idx ? "−" : "+"}</span>
+            </button>
+            ${openFaqIdx === idx ? `<div class="faq-a">${esc(f.a)}</div>` : ""}
+          </div>
+        `).join("")}
+      </div>
+    ` : careTab === "chat" ? `
+      <div class="care-chat-box" id="careChatFeed">
+        ${careMessages.map(m => `
+          <div class="bubble ${m.from === "user" ? "usr" : "bot"}">${esc(m.text)}</div>
+        `).join("")}
+      </div>
+      <form onsubmit="event.preventDefault();const inp=$('#careChatInput');sendCareChat(inp.value);inp.value='';" style="display:flex;gap:8px">
+        <input id="careChatInput" type="text" placeholder="Type your message to Specialist Ananya…" style="flex:1;padding:10px 14px;border-radius:99px;border:1px solid var(--border-strong);background:var(--bg);color:var(--ink);font:600 13px var(--sans)">
+        <button type="submit" class="btn primary sm">Send</button>
+      </form>
+    ` : `
+      <div style="display:grid;gap:10px">
+        ${db.tickets.map(t => `
+          <div class="checkout-sec" style="margin-top:0">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+              <strong>${esc(t.id)} · ${esc(t.orderId)}</strong>
+              <span class="badge-pill" style="background:var(--veg-soft);color:var(--veg)">${esc(t.status)}</span>
+            </div>
+            <div style="font-size:13px;font-weight:700">${esc(t.subject)}</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">${esc(t.note)}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:6px">Logged ${esc(t.createdAt)}</div>
+          </div>
+        `).join("")}
+      </div>
+    `}
+  `;
+  const cf = $("#careChatFeed");
+  if (cf) cf.scrollTop = cf.scrollHeight;
+}
+
+// =========================================================
+// 9. LIVE GEMINI AI MOOD & SPEED CONCIERGE
 // =========================================================
 const DEFAULT_GEMINI_KEY = "";
 
 function buildCatalogContext() {
   return db.restaurants.map(r => {
-    const dishes = r.menu.filter(m => m.inStock).map(m =>
-      `[ID:${r.id}:${m.id}] ${m.name} (₹${getEffectivePrice(m)}, ${m.diet}${m.isFlash ? ", FLASH -25%" : ""})`
+    const dishes = r.menu.filter(m => m.inStock).slice(0, 5).map(m =>
+      `[ID:${r.id}:${m.id}] ${m.name} (₹${getEffectivePrice(m)}, ${m.tags.join("/")}${m.flash ? ", FLASH -25%" : ""})`
     ).join("; ");
     return `${r.name} (ETA ${r.etaMins}m, ★${r.rating}): ${dishes}`;
   }).join("\n");
@@ -2304,24 +2765,24 @@ function fallbackAiEngine(prompt) {
     allItems.push({...m, restId: r.id, restName: r.name, etaMins: r.etaMins});
   }));
 
-  if (q.includes("fast") || q.includes("quick") || q.includes("speed") || q.includes("25")) {
-    const fast = [...allItems].sort((a, b) => a.etaMins - b.etaMins).slice(0, 3);
-    return {text: "Here are the fastest kitchens dispatching right now (under 18 mins):", recs: fast};
+  if (q.includes("fast") || q.includes("quick") || q.includes("speed") || q.includes("20") || q.includes("25")) {
+    const fast = [...allItems].sort((a, b) => a.etaMins - b.etaMins).filter(i => i.tags.includes("Bestseller")).slice(0, 3);
+    return {text: "Here are Pantnagar’s fastest kitchens dispatching in 14–18 mins:", recs: fast};
   }
-  if (q.includes("stress") || q.includes("comfort") || q.includes("sad")) {
-    const comfort = allItems.filter(i => /dal|chocolate|momo|samosa|dosa/i.test(i.name)).slice(0, 3);
-    return {text: "Take a breather — warm, comforting bowls & treats to lift your mood:", recs: comfort};
+  if (q.includes("tired") || q.includes("comfort") || q.includes("stress") || q.includes("sad")) {
+    const comfort = allItems.filter(i => /dal|chocolate|momo|rajma|chai|khichdi/i.test(i.name)).slice(0, 3);
+    return {text: "Unwind with warm, comforting Pantnagar classics made fresh right now:", recs: comfort};
   }
-  if (q.includes("workout") || q.includes("protein") || q.includes("energ")) {
-    const prot = allItems.filter(i => /paneer|kebab|sushi|idli|dal/i.test(i.name)).slice(0, 3);
-    return {text: "High-protein, clean-energy picks to refuel after your session:", recs: prot};
+  if (q.includes("energ") || q.includes("light") || q.includes("protein") || q.includes("workout")) {
+    const light = allItems.filter(i => /quinoa|avocado|soup|sushi|paneer tikka|kebab/i.test(i.name)).slice(0, 3);
+    return {text: "Clean, high-energy & protein-rich plates to keep you sharp:", recs: light};
   }
   if (q.includes("vegan") || q.includes("gluten")) {
-    const clean = allItems.filter(i => i.diet === "Vegan" || i.diet === "Gluten-Free").slice(0, 3);
-    return {text: "Fresh plant-based & gluten-free dishes crafted with care:", recs: clean};
+    const clean = allItems.filter(i => i.tags.includes("Vegan") || i.tags.includes("Gluten-Free")).slice(0, 3);
+    return {text: "Top-rated Vegan & Gluten-Free dishes across our kitchens:", recs: clean};
   }
-  const specials = allItems.filter(i => i.isFlash || i.isSpecial).slice(0, 3);
-  return {text: "Celebratory chef specials and active -25% flash deals tailored for you:", recs: specials};
+  const celebratory = allItems.filter(i => i.flash && i.tags.includes("Bestseller")).slice(0, 3);
+  return {text: "Celebrate with our bestselling chef specials & active -25% flash drops:", recs: celebratory};
 }
 
 async function askZwigatoAI(userPrompt) {
@@ -2331,7 +2792,7 @@ async function askZwigatoAI(userPrompt) {
   const feed = $("#aiFeed");
   feed.insertAdjacentHTML("beforeend", `<div class="bubble usr">${esc(text)}</div>`);
   const loadId = "ai_load_" + Date.now();
-  feed.insertAdjacentHTML("beforeend", `<div class="bubble bot" id="${loadId}">Curating dishes from live kitchens… ✨</div>`);
+  feed.insertAdjacentHTML("beforeend", `<div class="bubble bot" id="${loadId}">Curating dishes from live Pantnagar kitchens… ✨</div>`);
   feed.scrollTop = feed.scrollHeight;
 
   const customKey = $("#geminiKeyInput").value.trim();
@@ -2342,7 +2803,7 @@ async function askZwigatoAI(userPrompt) {
 
   if (apiKey) {
     try {
-      const sysPrompt = `You are Zwigato AI, an artisanal food delivery concierge. Recommend 2-3 dishes from this LIVE menu catalog based on the user's mood or request for fastest delivery. For every dish you recommend, include its exact tag [ADD:restId:itemId] in your response.\n\nLIVE CATALOG:\n${buildCatalogContext()}`;
+      const sysPrompt = `You are Zwigato AI, Pantnagar's food delivery concierge. Recommend 2-3 dishes from this LIVE menu catalog based on the user's mood or request for fastest delivery. For every dish you recommend, include its exact tag [ADD:restId:itemId] in your response.\n\nLIVE CATALOG:\n${buildCatalogContext()}`;
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${encodeURIComponent(apiKey)}`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -2371,7 +2832,7 @@ async function askZwigatoAI(userPrompt) {
     <div class="ai-dish-rec">
       <div>
         <strong style="font-size:13px">${esc(d.name)} · ${inr(getEffectivePrice(d))}</strong>
-        <div style="font-size:11.5px;color:var(--muted)">${esc(d.restName)} · ⏱ ${d.etaMins}m · ${esc(d.diet)}</div>
+        <div style="font-size:11.5px;color:var(--muted)">${esc(d.restName)} · ⏱ ${d.etaMins}m · ${esc(d.tags[0] || "Veg")}</div>
       </div>
       <button type="button" class="btn primary xs" onclick="addToCart(${d.restId}, ${d.id}, 1)">+ Add to Cart</button>
     </div>
@@ -2385,7 +2846,7 @@ async function askZwigatoAI(userPrompt) {
 }
 
 // =========================================================
-// 8. CONSUMER & PARTNER RENDERING
+// 10. CONSUMER & PARTNER RENDERING
 // =========================================================
 function renderLiveTracker() {
   const sec = $("#liveTrackerSec");
@@ -2410,7 +2871,7 @@ function renderLiveTracker() {
   ];
   const currIdx = stages.findIndex(s => s.key === activeOrd.status);
   const riderPct = currIdx === 0 ? 12 : currIdx === 1 ? 38 : currIdx === 2 ? 74 : 96;
-  const etaLeft = currIdx === 0 ? "22 mins" : currIdx === 1 ? "14 mins" : currIdx === 2 ? "6 mins" : "Arrived";
+  const etaLeft = currIdx === 0 ? "21 mins" : currIdx === 1 ? "14 mins" : currIdx === 2 ? "6 mins" : "Arrived";
 
   sec.innerHTML = `
     <div class="tracker-top">
@@ -2419,11 +2880,12 @@ function renderLiveTracker() {
         <h3 style="margin:6px 0 2px;font-size:21px">${esc(activeOrd.restaurantName)} → ${esc(activeOrd.address)}</h3>
         <div style="font-size:13px;color:var(--muted)">${activeOrd.items.map(i => `${i.qty}× ${esc(i.name)}`).join(", ")} · Paid <b>${inr(activeOrd.total)}</b> (${esc(activeOrd.paymentMethod)})</div>
       </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <div style="text-align:right;margin-right:6px">
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <div style="text-align:right;margin-right:4px">
           <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--muted)">Estimated Arrival</div>
           <strong style="font-size:20px;color:var(--acc)">${etaLeft}</strong>
         </div>
+        <button type="button" class="btn sm" onclick="openCareDrawer('instant','${activeOrd.id}')">🎧 Need Help?</button>
         <button type="button" class="btn sm primary" onclick="advanceOrderStage('${activeOrd.id}')">Next Stage →</button>
       </div>
     </div>
@@ -2449,8 +2911,8 @@ function renderLiveTracker() {
           <line x1="28" y1="36" x2="${28 + (264 * riderPct / 100)}" y2="36" stroke="var(--acc)" stroke-width="5" stroke-linecap="round"/>
           <circle cx="28" cy="36" r="10" fill="var(--ink)"/>
           <text x="28" y="59" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">Kitchen</text>
-          <circle cx="292" cy="36" r="10" fill="var(--green)"/>
-          <text x="292" y="59" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">Drop</text>
+          <circle cx="292" cy="36" r="10" fill="var(--veg)"/>
+          <text x="292" y="59" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">Campus</text>
           <g transform="translate(${14 + (264 * riderPct / 100)}, 14)">
             <rect width="28" height="22" rx="8" fill="var(--acc)"/>
             <text x="14" y="15" text-anchor="middle" font-size="13">🛵</text>
@@ -2458,8 +2920,8 @@ function renderLiveTracker() {
         </svg>
         <div class="rider-card">
           <div>
-            <strong>${esc(activeOrd.rider.name)}</strong> · <span style="color:var(--green);font-weight:800">★ ${activeOrd.rider.rating}</span>
-            <div style="font-size:11.5px;color:var(--muted)">Delivery Partner · ${esc(activeOrd.rider.bike)}</div>
+            <strong>${esc(activeOrd.rider.name)}</strong> · <span style="color:var(--veg);font-weight:800">★ ${activeOrd.rider.rating}</span>
+            <div style="font-size:11.5px;color:var(--muted)">Delivery Valet · ${esc(activeOrd.rider.bike)}</div>
           </div>
           <button type="button" class="btn xs" onclick="toast('Calling delivery partner ${esc(activeOrd.rider.name)}…')">📞 Call Rider</button>
         </div>
@@ -2473,7 +2935,7 @@ function renderCustomerMarketplace() {
   $("#navAddressLabel").textContent = checkoutState.address || "Set Address";
 
   // Popular Cravings Quick Pills
-  const cravings = ["Momos", "Dal Makhani", "Pizza", "Cold Brew", "Dosa", "Biryani", "Vegan"];
+  const cravings = ["Momos", "Dal Makhani", "Pizza", "Cold Coffee", "Thali", "Biryani", "Samosa", "Vegan"];
   $("#cravingChips").innerHTML = cravings.map(c =>
     `<button type="button" class="craving-pill ${searchQuery.toLowerCase() === c.toLowerCase() ? "on" : ""}" onclick="quickCraving('${c}')">${c}</button>`
   ).join("");
@@ -2494,7 +2956,7 @@ function renderCustomerMarketplace() {
         <div class="gem-content">
           <div>
             <h3 style="margin:0;font-size:17px">${esc(r.name)}</h3>
-            <div style="font-size:12.5px;color:var(--muted)">${esc(r.tag)} · ★ ${r.rating}</div>
+            <div style="font-size:12.5px;color:var(--muted)">${esc(r.cuisine)} · ★ ${r.rating} · ${r.menu.length} dishes</div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
             <div>
@@ -2508,17 +2970,17 @@ function renderCustomerMarketplace() {
     `;
   }).join("");
 
-  // Trending & Most Ordered Carousel
+  // Trending & Most Ordered Today Carousel
   const allDishes = [];
   db.restaurants.forEach(r => r.menu.filter(m => m.inStock).forEach(m => {
     allDishes.push({...m, restId: r.id, restName: r.name});
   }));
-  const trending = allDishes.sort((a, b) => (b.ordersToday || 50) - (a.ordersToday || 50)).slice(0, 6);
+  const trending = allDishes.sort((a, b) => (b.ordersToday || 50) - (a.ordersToday || 50)).slice(0, 8);
   $("#trendingCarousel").innerHTML = trending.map(d => `
     <div class="card trend-card" onclick="openRestaurant(${d.restId})">
       <img src="${esc(d.img)}" alt="${esc(d.name)}" onerror="this.src='${FALLBACK_SVG}'">
       <div style="flex:1;min-width:0">
-        <div style="font-size:11px;font-weight:800;color:var(--acc)">🔥 ${d.ordersToday || 85}+ ordered today</div>
+        <div style="font-size:11px;font-weight:800;color:var(--acc)">🔥 ${d.ordersToday}+ ordered today</div>
         <strong style="display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(d.name)}</strong>
         <div style="font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(d.restName)}</div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
@@ -2530,8 +2992,8 @@ function renderCustomerMarketplace() {
   `).join("");
 
   // Cuisine & Dietary Filter Pills
-  const cuisines = ["All", "North Indian", "Pizza & Italian", "Momos & Chinese", "Cafe & Beverages", "South Indian"];
-  const diets = ["All", "Pure Veg", "Vegan", "Gluten-Free", "Top Rated 4.6+", "Under 30 Mins", "Flash Deals"];
+  const cuisines = ["All", "North Indian", "Homestyle Thali", "Italian & Pizza", "Fast Food & Chinese", "Cafe & Shakes", "Street Food & Mithai", "Desserts & Cafe", "Momos & Soups", "Asian & Sushi"];
+  const diets = ["All", "Pure Veg", "Vegan", "Gluten-Free", "Flash Deals", "Express <22m", "Top Rated 4.6+"];
   $("#cuisineChips").innerHTML = cuisines.map(c =>
     `<button type="button" class="chip-btn ${filterCuisine === c && !selectedRestId ? "on" : ""}" onclick="setCuisineFilter('${c}')">${c}</button>`
   ).join("");
@@ -2539,50 +3001,78 @@ function renderCustomerMarketplace() {
     `<button type="button" class="chip-btn diet ${filterDiet === d && !selectedRestId ? "on" : ""}" onclick="setDietFilter('${d}')">${d}</button>`
   ).join("");
 
-  // Single Restaurant Menu vs Kitchen Directory
+  // Single Restaurant Menu View vs Kitchen Directory
   if (selectedRestId !== null) {
     const rest = db.restaurants.find(r => r.id === selectedRestId);
     if (!rest) { selectedRestId = null; renderCustomerMarketplace(); return; }
     $("#catalogHeading").textContent = rest.name;
-    $("#resultCount").textContent = `FSSAI ${rest.fssai}`;
+    $("#resultCount").textContent = `${rest.menu.length} dishes · FSSAI ${rest.fssai}`;
+
+    const mq = inMenuSearch.toLowerCase().trim();
+    const filteredMenu = rest.menu.filter(item => {
+      const okSearch = !mq || item.name.toLowerCase().includes(mq) || item.course.toLowerCase().includes(mq) || item.tags.some(t => t.toLowerCase().includes(mq));
+      let okTag = true;
+      if (inMenuTag === "Daily Specials") okTag = item.special;
+      else if (inMenuTag === "Flash Deals") okTag = item.flash;
+      else if (inMenuTag === "Veg") okTag = !item.tags.includes("Non-Veg");
+      else if (inMenuTag === "Vegan") okTag = item.tags.includes("Vegan");
+      else if (inMenuTag === "Gluten-Free") okTag = item.tags.includes("Gluten-Free");
+      return okSearch && okTag;
+    });
+
+    const menuFilterTabs = ["All", "Daily Specials", "Flash Deals", "Veg", "Vegan", "Gluten-Free"];
 
     $("#catalogContainer").innerHTML = `
-      <button type="button" class="btn sm" onclick="openRestaurant(null)">← Back to All Kitchens</button>
+      <button type="button" class="btn sm" onclick="openRestaurant(null)">← Back to All 12 Kitchens</button>
       <div class="card menu-header">
         <div style="display:flex;align-items:center;gap:16px">
           <img src="${esc(rest.banner)}" alt="${esc(rest.name)}" style="width:74px;height:74px;border-radius:16px;object-fit:cover" onerror="this.src='${FALLBACK_SVG}'">
           <div>
             <h3 style="margin:0;font-size:24px">${esc(rest.name)}</h3>
-            <div style="color:var(--muted);font-size:13.5px;margin-top:2px">${esc(rest.tag)} · <strong style="color:var(--green)">★ ${rest.rating}</strong> · ⏱ ${rest.etaMins} mins · 📍 ${esc(rest.location || "Pantnagar")}</div>
+            <div style="color:var(--muted);font-size:13.5px;margin-top:2px">${esc(rest.cuisine)} · <strong style="color:var(--veg)">★ ${rest.rating}</strong> · ⏱ ${rest.etaMins} mins · 📍 ${esc(rest.location)}</div>
           </div>
         </div>
         <span class="badge-pill">FSSAI Lic. ${esc(rest.fssai)}</span>
       </div>
 
+      <div class="card in-menu-bar">
+        <div class="in-menu-search">
+          <span aria-hidden="true">🔍</span>
+          <input type="search" value="${esc(inMenuSearch)}" oninput="inMenuSearch=this.value;renderCustomerMarketplace()" placeholder="Search inside ${esc(rest.name)} menu…">
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          ${menuFilterTabs.map(t => `
+            <button type="button" class="chip-btn diet ${inMenuTag === t ? "on" : ""}" onclick="inMenuTag='${t}';renderCustomerMarketplace()">${t}</button>
+          `).join("")}
+        </div>
+      </div>
+
       <div class="card menu-list">
-        ${rest.menu.map(item => {
+        ${filteredMenu.length ? filteredMenu.map(item => {
           const inCart = cart.restaurantId === rest.id ? cart.items.find(x => x.itemId === item.id) : null;
           const qty = inCart ? inCart.qty : 0;
           const price = getEffectivePrice(item);
+          const isNonVeg = item.tags.includes("Non-Veg");
           return `
             <div class="dish-row ${!item.inStock ? "sold-out" : ""}">
               <div class="dish-left">
                 <img class="dish-thumb" src="${esc(item.img || rest.banner)}" alt="${esc(item.name)}" onerror="this.src='${FALLBACK_SVG}'">
                 <div>
-                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:800;font-size:16px">
-                    <span class="veg-mark ${item.diet === "Non-Veg" ? "nonveg" : ""}" title="${esc(item.diet)}"></span>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-weight:800;font-size:16px">
+                    <span class="veg-mark ${isNonVeg ? "nonveg" : ""}" title="${isNonVeg ? "Non-Veg" : "Veg"}"></span>
                     ${esc(item.name)}
-                    <span class="mini-tag diet">${esc(item.diet === "Gluten-Free" ? "GF" : item.diet)}</span>
-                    ${item.isSpecial ? `<span class="mini-tag special">★ Daily Special</span>` : ""}
-                    ${item.isFlash ? `<span class="mini-tag flash">⚡ Flash -25%</span>` : ""}
+                    <span class="mini-tag course">${esc(item.course)}</span>
+                    ${item.tags.filter(t => t !== "Veg" && t !== "Non-Veg").map(t => `<span class="mini-tag diet">${esc(t)}</span>`).join("")}
+                    ${item.special ? `<span class="mini-tag special">★ Daily Special</span>` : ""}
+                    ${item.flash ? `<span class="mini-tag flash">⚡ Flash -25%</span>` : ""}
                     ${!item.inStock ? `<span class="mini-tag out">Sold Out</span>` : ""}
                   </div>
-                  <p style="margin:4px 0 0;font-size:13px;color:var(--muted)">${esc(item.desc)}</p>
+                  <div style="margin-top:4px;font-size:12.5px;color:var(--muted)">Freshly prepared to order · ${item.ordersToday}+ ordered today</div>
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:14px">
                 <div>
-                  ${item.isFlash ? `<s style="color:var(--muted);font-size:12.5px;margin-right:5px">${inr(item.price)}</s>` : ""}
+                  ${item.flash ? `<s style="color:var(--muted);font-size:12.5px;margin-right:5px">${inr(item.price)}</s>` : ""}
                   <strong style="font-size:16px">${inr(price)}</strong>
                 </div>
                 ${!item.inStock
@@ -2598,7 +3088,7 @@ function renderCustomerMarketplace() {
               </div>
             </div>
           `;
-        }).join("")}
+        }).join("") : `<div style="padding:26px;text-align:center;color:var(--muted)">No dishes match this in-menu filter.</div>`}
       </div>
     `;
   } else {
@@ -2610,46 +3100,47 @@ function renderCustomerMarketplace() {
       const okSearch = !q ||
         r.name.toLowerCase().includes(q) ||
         r.cuisine.toLowerCase().includes(q) ||
-        r.menu.some(m => m.name.toLowerCase().includes(q) || m.diet.toLowerCase().includes(q));
+        r.menu.some(m => m.name.toLowerCase().includes(q) || m.tags.some(t => t.toLowerCase().includes(q)));
 
       let okDiet = true;
-      if (filterDiet === "Pure Veg") okDiet = r.menu.every(m => m.diet !== "Non-Veg");
-      else if (filterDiet === "Vegan") okDiet = r.menu.some(m => m.diet === "Vegan");
-      else if (filterDiet === "Gluten-Free") okDiet = r.menu.some(m => m.diet === "Gluten-Free");
+      if (filterDiet === "Pure Veg") okDiet = r.menu.every(m => !m.tags.includes("Non-Veg"));
+      else if (filterDiet === "Vegan") okDiet = r.menu.some(m => m.tags.includes("Vegan"));
+      else if (filterDiet === "Gluten-Free") okDiet = r.menu.some(m => m.tags.includes("Gluten-Free"));
+      else if (filterDiet === "Flash Deals") okDiet = r.menu.some(m => m.flash);
+      else if (filterDiet === "Express <22m") okDiet = r.etaMins <= 22;
       else if (filterDiet === "Top Rated 4.6+") okDiet = r.rating >= 4.6;
-      else if (filterDiet === "Under 30 Mins") okDiet = r.etaMins < 30;
-      else if (filterDiet === "Flash Deals") okDiet = r.menu.some(m => m.isFlash);
 
       return okCuisine && okSearch && okDiet;
     });
 
-    $("#resultCount").textContent = `${visible.length} kitchen${visible.length === 1 ? "" : "s"} delivering`;
+    const totalDishCount = visible.reduce((acc, r) => acc + r.menu.length, 0);
+    $("#resultCount").textContent = `${visible.length} kitchens · ${totalDishCount} dishes`;
 
     $("#catalogContainer").innerHTML = visible.length
       ? `<div class="rest-grid">${visible.map(r => {
-          const hasFlash = r.menu.some(m => m.isFlash);
-          const matchedDishes = q ? r.menu.filter(m => m.name.toLowerCase().includes(q) || m.diet.toLowerCase().includes(q)) : [];
+          const hasFlash = r.menu.some(m => m.flash);
+          const matchedDishes = q ? r.menu.filter(m => m.name.toLowerCase().includes(q) || m.tags.some(t => t.toLowerCase().includes(q))) : [];
           return `
             <article class="card rest-card" onclick="openRestaurant(${r.id})">
               <div class="rest-cover">
                 <img src="${esc(r.banner)}" alt="${esc(r.name)}" onerror="this.src='${FALLBACK_SVG}'">
                 <div class="cover-badges">
                   ${hasFlash ? `<span class="c-badge flash">⚡ Flash Deal -25%</span>` : `<span></span>`}
-                  ${r.etaMins <= 16 ? `<span class="c-badge fast">🚀 Express ${r.etaMins}m</span>` : `<span class="c-badge">⏱ ${r.etaMins} mins</span>`}
+                  ${r.etaMins <= 20 ? `<span class="c-badge fast">🚀 Express ${r.etaMins}m</span>` : `<span class="c-badge">⏱ ${r.etaMins} mins</span>`}
                 </div>
               </div>
               <div class="rest-body">
                 <div>
                   <h3 class="rest-title">${esc(r.name)}</h3>
-                  <div class="rest-sub">${esc(r.tag)}</div>
+                  <div class="rest-sub">${esc(r.cuisine)} · ${esc(r.location)}</div>
                   <div class="rest-meta">
                     <span class="rate-pill">★ ${r.rating}</span>
-                    <span style="color:var(--muted)">📍 ${r.distanceKm} km · ${esc(r.location || "Pantnagar")}</span>
+                    <span style="color:var(--muted)">📍 ${r.distanceKm} km away</span>
                   </div>
                 </div>
                 <div class="rest-foot">
                   <span style="color:var(--muted);font-weight:600">
-                    ${matchedDishes.length ? `Matches: <b style="color:var(--acc)">${matchedDishes.map(d => esc(d.name)).join(", ")}</b>` : `${r.menu.length} handcrafted dishes`}
+                    ${matchedDishes.length ? `Matches: <b style="color:var(--acc)">${matchedDishes.slice(0, 2).map(d => esc(d.name)).join(", ")}</b>` : `${r.menu.length} handcrafted dishes`}
                   </span>
                   <strong style="color:var(--acc)">View Menu →</strong>
                 </div>
@@ -2657,20 +3148,21 @@ function renderCustomerMarketplace() {
             </article>
           `;
         }).join("")}</div>`
-      : `<div class="card" style="padding:28px;text-align:center;color:var(--muted)">No kitchens match your current search or filters. Try clearing filters to explore all restaurants.</div>`;
+      : `<div class="card" style="padding:28px;text-align:center;color:var(--muted)">No kitchens match your current search or filters. Try clearing filters to explore all 12 restaurants.</div>`;
   }
 
   // Recent Orders
   $("#customerHistoryList").innerHTML = db.orders.length
-    ? `<div style="display:grid;gap:12px">${db.orders.slice(0, 4).map(o => `
+    ? `<div style="display:grid;gap:12px">${db.orders.slice(0, 5).map(o => `
         <div class="card" style="padding:16px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
           <div>
             <strong>${esc(o.id)} · ${esc(o.restaurantName)}</strong>
             <div style="font-size:13px;color:var(--muted)">${o.items.map(i => `${i.qty}× ${esc(i.name)}`).join(", ")} · ${esc(o.createdAt)}</div>
           </div>
-          <div style="display:flex;align-items:center;gap:12px">
+          <div style="display:flex;align-items:center;gap:10px">
             <strong>${inr(o.total)}</strong>
-            <span class="badge-pill" style="background:${o.status === "DELIVERED" ? "var(--green-soft)" : "var(--acc-soft)"};color:${o.status === "DELIVERED" ? "var(--green)" : "var(--acc)"}">${esc(o.status.replaceAll("_", " "))}</span>
+            <span class="badge-pill" style="background:${o.status === "DELIVERED" ? "var(--veg-soft)" : "var(--acc-soft)"};color:${o.status === "DELIVERED" ? "var(--veg)" : "var(--acc)"}">${esc(o.status.replaceAll("_", " "))}</span>
+            <button type="button" class="btn xs" onclick="openCareDrawer('instant','${o.id}')">🎧 Help</button>
           </div>
         </div>
       `).join("")}</div>`
@@ -2686,13 +3178,13 @@ function renderDrawer() {
       <div class="checkout-sec" style="margin-top:0">
         <h4>📍 Saved Delivery Address</h4>
         <div class="field" style="margin-bottom:8px">
-          <input type="text" value="${esc(checkoutState.address)}" oninput="checkoutState.address=this.value;$('#navAddressLabel').textContent=this.value||'Set Address'" placeholder="Enter hostel, sector or street address">
+          <input type="text" value="${esc(checkoutState.address)}" oninput="checkoutState.address=this.value;$('#navAddressLabel').textContent=this.value||'Set Address'" placeholder="Enter hostel, bhawan or street address">
         </div>
         <div class="field" style="margin:0">
           <input type="text" value="${esc(checkoutState.instructions)}" oninput="checkoutState.instructions=this.value" placeholder="Delivery instructions">
         </div>
       </div>
-      <div style="padding:36px 0;text-align:center;color:var(--muted)">Your bag is empty. Explore a kitchen or ask Zwigato AI for mood recommendations!</div>
+      <div style="padding:36px 0;text-align:center;color:var(--muted)">Your bag is empty. Explore any of our 12 kitchens or ask Zwigato AI for mood recommendations!</div>
     `;
     return;
   }
@@ -2725,7 +3217,7 @@ function renderDrawer() {
     <div class="checkout-sec">
       <h4>📍 Delivery Address &amp; Instructions</h4>
       <div class="field" style="margin-bottom:8px">
-        <input type="text" value="${esc(checkoutState.address)}" oninput="checkoutState.address=this.value;$('#navAddressLabel').textContent=this.value||'Set Address'" placeholder="Hostel / Sector / Street address">
+        <input type="text" value="${esc(checkoutState.address)}" oninput="checkoutState.address=this.value;$('#navAddressLabel').textContent=this.value||'Set Address'" placeholder="Bhawan / Hostel / Market address">
       </div>
       <div class="field" style="margin:0">
         <input type="text" value="${esc(checkoutState.instructions)}" oninput="checkoutState.instructions=this.value" placeholder="Delivery note (e.g. Leave at security gate)">
@@ -2733,9 +3225,9 @@ function renderDrawer() {
     </div>
 
     <div class="checkout-sec">
-      <h4>🛵 Tip Your Delivery Rider</h4>
+      <h4>🛵 Tip Your Delivery Valet</h4>
       <div class="tip-grid">
-        ${[0, 20, 40].map(amt => `
+        ${[0, 20, 30, 50].map(amt => `
           <button type="button" class="tip-btn ${checkoutState.tip === amt ? "on" : ""}" onclick="checkoutState.tip=${amt};renderDrawer()">${amt === 0 ? "₹0" : inr(amt)}</button>
         `).join("")}
       </div>
@@ -2753,8 +3245,8 @@ function renderDrawer() {
     <div class="checkout-sec">
       <h4>🧾 Bill Breakdown</h4>
       <div class="bill-line"><span>Item Subtotal</span><span>${inr(sum.subtotal)}</span></div>
-      ${sum.flashSaved > 0 ? `<div class="bill-line" style="color:var(--green);font-weight:700"><span>⚡ Flash Sale Savings</span><span>−${inr(sum.flashSaved)}</span></div>` : ""}
-      ${sum.promoDiscount > 0 ? `<div class="bill-line" style="color:var(--green);font-weight:700"><span>🎟️ Promo (${esc(checkoutState.promoCode)})</span><span>−${inr(sum.promoDiscount)}</span></div>` : ""}
+      ${sum.flashSaved > 0 ? `<div class="bill-line" style="color:var(--veg);font-weight:700"><span>⚡ Flash Sale Savings</span><span>−${inr(sum.flashSaved)}</span></div>` : ""}
+      ${sum.promoDiscount > 0 ? `<div class="bill-line" style="color:var(--veg);font-weight:700"><span>🎟️ Promo (${esc(checkoutState.promoCode)})</span><span>−${inr(sum.promoDiscount)}</span></div>` : ""}
       <div class="bill-line"><span>Delivery Fee</span><span>${sum.deliveryFee === 0 ? "FREE" : inr(sum.deliveryFee)}</span></div>
       <div class="bill-line"><span>GST &amp; Packaging (5%)</span><span>${inr(sum.taxes)}</span></div>
       <div class="bill-line"><span>Rider Tip</span><span>${inr(sum.tip)}</span></div>
@@ -2776,16 +3268,16 @@ function renderPartnerConsole() {
   const activeOrders = db.orders.filter(o => o.status === "PENDING" || o.status === "PREPARING" || o.status === "OUT_FOR_DELIVERY");
 
   $("#partnerKpis").innerHTML = `
-    <div class="card kpi-card"><span>Total Revenue</span><strong>${inr(grossRev)}</strong><small>↑ ${allValidOrders.length} active &amp; completed orders</small></div>
+    <div class="card kpi-card"><span>Today's Revenue</span><strong>${inr(grossRev)}</strong><small>↑ ${allValidOrders.length} active &amp; completed orders</small></div>
     <div class="card kpi-card"><span>Active Kitchen Orders</span><strong>${activeOrders.length}</strong><small>Syncs live with customer tracker</small></div>
-    <div class="card kpi-card"><span>Average Prep Time</span><strong>${rest.etaMins} mins</strong><small>★ ${rest.rating} customer rating</small></div>
-    <div class="card kpi-card"><span>Available Dishes</span><strong>${rest.menu.filter(m => m.inStock).length} / ${rest.menu.length}</strong><small>${rest.menu.filter(m => m.isFlash).length} Flash Deals active</small></div>
+    <div class="card kpi-card"><span>Avg Prep Time</span><strong>${rest.etaMins} mins</strong><small>★ ${rest.rating} customer rating</small></div>
+    <div class="card kpi-card"><span>Active Menu Items</span><strong>${rest.menu.filter(m => m.inStock).length} / ${rest.menu.length}</strong><small>${rest.menu.filter(m => m.flash).length} Flash Deals live</small></div>
   `;
 
   const cols = [
     {title: "New Incoming", status: "PENDING", nextLabel: "Accept & Cook →", nextStatus: "PREPARING"},
-    {title: "Kitchen Preparing", status: "PREPARING", nextLabel: "Dispatch to Rider →", nextStatus: "OUT_FOR_DELIVERY"},
-    {title: "Out for Delivery / Done", status: "OUT_FOR_DELIVERY", nextLabel: "Mark Delivered ✓", nextStatus: "DELIVERED"}
+    {title: "Kitchen Preparing", status: "PREPARING", nextLabel: "Mark Out for Delivery →", nextStatus: "OUT_FOR_DELIVERY"},
+    {title: "Out for Delivery / Done", status: "OUT_FOR_DELIVERY", nextLabel: "Complete Delivery ✓", nextStatus: "DELIVERED"}
   ];
 
   $("#partnerKdsGrid").innerHTML = cols.map(col => {
@@ -2806,7 +3298,7 @@ function renderPartnerConsole() {
                   <button type="button" class="btn primary xs" onclick="setOrderStatus('${o.id}','${col.nextStatus}')">${col.nextLabel}</button>
                   ${o.status === "PENDING" ? `<button type="button" class="btn xs" onclick="setOrderStatus('${o.id}','CANCELLED')">Decline</button>` : ""}
                 </div>`
-              : `<span style="font-size:12px;font-weight:800;color:var(--green)">✓ Delivered to Customer</span>`
+              : `<span style="font-size:12px;font-weight:800;color:var(--veg)">✓ Delivered to Customer</span>`
             }
           </div>
         `).join("") : `<div style="color:var(--muted);font-size:13px;padding:12px 0">No orders in this column.</div>`}
@@ -2818,41 +3310,39 @@ function renderPartnerConsole() {
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:var(--bg);border:1px solid var(--border);margin-bottom:8px">
       <div>
         <strong>${esc(m.name)} · ${inr(getEffectivePrice(m))}</strong>
-        <div style="font-size:12px;color:var(--muted)">${esc(m.diet)} · ${m.inStock ? "In Stock" : "Sold Out"} ${m.isSpecial ? "· ★ Daily Special" : ""} ${m.isFlash ? "· ⚡ -25% Flash" : ""}</div>
+        <div style="font-size:12px;color:var(--muted)">${esc(m.course)} · ${esc(m.tags[0] || "Veg")} ${m.special ? "· ★ Daily Special" : ""} ${m.flash ? "· ⚡ -25% Flash" : ""}</div>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <button type="button" class="btn xs ${m.inStock ? "green" : ""}" onclick="toggleMenuProp(${rest.id},${m.id},'inStock')">${m.inStock ? "✓ In Stock" : "Sold Out"}</button>
-        <button type="button" class="btn xs ${m.isSpecial ? "active" : ""}" onclick="toggleMenuProp(${rest.id},${m.id},'isSpecial')">★ Special</button>
-        <button type="button" class="btn xs ${m.isFlash ? "primary" : ""}" onclick="toggleMenuProp(${rest.id},${m.id},'isFlash')">⚡ Flash -25%</button>
+        <button type="button" class="btn xs ${m.inStock ? "veg" : ""}" onclick="toggleMenuProp(${rest.id},${m.id},'inStock')">${m.inStock ? "✓ In Stock" : "Sold Out"}</button>
+        <button type="button" class="btn xs ${m.special ? "active" : ""}" onclick="toggleMenuProp(${rest.id},${m.id},'special')">★ Special</button>
+        <button type="button" class="btn xs ${m.flash ? "primary" : ""}" onclick="toggleMenuProp(${rest.id},${m.id},'flash')">⚡ Flash -25%</button>
       </div>
     </div>
   `).join("");
 
-  const itemCounts = new Map();
-  const payCounts = {"UPI / GPay": 0, "Credit / Debit Card": 0, "Cash on Delivery": 0};
-  allValidOrders.forEach(o => {
-    const key = payCounts[o.paymentMethod] !== undefined ? o.paymentMethod : "UPI / GPay";
-    payCounts[key] += 1;
-    o.items.forEach(i => itemCounts.set(i.name, (itemCounts.get(i.name) || 0) + i.qty));
-  });
-  const sortedDishes = [...itemCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
-  const topVal = sortedDishes[0]?.[1] || 1;
-  $("#analyticsTopDishes").innerHTML = sortedDishes.length
-    ? sortedDishes.map(([n, c]) => `
-        <div class="bar-item">
-          <div class="bar-top"><span>${esc(n)}</span><span>${c} sold</span></div>
-          <div class="bar-bg"><div class="bar-val" style="width:${Math.round(c / topVal * 100)}%"></div></div>
-        </div>
-      `).join("")
-    : `<div style="color:var(--muted);font-size:13px">Place an order in the Customer App to see top dishes!</div>`;
+  const topMenu = [...rest.menu].sort((a, b) => (b.ordersToday || 0) - (a.ordersToday || 0)).slice(0, 5);
+  const maxOrd = topMenu[0]?.ordersToday || 1;
+  $("#analyticsTopDishes").innerHTML = topMenu.map(m => `
+    <div class="bar-item">
+      <div class="bar-top"><span>${esc(m.name)}</span><span>${m.ordersToday} orders</span></div>
+      <div class="bar-bg"><div class="bar-val" style="width:${Math.round((m.ordersToday / maxOrd) * 100)}%"></div></div>
+    </div>
+  `).join("");
 
-  const totalPays = Object.values(payCounts).reduce((a, b) => a + b, 0) || 1;
-  $("#analyticsPayments").innerHTML = Object.entries(payCounts).map(([pm, cnt]) => {
-    const pct = Math.round((cnt / totalPays) * 100);
+  const vegCount = rest.menu.filter(m => !m.tags.includes("Non-Veg")).length;
+  const veganCount = rest.menu.filter(m => m.tags.includes("Vegan")).length;
+  const gfCount = rest.menu.filter(m => m.tags.includes("Gluten-Free")).length;
+  const tot = rest.menu.length || 1;
+  $("#analyticsPayments").innerHTML = [
+    ["Vegetarian Dishes", vegCount],
+    ["100% Vegan Options", veganCount],
+    ["Gluten-Free Options", gfCount]
+  ].map(([lbl, cnt]) => {
+    const pct = Math.round((cnt / tot) * 100);
     return `
       <div class="bar-item">
-        <div class="bar-top"><span>${pm}</span><span>${pct}% (${cnt})</span></div>
-        <div class="bar-bg"><div class="bar-val" style="width:${pct}%;background:var(--green)"></div></div>
+        <div class="bar-top"><span>${lbl}</span><span>${pct}% (${cnt})</span></div>
+        <div class="bar-bg"><div class="bar-val" style="width:${pct}%;background:var(--veg)"></div></div>
       </div>
     `;
   }).join("");
@@ -2866,10 +3356,12 @@ function renderAll() {
 }
 
 // =========================================================
-// 9. EVENT WIRING
+// 11. EVENT WIRING
 // =========================================================
 window.openRestaurant = id => {
   selectedRestId = id;
+  inMenuSearch = "";
+  inMenuTag = "All";
   renderCustomerMarketplace();
   if (id !== null) window.scrollTo({top: $("#catalogHeading").offsetTop - 90, behavior: "smooth"});
 };
@@ -2886,6 +3378,12 @@ window.applyPromo = applyPromo;
 window.confirmCheckoutOrder = confirmCheckoutOrder;
 window.advanceOrderStage = advanceOrderStage;
 window.renderDrawer = renderDrawer;
+window.openCareDrawer = openCareDrawer;
+window.renderCareDrawer = renderCareDrawer;
+window.handleCareAction = handleCareAction;
+window.sendCareChat = sendCareChat;
+window.renderCustomerMarketplace = renderCustomerMarketplace;
+
 window.setAiOpen = open => {
   $("#aiBox").classList.toggle("on", open);
   if (open) $("#aiPromptInput").focus();
@@ -2922,23 +3420,14 @@ $("#partnerAddDishForm").onsubmit = e => {
   const name = $("#ndName").value.trim();
   const price = Number($("#ndPrice").value);
   const diet = $("#ndDiet").value;
+  const course = $("#ndCourse").value;
   const preset = $("#ndImgPreset").value;
-  const desc = $("#ndDesc").value.trim() || "Freshly crafted in our partner kitchen";
-  const isSpecial = $("#ndSpecial").checked;
-  const isFlash = $("#ndFlash").checked;
+  const special = $("#ndSpecial").checked;
+  const flash = $("#ndFlash").checked;
 
-  rest.menu.unshift({
-    id: Date.now(),
-    name,
-    price,
-    desc,
-    diet,
-    img: PHOTOS[preset] || rest.banner,
-    inStock: true,
-    isFlash,
-    isSpecial,
-    ordersToday: 12
-  });
+  rest.menu.unshift(
+    D(Date.now(), name, price, course, [diet, "Bestseller"], PHOTOS[preset] || rest.banner, flash, special, 18)
+  );
   saveDB();
   e.target.reset();
   $("#ndSpecial").checked = true;
@@ -2973,18 +3462,25 @@ $("#nextSlideBtn").onclick = () => $("#gemsCarousel").scrollBy({left: 340, behav
 
 function openDrawer() {
   $("#drawerBackdrop").classList.add("on");
+  $("#careDrawer").classList.remove("on");
   $("#checkoutDrawer").classList.add("on");
   $("#checkoutDrawer").setAttribute("aria-hidden", "false");
   renderDrawer();
 }
-function closeDrawer() {
+
+function closeAllDrawers() {
   $("#drawerBackdrop").classList.remove("on");
   $("#checkoutDrawer").classList.remove("on");
+  $("#careDrawer").classList.remove("on");
   $("#checkoutDrawer").setAttribute("aria-hidden", "true");
+  $("#careDrawer").setAttribute("aria-hidden", "true");
 }
+
 $("#openCartBtn").onclick = openDrawer;
-$("#closeDrawerBtn").onclick = closeDrawer;
-$("#drawerBackdrop").onclick = closeDrawer;
+$("#closeDrawerBtn").onclick = closeAllDrawers;
+$("#navHelpBtn").onclick = () => openCareDrawer("instant");
+$("#closeCareBtn").onclick = closeAllDrawers;
+$("#drawerBackdrop").onclick = closeAllDrawers;
 
 $("#aiFabBtn").onclick = () => setAiOpen(!$("#aiBox").classList.contains("on"));
 $("#heroAiBtn").onclick = () => setAiOpen(true);
