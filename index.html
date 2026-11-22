@@ -6,55 +6,74 @@
 <title>Zwigato</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef3ee;--ink:#241a17;--muted:#6d5f59;--acc:#ff6a2b;--glass:rgba(255,255,255,.42);--gb:rgba(255,255,255,.75);--hit:rgba(255,106,43,.16);--sh:0 10px 40px rgba(120,60,30,.12);
+:root{--bg:#e9f7fc;--deep:#b7e3f0;--m1:#7fd6e8;--m2:#a9c8ff;--m3:#5cc4c0;--m4:#d6f5ea;--ink:#10262e;--muted:#52707a;--acc:#ff6a2b;--glass:rgba(255,255,255,.45);--gb:rgba(255,255,255,.8);--hit:rgba(255,106,43,.16);--sh:0 10px 40px rgba(10,80,100,.14);--err:#c62828;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0d1a15;--ink:#f7ece6;--muted:#b9a8a0;--glass:rgba(255,255,255,.07);--gb:rgba(255,255,255,.16);--hit:rgba(255,122,60,.22);--sh:0 10px 40px rgba(0,0,0,.35)}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#0d1a15;--ink:#f7ece6;--muted:#b9a8a0;--glass:rgba(255,255,255,.07);--gb:rgba(255,255,255,.16);--hit:rgba(255,122,60,.22);--sh:0 10px 40px rgba(0,0,0,.35)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#04121f;--deep:#062b3d;--m1:rgba(0,200,220,.4);--m2:rgba(40,110,255,.45);--m3:rgba(0,170,150,.4);--m4:rgba(120,230,220,.2);--ink:#e8f6f8;--muted:#9bb8c0;--glass:rgba(255,255,255,.07);--gb:rgba(255,255,255,.16);--hit:rgba(255,122,60,.22);--sh:0 10px 40px rgba(0,0,0,.4);--err:#ff8a80}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#04121f;--deep:#062b3d;--m1:rgba(0,200,220,.4);--m2:rgba(40,110,255,.45);--m3:rgba(0,170,150,.4);--m4:rgba(120,230,220,.2);--ink:#e8f6f8;--muted:#9bb8c0;--glass:rgba(255,255,255,.07);--gb:rgba(255,255,255,.16);--hit:rgba(255,122,60,.22);--sh:0 10px 40px rgba(0,0,0,.4);--err:#ff8a80}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.5 Manrope,system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
-.orb{position:fixed;border-radius:50%;z-index:-1;pointer-events:none}
-.o1{width:34vmax;height:34vmax;left:-9vmax;top:-7vmax;background:radial-gradient(circle at 30% 28%,#ffa08c,#ff4d3a 55%,#c2200f)}
-.o2{width:19vmax;height:19vmax;right:7vw;top:16vh;background:radial-gradient(circle at 30% 28%,#e2ff8a,#8fd21a 60%,#4f8f0a)}
-.o3{width:28vmax;height:28vmax;right:-9vmax;bottom:-9vmax;background:radial-gradient(circle at 30% 28%,#ffe595,#ffb300 60%,#d98200)}
-.o4{width:13vmax;height:13vmax;left:17vw;bottom:9vh;background:radial-gradient(circle at 30% 28%,#8ae8bd,#12a36b 60%,#0a6b45)}
-.o5{width:8vmax;height:8vmax;left:48vw;top:40vh;background:radial-gradient(circle at 30% 28%,#ffc2b5,#ff6a4d 60%,#d93a22)}
-@media(prefers-color-scheme:dark){.orb{filter:saturate(.9) brightness(.8)}}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60vmax 50vmax at 10% 6%,var(--m1),transparent 62%),radial-gradient(55vmax 45vmax at 94% 16%,var(--m2),transparent 62%),radial-gradient(60vmax 50vmax at 78% 98%,var(--m3),transparent 62%),radial-gradient(50vmax 42vmax at 6% 92%,var(--m4),transparent 62%),linear-gradient(180deg,var(--bg),var(--deep))}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.07;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .glass{background:var(--glass);border:1px solid var(--gb);box-shadow:var(--sh),inset 0 1px 0 var(--gb);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);border-radius:24px}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:color-mix(in srgb,var(--bg) 88%,#fff)}}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:14px auto 0;max-width:1000px;padding:10px 12px 10px 22px;display:flex;justify-content:space-between;align-items:center;border-radius:99px}
 .logo{display:flex;align-items:center;gap:10px;font:800 22px Manrope,sans-serif;letter-spacing:-.04em;text-decoration:none;color:var(--ink)}
 .logo svg{width:34px;height:34px;filter:drop-shadow(0 4px 8px rgba(232,38,26,.35))}
-.nr{display:flex;gap:8px;align-items:center}
-.btn{font:700 14px Manrope,sans-serif;border:1px solid var(--gb);background:var(--glass);color:var(--ink);border-radius:99px;padding:9px 18px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:14px auto 0;max-width:1000px;padding:10px 12px 10px 22px;display:flex;justify-content:space-between;align-items:center;border-radius:99px}
+.nr{display:flex;gap:8px;align-items:center}.who{color:var(--muted);font-weight:700;font-size:14px;margin-right:4px}
+.btn{font:700 14px Manrope,sans-serif;border:1px solid var(--gb);background:var(--glass);color:var(--ink);border-radius:99px;padding:9px 18px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .btn.p{background:var(--acc);border-color:var(--acc);color:#fff;box-shadow:0 6px 18px rgba(255,106,43,.35)}
-.btn.sm{padding:6px 14px;font-size:13px}
+.btn.sm{padding:6px 14px;font-size:13px}.btn.wide{width:100%;padding:13px}
+.btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .btn:disabled{opacity:.4;cursor:not-allowed}
-.btn:focus-visible,input:focus-visible,.nx button:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
-.hero{padding:clamp(48px,11vh,110px) 0 28px}
-h1{font:300 clamp(38px,7vw,76px)/1.04 Manrope,sans-serif;letter-spacing:-.04em;margin:0 0 10px}
-h1 b{font-weight:800}
-.lead{color:var(--muted);margin:0 0 26px;max-width:46ch}
+.btn:focus-visible,input:focus-visible,.nx button:focus-visible,.rcard:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+/* auth */
+.authw{min-height:100vh;display:grid;place-items:center;padding:24px 18px}
+.authc{width:min(420px,100%);padding:30px 28px}
+.authc h1{font:800 30px Manrope,sans-serif;letter-spacing:-.03em;margin:22px 0 4px}
+.authc .lead{margin:0 0 18px}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.authc label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:12px}
+.authc input{display:block;width:100%;margin-top:5px;padding:12px 14px;border-radius:14px;border:1px solid var(--gb);background:var(--glass);color:var(--ink);font:600 16px Manrope,sans-serif}
+.err{min-height:22px;color:var(--err);font-weight:700;font-size:14px;margin-bottom:8px}
+.authc small{display:block;color:var(--muted);margin-top:14px;font-size:12px}
+/* hero + search */
+.hero{padding:clamp(34px,8vh,80px) 0 14px}
+h1.big{font:300 clamp(36px,6.5vw,68px)/1.04 Manrope,sans-serif;letter-spacing:-.04em;margin:0 0 10px}
+h1.big b{font-weight:800}
+.lead{color:var(--muted);margin:0 0 22px;max-width:46ch}
 .sb{max-width:600px;padding:6px 8px 6px 22px;display:flex;align-items:center;border-radius:99px}
 .sb input{flex:1;min-width:0;border:0;background:transparent;font:600 18px Manrope,sans-serif;color:var(--ink);outline:0;padding:10px 0}
 .sb input::placeholder{color:var(--muted);font-weight:500}
 .sb:focus-within{outline:2px solid var(--acc);outline-offset:3px}
 .trie{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;min-height:40px;color:var(--muted);font-size:14px}
-.chip{padding:4px 12px;border-radius:99px;font-weight:700;color:var(--ink);font-size:14px;border-radius:99px}
+.chip{padding:4px 12px;font-weight:700;color:var(--ink);font-size:14px;border-radius:99px}
 .chip small{color:var(--muted);margin-left:6px;font-weight:500}
 .nx{display:contents}
 .nx button{width:34px;height:34px;border-radius:50%;border:1px dashed var(--muted);background:transparent;color:var(--ink);font:700 15px Manrope,sans-serif;text-transform:uppercase;cursor:pointer}
 .nx button:hover{background:var(--acc);border-color:var(--acc);color:#fff}
-h2{font:800 clamp(22px,3vw,30px) Manrope,sans-serif;letter-spacing:-.03em;margin:54px 0 16px}
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
-.rc{padding:20px 0 8px}
-.rh{display:flex;align-items:center;gap:14px;padding:0 22px 14px}
-.rh .e{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:28px;background:var(--glass);border:1px solid var(--gb)}
-.rh h3{margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-.02em}.rh small{color:var(--muted);font-weight:500}
-.d{display:flex;align-items:center;gap:10px;padding:11px 22px;border-top:1px solid var(--gb)}
+h2{font:800 clamp(22px,3vw,30px) Manrope,sans-serif;letter-spacing:-.03em;margin:46px 0 16px}
+/* restaurant list */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.rcard{display:flex;align-items:center;gap:16px;padding:18px 20px;text-align:left;cursor:pointer;color:var(--ink);font:inherit;transition:transform .2s}
+.rcard:hover{transform:translateY(-3px)}
+.e{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:30px;background:var(--glass);border:1px solid var(--gb);flex:none}
+.rcard h3,.mh h3{margin:0;font:800 18px Manrope,sans-serif;letter-spacing:-.02em}
+.rcard small,.mh small{color:var(--muted);font-weight:500;display:block}
+.rcard .go{margin-left:auto;color:var(--acc);font-weight:800;white-space:nowrap}
+.mt{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.mt span{background:var(--hit);border-radius:99px;padding:1px 10px;font-size:12px;font-weight:700}
+/* menu page */
+.mh{display:flex;align-items:center;gap:18px;padding:22px 24px;margin:18px 0 14px}
+.mh h3{font-size:26px}
+.note{color:var(--muted);font-size:13px;margin:0 0 12px}
+.menu{padding:6px 0}
+.d{display:flex;align-items:center;gap:12px;padding:14px 24px}
+.d+.d{border-top:1px solid var(--gb)}
 .d.hit{background:var(--hit)}
-.d .n{flex:1}.d .n small{display:block;color:var(--muted);font-weight:500;font-size:13px}
+.d .n{flex:1;font-weight:700}
 .stp{display:flex;align-items:center;gap:4px;background:var(--acc);color:#fff;border-radius:99px;padding:2px}
 .stp button{border:0;background:transparent;color:#fff;font:700 17px Manrope,sans-serif;width:28px;height:28px;border-radius:50%;cursor:pointer}
 .stp b{min-width:16px;text-align:center;font-size:14px}
@@ -65,68 +84,76 @@ h2{font:800 clamp(22px,3vw,30px) Manrope,sans-serif;letter-spacing:-.03em;margin
 .tc small{display:block;color:var(--muted)}
 .empty{padding:20px 22px;color:var(--muted);border-radius:20px}
 .bd{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.col{padding:20px}
-.col h3{margin:0 0 12px;font:800 16px Manrope,sans-serif;letter-spacing:-.01em}
+.col{padding:20px}.col h3{margin:0 0 12px;font:800 16px Manrope,sans-serif}
 .tk{padding:12px 14px;border-radius:16px;margin-bottom:10px;background:var(--glass);border:1px solid var(--gb)}
 .tk .t{display:flex;justify-content:space-between;gap:8px;font-weight:700}
 .tk small{display:block;color:var(--muted);margin:2px 0 8px}
 .tk.void{opacity:.55}.tk.void .t span:first-child{text-decoration:line-through}
 .tag{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:var(--acc);color:#fff;border-radius:99px;padding:2px 9px;white-space:nowrap}
 /* drawer */
-.dr{position:fixed;top:0;right:0;bottom:0;width:min(390px,100%);z-index:40;border-radius:28px 0 0 28px;transform:translateX(105%);transition:transform .35s;padding:22px;padding-top:calc(22px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;overflow:auto;-webkit-backdrop-filter:blur(34px) saturate(180%);backdrop-filter:blur(34px) saturate(180%);background:color-mix(in srgb,var(--glass) 100%,transparent)}
-.dr.on{transform:none}
-.dr h2{margin:8px 0 14px}
-.bk{position:fixed;inset:0;background:rgba(30,15,10,.25);z-index:30;display:none}.bk.on{display:block}
+.dr{position:fixed;top:0;right:0;bottom:0;width:min(390px,100%);z-index:40;border-radius:28px 0 0 28px;transform:translateX(105%);transition:transform .35s;padding:22px;padding-top:calc(22px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;overflow:auto;-webkit-backdrop-filter:blur(34px) saturate(180%);backdrop-filter:blur(34px) saturate(180%)}
+.dr.on{transform:none}.dr h2{margin:8px 0 14px}
+.bk{position:fixed;inset:0;background:rgba(5,25,35,.3);z-index:30;display:none}.bk.on{display:block}
 .row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--gb)}
 .tot{display:flex;justify-content:space-between;font:800 22px Manrope,sans-serif;margin:18px 0}
-footer{padding:50px 0 70px;color:var(--muted)}
-summary{cursor:pointer;font-weight:700}
+footer{padding:50px 0 70px;color:var(--muted)}summary{cursor:pointer;font-weight:700}
 ul.log{padding-left:20px;font-size:14px}ul.log b{color:var(--ink)}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dr{transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dr,.rcard{transition:none}}
 </style>
 </head>
 <body>
-<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="orb o4"></div><div class="orb o5"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mark" viewBox="0 0 40 40"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7a45"/><stop offset="1" stop-color="#e8261a"/></linearGradient></defs><rect width="40" height="40" rx="13" fill="url(#lg)"/><path d="M12 13h16L12 27h16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="29" cy="12" r="3" fill="#ffd36b"/></symbol></svg>
 
-<nav class="glass">
- <a class="logo" href="#top" aria-label="Zwigato home"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7a45"/><stop offset="1" stop-color="#e8261a"/></linearGradient></defs><rect width="40" height="40" rx="13" fill="url(#lg)"/><path d="M12 13h16L12 27h16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="29" cy="12" r="3" fill="#ffd36b"/></svg>Zwigato</a>
- <div class="nr"><a class="btn" href="#board">Kitchen</a><button class="btn p" id="cartb">Cart · 0</button></div>
-</nav>
-
-<main class="wrap" id="top">
- <section class="hero">
-  <h1>Good food,<br><b>quietly fast.</b></h1>
-  <p class="lead">Search a dish, place your order, and follow it through the kitchen.</p>
-  <div class="sb glass"><input id="q" type="search" autocomplete="off" placeholder="Search pizza, biryani, dosa…" aria-label="Search restaurants or dishes"></div>
-  <div class="trie" id="trie"></div>
- </section>
-
- <h2 id="rests">Kitchens</h2>
- <div class="grid" id="grid"></div>
-
- <h2>Trending</h2>
- <div class="trend" id="tr"></div>
-
- <h2 id="board">Kitchen board</h2>
- <p class="lead" style="margin-top:-6px">The oldest waiting order is cooked first. Cancelled orders are skipped.</p>
- <p><button class="btn p" id="next">Cook next order</button></p>
- <div class="bd">
-  <div class="glass col"><h3>Waiting</h3><div id="wq"></div></div>
-  <div class="glass col"><h3>Cooking</h3><div id="ck"></div></div>
-  <div class="glass col"><h3>Delivered</h3><div id="dv"></div></div>
+<div class="authw" id="auth">
+ <div class="glass authc">
+  <div class="logo"><svg aria-hidden="true"><use href="#mark"/></svg>Zwigato</div>
+  <h1 id="at">Welcome back</h1>
+  <p class="lead" id="as">Log in to order from kitchens in Pantnagar.</p>
+  <div class="tabs"><button class="btn sm on" id="tl">Log in</button><button class="btn sm" id="ts">Sign up</button></div>
+  <label id="nl" hidden>Name<input id="nm" type="text" autocomplete="name"></label>
+  <label>Email<input id="em" type="email" autocomplete="email"></label>
+  <label>Password<input id="pw" type="password" autocomplete="current-password"></label>
+  <div class="err" id="err" role="alert"></div>
+  <button class="btn p wide" id="go">Log in</button>
+  <button class="btn wide" id="guest" style="margin-top:10px">Continue as guest</button>
+  <small>Demo only: accounts are kept in this page’s memory and disappear when you refresh.</small>
  </div>
+</div>
 
- <footer><details><summary>Under the hood</summary><ul class="log" id="log"><li>Do something and this lists which data structure ran.</li></ul></details></footer>
-</main>
-
-<div class="bk" id="bk"></div>
-<aside class="dr glass" id="dr" aria-label="Cart" aria-hidden="true"><button class="btn sm" id="cl" style="align-self:flex-end">Close</button><h2>Your cart</h2><div id="cartin"></div></aside>
+<div id="app" hidden>
+ <nav class="glass">
+  <a class="logo" href="#top" aria-label="Zwigato home"><svg aria-hidden="true"><use href="#mark"/></svg>Zwigato</a>
+  <div class="nr"><span class="who" id="who"></span><button class="btn p" id="cartb">Cart · 0</button><button class="btn" id="out">Log out</button></div>
+ </nav>
+ <main class="wrap" id="top">
+  <section class="hero">
+   <h1 class="big">Good food,<br><b>quietly fast.</b></h1>
+   <p class="lead">Pick a restaurant in Pantnagar, open its menu, and follow your order through the kitchen.</p>
+   <div class="sb glass"><input id="q" type="search" autocomplete="off" placeholder="Search a restaurant or dish…" aria-label="Search restaurants or dishes"></div>
+   <div class="trie" id="trie"></div>
+  </section>
+  <h2 id="vt">Restaurants</h2>
+  <div id="view"></div>
+  <h2>Trending</h2><div class="trend" id="tr"></div>
+  <h2 id="board">Kitchen board</h2>
+  <p class="lead" style="margin-top:-6px">The oldest waiting order is cooked first. Cancelled orders are skipped.</p>
+  <p><button class="btn p" id="next">Cook next order</button></p>
+  <div class="bd">
+   <div class="glass col"><h3>Waiting</h3><div id="wq"></div></div>
+   <div class="glass col"><h3>Cooking</h3><div id="ck"></div></div>
+   <div class="glass col"><h3>Delivered</h3><div id="dv"></div></div>
+  </div>
+  <footer><details><summary>Under the hood</summary><ul class="log" id="log"><li>Do something and this lists which data structure ran.</li></ul></details></footer>
+ </main>
+ <div class="bk" id="bk"></div>
+ <aside class="dr glass" id="dr" aria-label="Cart" aria-hidden="true"><button class="btn sm" id="cl" style="align-self:flex-end">Close</button><h2>Your cart</h2><div id="cartin"></div></aside>
+</div>
 
 <script>
 const $=s=>document.querySelector(s);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const inr=n=>"₹"+n;
-// Trie
+// ---- Trie ----
 class Node{constructor(){this.c={};this.r=new Set()}}
 class Trie{
  constructor(){this.root=new Node()}
@@ -135,17 +162,55 @@ class Trie{
  find(q){let out=null;for(const w of q.toLowerCase().trim().split(/\s+/).filter(Boolean)){const n=this.walk(w);const s=n?n.r:new Set();out=out?new Set([...out].filter(x=>s.has(x))):new Set(s)}return out||new Set()}
  path(w){const st=[];let n=this.root;for(const ch of w){n=n.c[ch];if(!n){st.push({ch,n:0});return{st,next:[],dead:true}}st.push({ch,n:n.r.size})}return{st,next:Object.keys(n.c).sort()}}
 }
+// ---- Data (menus are sample dishes and prices; replace with real ones) ----
+const R=(id,name,tag,em,items)=>({id,name,tag,em,menu:items});
 const DATA=[
- {id:1,name:"Pizza Palace",tag:"Italian",em:"🍕",menu:[["Margherita Pizza","Basil, mozzarella",250],["Pasta Alfredo","Creamy white sauce",180],["Garlic Bread","Toasted, buttery",90]]},
- {id:2,name:"Spice Garden",tag:"North Indian",em:"🍛",menu:[["Chicken Biryani","Dum style, with raita",220],["Paneer Butter Masala","Rich tomato gravy",210],["Butter Naan","Fresh from the tandoor",40]]},
- {id:3,name:"Dosa Corner",tag:"South Indian",em:"🥞",menu:[["Masala Dosa","Crisp, potato filling",120],["Idli Sambar","Soft idlis, hot sambar",80],["Filter Coffee","Strong and frothy",50]]},
- {id:4,name:"Wok Express",tag:"Chinese",em:"🥡",menu:[["Veg Noodles","Wok-tossed, smoky",140],["Chilli Paneer","Spicy, with capsicum",190],["Spring Rolls","Crunchy, with dip",110]]}
+ R(5,"Welcome Restaurant","Restaurant","🍽️",[["Dal Makhani",180],["Paneer Tikka",220],["Tandoori Roti",20]]),
+ R(6,"Fartyal Restaurant","Restaurant","🍛",[["Rajma Chawal",110],["Veg Thali",150],["Butter Roti",15]]),
+ R(7,"The Pizza Bite","Pizza","🍕",[["Veg Pizza",199],["Cheese Garlic Bread",99],["White Sauce Pasta",149]]),
+ R(8,"Satnaam Ji Burger and Momos","Chinese, Fast food","🥟",[["Veg Burger",60],["Steamed Momos",70],["Fried Momos",90]]),
+ R(9,"Moments Cafe","Cafe","☕",[["Cold Coffee",110],["Pasta",150],["Chocolate Shake",120]]),
+ R(10,"Kesari","Veg, Snacks","🍚",[["Veg Biryani",140],["Samosa",20],["Masala Chai",25]]),
+ R(11,"The Chocolate Room","Cafe","🍫",[["Hot Chocolate",130],["French Fries",90],["Cheese Pizza",180]]),
+ R(12,"Chotu Momos","Momos","🥡",[["Steamed Momos",60],["Chilli Momos",90],["Momo Soup",50]]),
+ R(1,"Pizza Palace","Sample · Italian","🍕",[["Margherita Pizza",250],["Pasta Alfredo",180],["Garlic Bread",90]]),
+ R(2,"Spice Garden","Sample · North Indian","🍗",[["Chicken Biryani",220],["Paneer Butter Masala",210],["Butter Naan",40]]),
+ R(3,"Dosa Corner","Sample · South Indian","🥞",[["Masala Dosa",120],["Idli Sambar",80],["Filter Coffee",50]]),
+ R(4,"Wok Express","Sample · Chinese","🍜",[["Veg Noodles",140],["Chilli Paneer",190],["Spring Rolls",110]])
 ];
-const restaurants=new Map(),orders=new Map(),queue=[],freq=new Map();let head=0,seq=1,cart=null,query="",voided=0;
+const users=new Map();           // HashMap: email -> {name, pass}
+const restaurants=new Map(),orders=new Map(),queue=[],freq=new Map();
+let head=0,seq=1,cart=null,query="",voided=0,user=null,view=null,mode="login";
 const trie=new Trie(),logs=[];
 const log=(a,b)=>{logs.unshift(`<li><b>${a}:</b> ${b}</li>`);logs.length=Math.min(logs.length,6);$("#log").innerHTML=logs.join("")};
-DATA.forEach(r=>{const m=new Map();r.menu.forEach(([name,desc,price],i)=>{m.set(i+1,{id:i+1,name,desc,price});trie.insert(name,`i${r.id}:${i+1}`)});restaurants.set(r.id,{...r,menu:m});trie.insert(r.name,`r${r.id}`)});
+DATA.forEach(r=>{const m=new Map();r.menu.forEach(([name,price],i)=>{m.set(i+1,{id:i+1,name,price});trie.insert(name,`i${r.id}:${i+1}`)});restaurants.set(r.id,{...r,menu:m});trie.insert(r.name,`r${r.id}`)});
 
+// ---- Auth ----
+function setMode(m){mode=m;const s=m==="signup";
+ $("#tl").classList.toggle("on",!s);$("#ts").classList.toggle("on",s);$("#nl").hidden=!s;
+ $("#at").textContent=s?"Create account":"Welcome back";$("#go").textContent=s?"Sign up":"Log in";
+ $("#pw").autocomplete=s?"new-password":"current-password";$("#err").textContent=""}
+function submitAuth(){
+ const name=$("#nm").value.trim(),email=$("#em").value.trim().toLowerCase(),pass=$("#pw").value;
+ const err=t=>{$("#err").textContent=t};
+ if(!/^\S+@\S+\.\S+$/.test(email))return err("Enter a valid email address.");
+ if(pass.length<6)return err("Password must be at least 6 characters.");
+ if(mode==="signup"){
+  if(!name)return err("Please enter your name.");
+  if(users.has(email))return err("An account with this email already exists. Log in instead.");
+  users.set(email,{name,pass});log("Sign up","HashMap set keyed by email, O(1). Duplicate emails are caught by a key lookup");
+ }else{
+  const u=users.get(email);
+  if(!u||u.pass!==pass)return err("Wrong email or password.");
+  log("Log in","HashMap get by email, O(1), then compare password");
+ }
+ enter(users.get(email).name);
+}
+function enter(name){user=name;$("#auth").hidden=true;$("#app").hidden=false;$("#who").textContent="Hi, "+name;$("#err").textContent="";scrollTo(0,0);render()}
+function logout(){user=null;cart=null;view=null;$("#pw").value="";toggle(false);$("#app").hidden=true;$("#auth").hidden=false}
+
+// ---- Orders ----
+function openRest(id){view=id;render();scrollTo({top:$("#vt").offsetTop-90})}
 function addItem(rid,iid,d=1){
  if(!cart||cart.rid!==rid)cart={rid,items:new Map()};
  const q=(cart.items.get(iid)||0)+d;q<=0?cart.items.delete(iid):cart.items.set(iid,q);
@@ -171,25 +236,37 @@ function cookNext(){
 function deliver(id){const o=orders.get(id);if(o&&o.status==="PROCESSING"){o.status="DELIVERED";log("Deliver","HashMap lookup + state change");render()}}
 function toggle(on){$("#dr").classList.toggle("on",on);$("#bk").classList.toggle("on",on);$("#dr").setAttribute("aria-hidden",!on);if(on)$("#cl").focus()}
 
+// ---- Render ----
 function render(){
+ if(!user)return;
  const last=query.toLowerCase().trim().split(/\s+/).pop()||"";const p=trie.path(last);
  let h=p.st.map(s=>`<span class="chip glass">${esc(s.ch)}<small>${s.n}</small></span>`).join("");
  const next=last?p.next:Object.keys(trie.root.c).sort();
  h+=p.dead?`<span>Nothing continues with “${esc(last)}”. Delete a letter.</span>`:(next.length?`<span>${last?"next":"start with"}</span><span class="nx">${next.map(c=>`<button data-c="${c}" aria-label="Add letter ${c}">${c}</button>`).join("")}</span>`:`<span>End of the branch.</span>`);
  $("#trie").innerHTML=h;
 
- let rIds=null,hits=new Set();
- if(query.trim()){hits=trie.find(query);rIds=new Set([...hits].map(k=>+k.slice(1).split(":")[0]))}
- const list=[...restaurants.values()].filter(r=>!rIds||rIds.has(r.id));
- $("#grid").innerHTML=list.length?list.map(r=>`<article class="glass rc"><div class="rh"><span class="e" aria-hidden="true">${r.em}</span><div><h3>${r.name}</h3><small>${r.tag}</small></div></div>
-  ${[...r.menu.values()].map(it=>{const q=cart&&cart.rid===r.id?cart.items.get(it.id)||0:0;
-   return `<div class="d ${hits.has(`i${r.id}:${it.id}`)?"hit":""}"><div class="n">${it.name}<small>${it.desc}</small></div><b>${inr(it.price)}</b>
-   ${q?`<div class="stp"><button onclick="addItem(${r.id},${it.id},-1)" aria-label="Remove one ${it.name}">−</button><b>${q}</b><button onclick="addItem(${r.id},${it.id},1)" aria-label="Add one ${it.name}">+</button></div>`:`<button class="btn p sm" onclick="addItem(${r.id},${it.id})" aria-label="Add ${it.name}">Add</button>`}</div>`}).join("")}</article>`).join(""):`<div class="glass empty">Nothing starts with “${esc(query)}”. Try a shorter word.</div>`;
+ if(view!==null){
+  const r=restaurants.get(view);$("#vt").textContent="Menu";
+  $("#view").innerHTML=`<button class="btn sm" onclick="openRest(null)">← All restaurants</button>
+  <div class="glass mh"><span class="e" aria-hidden="true">${r.em}</span><div><h3>${r.name}</h3><small>${r.tag}</small></div></div>
+  <p class="note">Sample dishes and prices for now.</p>
+  <div class="glass menu">${[...r.menu.values()].map(it=>{const q=cart&&cart.rid===r.id?cart.items.get(it.id)||0:0;
+   return `<div class="d"><span class="n">${it.name}</span><b>${inr(it.price)}</b>${q?`<div class="stp"><button onclick="addItem(${r.id},${it.id},-1)" aria-label="Remove one ${it.name}">−</button><b>${q}</b><button onclick="addItem(${r.id},${it.id},1)" aria-label="Add one ${it.name}">+</button></div>`:`<button class="btn p sm" onclick="addItem(${r.id},${it.id})" aria-label="Add ${it.name}">Add</button>`}</div>`}).join("")}</div>`;
+ }else{
+  $("#vt").textContent="Restaurants";
+  let rIds=null,hits=new Set();
+  if(query.trim()){hits=trie.find(query);rIds=new Set([...hits].map(k=>+k.slice(1).split(":")[0]))}
+  const list=[...restaurants.values()].filter(r=>!rIds||rIds.has(r.id));
+  $("#view").innerHTML=list.length?`<div class="grid">${list.map(r=>{
+   const m=[...r.menu.values()].filter(it=>hits.has(`i${r.id}:${it.id}`));
+   return `<button class="glass rcard" onclick="openRest(${r.id})"><span class="e" aria-hidden="true">${r.em}</span><span><h3>${r.name}</h3><small>${r.tag}</small>${m.length?`<span class="mt">${m.map(i=>`<span>${i.name}</span>`).join("")}</span>`:""}</span><span class="go">Menu →</span></button>`}).join("")}</div>`
+   :`<div class="glass empty">Nothing starts with “${esc(query)}”. Try a shorter word.</div>`;
+ }
 
  let n=0,t=0;
  if(cart){const r=restaurants.get(cart.rid);
-  $("#cartin").innerHTML=`<p style="color:var(--muted);margin:0 0 6px">From ${r.name}</p>`+[...cart.items].map(([i,q])=>{const it=r.menu.get(i);n+=q;t+=it.price*q;return `<div class="row"><span>${it.name}</span><span class="stp"><button onclick="addItem(${r.id},${i},-1)" aria-label="Remove one">−</button><b>${q}</b><button onclick="addItem(${r.id},${i},1)" aria-label="Add one">+</button></span></div>`}).join("")+`<div class="tot"><span>Total</span><span>${inr(t)}</span></div><button class="btn p" style="width:100%;justify-content:center;padding:14px" onclick="placeOrder()">Place order</button>`;
- }else $("#cartin").innerHTML=`<div class="empty" style="padding:0">Your cart is empty. Add a dish to begin.</div>`;
+  $("#cartin").innerHTML=`<p style="color:var(--muted);margin:0 0 6px">From ${r.name}</p>`+[...cart.items].map(([i,q])=>{const it=r.menu.get(i);n+=q;t+=it.price*q;return `<div class="row"><span>${it.name}</span><span class="stp"><button onclick="addItem(${r.id},${i},-1)" aria-label="Remove one">−</button><b>${q}</b><button onclick="addItem(${r.id},${i},1)" aria-label="Add one">+</button></span></div>`}).join("")+`<div class="tot"><span>Total</span><span>${inr(t)}</span></div><button class="btn p wide" onclick="placeOrder()">Place order</button>`;
+ }else $("#cartin").innerHTML=`<div class="empty" style="padding:0">Your cart is empty. Open a restaurant and add a dish.</div>`;
  $("#cartb").textContent=`Cart · ${n}`;
 
  const top=[...freq].sort((a,b)=>b[1]-a[1]).slice(0,3);
@@ -199,18 +276,19 @@ function render(){
  $("#wq").innerHTML=pq.length?pq.map((o,i)=>`<div class="tk ${o.status==="CANCELLED"?"void":""}"><div class="t"><span>#${o.id} · ${restaurants.get(o.rid).name}</span>${i===0&&o.status==="PENDING"?`<span class="tag">Next</span>`:o.status==="CANCELLED"?`<span class="tag">Void</span>`:""}</div>
   <small>${o.items.map(x=>x.q+" × "+x.name).join(", ")} · ${inr(o.total)}</small>${o.status==="PENDING"?`<button class="btn sm" onclick="cancelOrder(${o.id})">Cancel</button>`:""}</div>`).join(""):`<div class="empty" style="padding:0">No orders waiting.</div>`;
  $("#next").disabled=!pq.some(o=>o.status==="PENDING");
- const all=[...orders.values()];
- const ck=all.filter(o=>o.status==="PROCESSING");
+ const all=[...orders.values()],ck=all.filter(o=>o.status==="PROCESSING"),dv=all.filter(o=>o.status==="DELIVERED");
  $("#ck").innerHTML=ck.length?ck.map(o=>`<div class="tk"><div class="t"><span>#${o.id} · ${restaurants.get(o.rid).name}</span><span aria-hidden="true">🍳</span></div><small>${o.items.map(x=>x.q+" × "+x.name).join(", ")}</small><button class="btn p sm" onclick="deliver(${o.id})">Mark delivered</button></div>`).join(""):`<div class="empty" style="padding:0">Nothing cooking.</div>`;
- const dv=all.filter(o=>o.status==="DELIVERED");
  $("#dv").innerHTML=dv.length?dv.map(o=>`<div class="tk"><div class="t"><span>#${o.id} · ${restaurants.get(o.rid).name}</span><span>${inr(o.total)}</span></div><small>Delivered</small></div>`).join("")+(voided?`<small style="color:var(--muted)">${voided} void order${voided>1?"s":""} discarded</small>`:""):`<div class="empty" style="padding:0">No deliveries yet.</div>`;
 }
-$("#q").addEventListener("input",e=>{query=e.target.value;if(query.trim())log("Search","Trie walk, one step per letter. The number on each step is how many entries pass through it");render()});
+// ---- Events ----
+$("#tl").onclick=()=>setMode("login");$("#ts").onclick=()=>setMode("signup");$("#go").onclick=submitAuth;
+$("#guest").onclick=()=>enter("guest");$("#out").onclick=logout;
+$("#auth").addEventListener("keydown",e=>{if(e.key==="Enter")submitAuth()});
+$("#q").addEventListener("input",e=>{query=e.target.value;view=null;if(query.trim())log("Search","Trie walk, one step per letter. The number on each step is how many entries pass through it");render()});
 $("#trie").addEventListener("click",e=>{const b=e.target.closest("button[data-c]");if(!b)return;const i=$("#q");i.value+=b.dataset.c;i.dispatchEvent(new Event("input"));i.focus()});
-$("#cartb").addEventListener("click",()=>toggle(true));$("#cl").addEventListener("click",()=>toggle(false));$("#bk").addEventListener("click",()=>toggle(false));
-$("#next").addEventListener("click",cookNext);
+$("#cartb").onclick=()=>toggle(true);$("#cl").onclick=()=>toggle(false);$("#bk").onclick=()=>toggle(false);
+$("#next").onclick=cookNext;
 document.addEventListener("keydown",e=>{if(e.key==="Escape")toggle(false)});
-render();
 </script>
 </body>
 </html>
