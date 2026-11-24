@@ -9,14 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #FAF7F2;
+  --bg: #F8F6F2;
   --surface: #FFFFFF;
-  --surface-alt: #F3ECE2;
+  --surface-alt: #F1ECE3;
   --glass: rgba(255, 255, 255, 0.88);
-  --ink: #18181B;
+  --ink: #141416;
   --muted: #6B655E;
-  --border: rgba(24, 24, 27, 0.09);
-  --border-strong: rgba(24, 24, 27, 0.18);
+  --border: rgba(20, 20, 22, 0.09);
+  --border-strong: rgba(20, 20, 22, 0.18);
   --acc: #E04E2A;
   --acc-hover: #C93E1C;
   --acc-soft: rgba(224, 78, 42, 0.11);
@@ -27,8 +27,8 @@
   --veg-soft: rgba(22, 163, 74, 0.13);
   --nonveg: #DC2626;
   --nonveg-soft: rgba(220, 38, 38, 0.12);
-  --sh: 0 10px 30px rgba(24, 24, 27, 0.06);
-  --sh-lg: 0 22px 54px rgba(24, 24, 27, 0.14);
+  --sh: 0 10px 30px rgba(20, 20, 22, 0.06);
+  --sh-lg: 0 22px 54px rgba(20, 20, 22, 0.14);
   --serif: 'Fraunces', Georgia, serif;
   --sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
@@ -82,7 +82,7 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 22px;
-  box-shadow: 0 2px 8px rgba(24, 24, 27, 0.03), var(--sh);
+  box-shadow: 0 2px 8px rgba(20, 20, 22, 0.03), var(--sh);
   transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.24s ease, border-color 0.2s ease;
 }
 
@@ -90,8 +90,8 @@ body {
   background: var(--glass);
   border: 1px solid var(--border);
   box-shadow: var(--sh);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
 }
 
 /* =========================================================
@@ -109,7 +109,7 @@ body {
   transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.55s ease;
 }
 .splash.zoom-out { animation: netflixPushThrough 0.68s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
-.splash.out { opacity: 0; visibility: hidden; pointer-events: none; display: none; }
+.splash.out { opacity: 0; visibility: hidden; pointer-events: none; display: none !important; }
 @keyframes netflixPushThrough {
   0% { transform: scale(1); opacity: 1; }
   65% { transform: scale(3.2); opacity: 0.75; }
@@ -133,7 +133,7 @@ body {
 @keyframes sparkPop { 0% { opacity: 0; transform: scale(0); } 100% { opacity: 1; transform: scale(1); } }
 @keyframes sheenSweep { 0% { transform: translateX(-140%); } 100% { transform: translateX(140%); } }
 .splash-title {
-  font: 800 42px/1.05 var(--serif); color: #FAF7F2; letter-spacing: 0.24em; text-transform: uppercase;
+  font: 800 42px/1.05 var(--serif); color: #F8F6F2; letter-spacing: 0.24em; text-transform: uppercase;
   margin: 22px 0 8px; opacity: 0; animation: wordmarkExpand 0.7s 0.76s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   text-shadow: 0 6px 28px rgba(224, 78, 42, 0.55);
 }
@@ -147,7 +147,7 @@ body {
 .skip-intro-btn {
   position: fixed; bottom: calc(26px + env(safe-area-inset-bottom, 0px)); right: 26px; z-index: 125;
   padding: 10px 18px; border-radius: 99px; border: 1px solid rgba(255, 255, 255, 0.24);
-  background: rgba(255, 255, 255, 0.09); color: #FAF7F2; font: 700 13px var(--sans);
+  background: rgba(255, 255, 255, 0.09); color: #F8F6F2; font: 700 13px var(--sans);
   cursor: pointer; backdrop-filter: blur(8px); transition: background 0.2s ease, transform 0.15s ease;
 }
 .skip-intro-btn:hover { background: rgba(224, 78, 42, 0.85); border-color: #E04E2A; transform: translateY(-1px); }
@@ -177,7 +177,7 @@ h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 700; margin: 0; }
 .btn.primary { background: var(--acc); border-color: var(--acc); color: #FFF; box-shadow: 0 6px 18px var(--acc-glow); }
 .btn.primary:hover:not(:disabled) { background: var(--acc-hover); border-color: var(--acc-hover); }
 .btn.veg { background: var(--veg); border-color: var(--veg); color: #FFF; }
-.btn.ai { background: linear-gradient(135deg, #18181B, #3F3F46); border-color: #18181B; color: #FAF7F2; }
+.btn.ai { background: linear-gradient(135deg, #141416, #3F3F46); border-color: #141416; color: #F8F6F2; }
 :root[data-theme="dark"] .btn.ai { background: linear-gradient(135deg, #E04E2A, #D97706); border-color: transparent; color: #FFF; }
 .btn.sm { padding: 8px 13px; font-size: 12.5px; min-height: 34px; }
 .btn.xs { padding: 6px 10px; font-size: 11.5px; min-height: 28px; }
@@ -260,7 +260,7 @@ nav.topbar {
 .auth-tools { position: absolute; top: 16px; right: 16px; display: flex; gap: 8px; }
 .auth-shell { width: min(960px, 100%); display: grid; grid-template-columns: 1fr; overflow: hidden; }
 @media (min-width: 820px) { .auth-shell { grid-template-columns: 0.94fr 1.06fr; } }
-.auth-visual { display: none; position: relative; background: #18181B; color: #FAF7F2; padding: 36px 32px; flex-direction: column; justify-content: space-between; overflow: hidden; }
+.auth-visual { display: none; position: relative; background: #141416; color: #F8F6F2; padding: 36px 32px; flex-direction: column; justify-content: space-between; overflow: hidden; }
 @media (min-width: 820px) { .auth-visual { display: flex; } }
 .auth-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; }
 .auth-visual-inner { position: relative; z-index: 2; }
@@ -396,7 +396,7 @@ nav.topbar {
    ========================================================= */
 .promo-carousel { position: relative; border-radius: 24px; overflow: hidden; margin: 18px 0 22px; box-shadow: var(--sh-lg); }
 .promo-track { display: flex; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
-.promo-slide { flex: 0 0 100%; min-height: 185px; padding: 26px 24px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; color: #FAF7F2; }
+.promo-slide { flex: 0 0 100%; min-height: 185px; padding: 26px 24px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; color: #F8F6F2; }
 @media (min-width: 768px) { .promo-slide { min-height: 210px; padding: 32px 38px; } }
 .promo-slide h3 { font-size: clamp(22px, 4vw, 34px); margin: 6px 0 6px; line-height: 1.1; }
 .promo-slide p { margin: 0 0 16px; font-size: 13.5px; opacity: 0.92; max-width: 46ch; }
@@ -434,10 +434,11 @@ nav.topbar {
 .gem-card { flex: 0 0 min(325px, 84vw); scroll-snap-align: start; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.22s ease, border-color 0.22s ease; }
 .gem-card:hover { transform: translateY(-4px); border-color: var(--acc); }
 .gem-media { position: relative; height: 148px; background: var(--surface-alt); overflow: hidden; }
+.gem-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,20,22,0.34) 0%, transparent 45%, rgba(20,20,22,0.26) 100%); pointer-events: none; }
 .gem-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
 .gem-card:hover .gem-media img { transform: scale(1.05); }
-.tag-dist { position: absolute; top: 10px; left: 10px; padding: 4px 10px; border-radius: 99px; background: rgba(24, 24, 27, 0.8); color: #FAF7F2; font-size: 11px; font-weight: 700; }
-.tag-flash { position: absolute; bottom: 10px; right: 10px; padding: 4px 10px; border-radius: 99px; background: var(--acc); color: #FFF; font-size: 11px; font-weight: 800; }
+.tag-dist { position: absolute; top: 10px; left: 10px; z-index: 2; padding: 4px 10px; border-radius: 99px; background: rgba(20, 20, 22, 0.8); color: #F8F6F2; font-size: 11px; font-weight: 700; }
+.tag-flash { position: absolute; bottom: 10px; right: 10px; z-index: 2; padding: 4px 10px; border-radius: 99px; background: var(--acc); color: #FFF; font-size: 11px; font-weight: 800; }
 .gem-content { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
 
 .trend-card { flex: 0 0 min(280px, 80vw); scroll-snap-align: start; padding: 14px; display: flex; align-items: center; gap: 12px; cursor: pointer; }
@@ -462,10 +463,11 @@ nav.topbar {
 .rest-card { overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.22s ease, box-shadow 0.22s ease; }
 .rest-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); border-color: var(--acc); }
 .rest-cover { position: relative; height: 162px; background: var(--surface-alt); overflow: hidden; }
+.rest-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,20,22,0.34) 0%, transparent 50%); pointer-events: none; }
 .rest-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
 .rest-card:hover .rest-cover img { transform: scale(1.05); }
-.cover-badges { position: absolute; top: 11px; left: 11px; right: 11px; display: flex; justify-content: space-between; gap: 6px; }
-.c-badge { padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 800; background: rgba(24, 24, 27, 0.78); color: #FAF7F2; }
+.cover-badges { position: absolute; top: 11px; left: 11px; right: 11px; z-index: 2; display: flex; justify-content: space-between; gap: 6px; }
+.c-badge { padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 800; background: rgba(20, 20, 22, 0.78); color: #F8F6F2; }
 .c-badge.flash { background: var(--acc); color: #FFF; }
 .c-badge.fast { background: var(--veg); color: #FFF; }
 .rest-body { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; }
@@ -474,6 +476,8 @@ nav.topbar {
 .rest-meta { display: flex; align-items: center; gap: 10px; margin-top: 8px; font-size: 12.5px; font-weight: 700; }
 .rate-pill { padding: 2px 8px; border-radius: 99px; background: var(--veg-soft); color: var(--veg); }
 .rest-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12.5px; }
+.match-dishes { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.match-dish-pill { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--acc-soft); color: var(--acc); }
 
 /* =========================================================
    MENU DETAIL VIEW (RESPONSIVE 1-COL MOBILE, 2-COL DESKTOP)
@@ -486,6 +490,7 @@ nav.topbar {
 .menu-list { display: grid; grid-template-columns: 1fr; overflow: hidden; }
 @media (min-width: 1024px) { .menu-list { grid-template-columns: repeat(2, 1fr); } }
 .dish-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 18px; border-bottom: 1px solid var(--border); }
+.dish-row.search-hit { background: var(--acc-soft); box-shadow: inset 3px 0 0 var(--acc); }
 @media (min-width: 1024px) { .dish-row:nth-child(odd) { border-right: 1px solid var(--border); } }
 .dish-row.sold-out { opacity: 0.58; }
 .dish-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
@@ -509,7 +514,7 @@ nav.topbar {
 /* =========================================================
    DRAWERS (BOTTOM SHEET ON MOBILE, SIDE DRAWER ON DESKTOP)
    ========================================================= */
-.backdrop { position: fixed; inset: 0; background: rgba(24, 24, 27, 0.48); backdrop-filter: blur(4px); z-index: 60; display: none; }
+.backdrop { position: fixed; inset: 0; background: rgba(20, 20, 22, 0.48); backdrop-filter: blur(4px); z-index: 60; display: none; }
 .backdrop.on { display: block; }
 
 .drawer {
@@ -517,8 +522,9 @@ nav.topbar {
   background: var(--surface); border-top: 1px solid var(--border); border-radius: 24px 24px 0 0;
   box-shadow: var(--sh-lg); transform: translateY(105%);
   transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-  display: flex; flex-direction: column; overflow-y: auto; padding: 20px 18px calc(24px + env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; overflow-y: auto; padding: 14px 18px calc(24px + env(safe-area-inset-bottom, 0px));
 }
+.drawer::before { content: ""; width: 42px; height: 4px; border-radius: 99px; background: var(--border-strong); margin: 0 auto 12px; flex: none; }
 .drawer.on { transform: translateY(0); }
 
 @media (min-width: 768px) {
@@ -527,6 +533,7 @@ nav.topbar {
     border-top: 0; border-left: 1px solid var(--border); border-radius: 0;
     transform: translateX(105%); padding: 24px;
   }
+  .drawer::before { display: none; }
   .drawer.on { transform: translateX(0); }
 }
 
@@ -560,7 +567,7 @@ nav.topbar {
 
 .ai-fab {
   position: fixed; bottom: 78px; right: 16px; z-index: 50; padding: 12px 18px; border-radius: 99px; border: 0;
-  background: #18181B; color: #FAF7F2; font: 800 13.5px var(--sans); box-shadow: 0 14px 34px rgba(24, 24, 27, 0.34);
+  background: #141416; color: #F8F6F2; font: 800 13.5px var(--sans); box-shadow: 0 14px 34px rgba(20, 20, 22, 0.34);
   cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
 }
 @media (min-width: 768px) { .ai-fab { bottom: 22px; right: 22px; } }
@@ -626,44 +633,42 @@ nav.topbar {
 .order-ticket { padding: 14px; border-radius: 16px; background: var(--bg); border: 1px solid var(--border-strong); margin-bottom: 10px; }
 .partner-split { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 34px; }
 @media (min-width: 880px) { .partner-split { grid-template-columns: 1.2fr 0.8fr; } }
-.bar-item { margin-bottom: 12px; }
-.bar-top { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-.bar-bg { height: 9px; border-radius: 99px; background: var(--surface-alt); overflow: hidden; }
-.bar-val { height: 100%; border-radius: 99px; background: var(--acc); }
-
-footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border); margin-top: 48px; color: var(--muted); font-size: 13.5px; }
-@media (min-width: 768px) { footer.brand-footer { padding: 46px 0 64px; } }
-.footer-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-@media (min-width: 560px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 860px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
-.footer-col h4 { margin: 0 0 12px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); }
-.footer-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.footer-col a { color: var(--muted); text-decoration: none; font-weight: 600; cursor: pointer; }
-.footer-col a:hover { color: var(--acc); }
-
-.toasts { position: fixed; bottom: 82px; left: 50%; transform: translateX(-50%); z-index: 95; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
-@media (min-width: 768px) { .toasts { bottom: 22px; } }
-.toast-msg { background: #18181B; color: #FAF7F2; padding: 11px 18px; border-radius: 99px; font-size: 13px; font-weight: 700; box-shadow: var(--sh-lg); border: 1px solid rgba(255,255,255,0.14); }
-
-.modal-backdrop { position: fixed; inset: 0; background: rgba(24, 24, 27, 0.55); backdrop-filter: blur(4px); z-index: 90; display: none; place-items: center; padding: 18px; }
-.modal-backdrop.on { display: grid; }
-.modal-card { width: min(460px, 100%); padding: 24px; background: var(--surface); border-radius: 24px; border: 1px solid var(--border-strong); box-shadow: var(--sh-lg); }
 </style>
 </head>
 <body>
-
-<!-- Brand Emblem -->
+<!-- Brand Emblem: Option 1 - The Folded Ribbon Z -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="z-logo" viewBox="0 0 44 44">
     <defs>
-      <linearGradient id="zGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#F05D38"/>
-        <stop offset="100%" stop-color="#C93E1C"/>
+      <linearGradient id="zRibbonTop" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#C93E1C"/>
+        <stop offset="55%" stop-color="#E04E2A"/>
+        <stop offset="100%" stop-color="#F59E0B"/>
       </linearGradient>
+      <linearGradient id="zRibbonDiag" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#9A260D"/>
+        <stop offset="45%" stop-color="#E04E2A"/>
+        <stop offset="100%" stop-color="#F59E0B"/>
+      </linearGradient>
+      <linearGradient id="zRibbonBot" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#E04E2A"/>
+        <stop offset="100%" stop-color="#F59E0B"/>
+      </linearGradient>
+      <filter id="zLogoShadow" x="-15%" y="-15%" width="130%" height="130%">
+        <feDropShadow dx="0" dy="2" stdDeviation="1.6" flood-color="#9A260D" flood-opacity="0.32"/>
+      </filter>
     </defs>
-    <rect width="44" height="44" rx="14" fill="url(#zGrad)"/>
-    <path d="M13 14.5h18L13 29.5h18" fill="none" stroke="#FAF7F2" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="31.5" cy="13.5" r="3.2" fill="#F59E0B"/>
+    <rect width="44" height="44" rx="13" fill="#141416"/>
+    <g filter="url(#zLogoShadow)">
+      <!-- Top horizontal folded ribbon -->
+      <polygon points="10,11 34,11 29.5,17.5 10,17.5" fill="url(#zRibbonTop)"/>
+      <!-- Diagonal interlocking ribbon -->
+      <polygon points="27.5,11 34,11 16.5,33 10,33" fill="url(#zRibbonDiag)"/>
+      <!-- Fold crease shadow -->
+      <polygon points="27.5,11 31,11 28,17.5 24.5,17.5" fill="#141416" opacity="0.22"/>
+      <!-- Bottom horizontal folded ribbon -->
+      <polygon points="14.5,26.5 34,26.5 34,33 10,33" fill="url(#zRibbonBot)"/>
+    </g>
   </symbol>
 </svg>
 
@@ -676,18 +681,23 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
           <linearGradient id="nfTopBot" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="#B83314"/>
             <stop offset="50%" stop-color="#E04E2A"/>
-            <stop offset="100%" stop-color="#FF6B42"/>
+            <stop offset="100%" stop-color="#F59E0B"/>
           </linearGradient>
           <linearGradient id="nfDiag" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0%" stop-color="#9A260D"/>
             <stop offset="50%" stop-color="#E04E2A"/>
             <stop offset="100%" stop-color="#F59E0B"/>
           </linearGradient>
+          <filter id="nfFoldDepth" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000000" flood-opacity="0.55"/>
+          </filter>
         </defs>
-        <polygon class="nf-bar-top" points="14,16 98,16 84,36 14,36" fill="url(#nfTopBot)"/>
-        <polygon class="nf-bar-diag" points="78,16 98,16 34,108 14,108" fill="url(#nfDiag)"/>
-        <polygon class="nf-bar-bot" points="28,88 98,88 98,108 14,108" fill="url(#nfTopBot)"/>
-        <circle class="nf-spark" cx="92" cy="22" r="6" fill="#F59E0B"/>
+        <g filter="url(#nfFoldDepth)">
+          <polygon class="nf-bar-top" points="14,16 98,16 84,36 14,36" fill="url(#nfTopBot)"/>
+          <polygon class="nf-bar-diag" points="78,16 98,16 34,108 14,108" fill="url(#nfDiag)"/>
+          <polygon class="nf-bar-bot" points="28,88 98,88 98,108 14,108" fill="url(#nfTopBot)"/>
+        </g>
+        <circle class="nf-spark" cx="92" cy="22" r="5.5" fill="#F59E0B"/>
       </svg>
       <div class="nf-sheen"></div>
     </div>
@@ -709,7 +719,7 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
       <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80" alt="Artisanal Indian Feast">
       <div class="auth-visual-inner">
         <span class="badge-pill" style="background:rgba(245,158,11,0.22);color:#FBBF24">Pantnagar, Uttarakhand</span>
-        <h2 style="font-size:32px;margin:14px 0 10px;line-height:1.12;color:#FAF7F2">96+ handcrafted dishes from campus &amp; Kumaon kitchens.</h2>
+        <h2 style="font-size:32px;margin:14px 0 10px;line-height:1.12;color:#F8F6F2">92+ handcrafted dishes from campus &amp; Kumaon kitchens.</h2>
         <p style="font-size:14px;color:#D6D3D1;margin:0">Order from beloved local eateries, track your scooter rider live on the map, or register your own restaurant kitchen in seconds.</p>
       </div>
       <div class="auth-visual-inner" style="display:flex;gap:14px;font-size:12.5px;color:#E7E5E4;flex-wrap:wrap">
@@ -727,7 +737,7 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
       <div class="role-switch" role="radiogroup" aria-label="Select Role">
         <button type="button" class="role-opt on" id="optCust">
           <div>🛵 <strong>Customer</strong></div>
-          <span>Browse 96 dishes, flash deals &amp; live map</span>
+          <span>Browse 92+ dishes, flash deals &amp; live map</span>
         </button>
         <button type="button" class="role-opt" id="optPartner">
           <div>👨‍🍳 <strong>Restaurant Partner</strong></div>
@@ -801,7 +811,7 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
 
         <div class="field">
           <label for="inEmail">Email Address</label>
-          <input id="inEmail" type="email" placeholder="ishaan@gmail.com" autocomplete="email" required>
+          <input id="inEmail" type="email" placeholder="ishaanthusoo80@gmail.com" autocomplete="email" required>
         </div>
         <div class="field">
           <label for="inPass">Password</label>
@@ -863,14 +873,14 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
         <span class="flash-pill">⚡ Flash Drops Live · Ends in <span class="timer" id="flashTimer">14:59</span></span>
       </div>
       <h1>Crafted meals, <em>delivered warm.</em></h1>
-      <p class="sub">Explore 96+ dishes across 12 curated kitchens, grab -25% flash deals, track your scooter rider live, or ask Zwigato AI what matches your mood.</p>
+      <p class="sub">Explore 92+ dishes across 12 curated kitchens, grab -25% flash deals, track your scooter rider live, or ask Zwigato AI what matches your mood.</p>
 
       <div class="search-row">
         <div class="search-box">
           <span aria-hidden="true">🔍</span>
           <input id="searchInput" type="search" autocomplete="off" placeholder="Search 96 dishes, cuisines, or Pantnagar kitchens…">
           <button type="button" class="mic-btn" id="voiceSearchBtn" title="Voice Search" aria-label="Voice Search">🎙️</button>
-          <button type="button" class="btn xs" id="clearSearchBtn" hidden>Clear</button>
+          <button type="button" class="btn xs" id="clearSearchBtn" aria-label="Clear search" hidden>✕</button>
         </div>
         <div class="veg-toggle-wrap" id="vegToggleBtn" role="switch" aria-checked="false" tabindex="0" title="Filter Pure Veg Only">
           <span style="font-size:12px;font-weight:800;color:var(--veg)">VEG</span>
@@ -902,19 +912,19 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
           <span class="badge-pill" style="background:rgba(255,255,255,0.2);color:#FFF">LIMITED TIME</span>
           <h3>ITEMS AT 50% OFF</h3>
           <p>Grab sizzling flash drops on signature Pantnagar dishes before the timer runs out.</p>
-          <button type="button" class="btn sm" style="background:#FFF;color:#18181B;border:0" onclick="setDietFilter('Flash Deals')">Order now →</button>
+          <button type="button" class="btn sm" style="background:#FFF;color:#141416;border:0" onclick="setDietFilter('Flash Deals')">Order now →</button>
         </div>
         <div class="promo-slide" style="background:linear-gradient(135deg,#0284C7,#1D4ED8)">
           <span class="badge-pill" style="background:rgba(255,255,255,0.2);color:#FFF">PROMO CODE</span>
           <h3>MINIMUM ₹125 OFF</h3>
           <p>Use code ZWIGATO50 at checkout on orders ₹149+ for instant savings.</p>
-          <button type="button" class="btn sm" style="background:#FFF;color:#18181B;border:0" onclick="openDrawer();toast('Apply ZWIGATO50 in your cart!')">Order now →</button>
+          <button type="button" class="btn sm" style="background:#FFF;color:#141416;border:0" onclick="openDrawer();toast('Apply ZWIGATO50 in your cart!')">Order now →</button>
         </div>
         <div class="promo-slide" style="background:linear-gradient(135deg,#581C87,#9333EA)">
           <span class="badge-pill" style="background:rgba(255,255,255,0.2);color:#FFF">INTRODUCING</span>
           <h3>HOMELY SUBSCRIPTIONS</h3>
           <p>Daily campus tiffin &amp; homestyle thali plans delivered warm every afternoon.</p>
-          <button type="button" class="btn sm" style="background:#FFF;color:#18181B;border:0" onclick="openExploreModal('Subscriptions')">Explore now →</button>
+          <button type="button" class="btn sm" style="background:#FFF;color:#141416;border:0" onclick="openExploreModal('Subscriptions')">Explore now →</button>
         </div>
       </div>
       <div class="promo-dots" id="promoDots"></div>
@@ -1104,9 +1114,9 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
         <div class="footer-col">
           <h4>Partner With Us</h4>
           <ul>
-            <li><a onclick="$('#quickRoleSwitch').click()">Restaurant Partner Console</a></li>
-            <li><a onclick="toast('Rider onboarding open across Pantnagar & Rudrapur!')">Become a Delivery Valet</a></li>
-            <li><a onclick="toast('Hostel & campus bulk catering desk: care@zwigato.in')">Campus &amp; Event Catering</a></li>
+            <li><a onclick="document.getElementById('quickRoleSwitch').click()">Restaurant Partner Console</a></li>
+            <li><a onclick="toast('Rider onboarding open across Pantnagar &amp; Rudrapur!')">Become a Delivery Valet</a></li>
+            <li><a onclick="toast('Hostel &amp; campus bulk catering desk: care@zwigato.in')">Campus &amp; Event Catering</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -1244,6 +1254,10 @@ function safeSet(key, value) {
 function safeRemove(key) {
   memoryStore.delete(key);
   try { window.localStorage.removeItem(key); } catch (e) {}
+}
+function safeJsonParse(raw, fallback) {
+  if (!raw) return fallback;
+  try { return JSON.parse(raw); } catch (e) { return fallback; }
 }
 function cloneData(obj) {
   if (typeof structuredClone === "function") { try { return structuredClone(obj); } catch (e) {} }
@@ -1516,16 +1530,11 @@ const DEFAULT_DB = {
 };
 
 function loadDB() {
-  try {
-    const raw = safeGet(DB_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (parsed && Array.isArray(parsed.restaurants) && parsed.restaurants.length >= 12) {
-        if (!Array.isArray(parsed.tickets)) parsed.tickets = cloneData(DEFAULT_DB.tickets);
-        return parsed;
-      }
-    }
-  } catch (e) {}
+  const parsed = safeJsonParse(safeGet(DB_KEY), null);
+  if (parsed && Array.isArray(parsed.restaurants) && parsed.restaurants.length >= 12) {
+    if (!Array.isArray(parsed.tickets)) parsed.tickets = cloneData(DEFAULT_DB.tickets);
+    return parsed;
+  }
   return cloneData(DEFAULT_DB);
 }
 
@@ -1547,7 +1556,7 @@ let noPackFeeOnly = false;
 let stickyCartDismissed = false;
 let bottomTab = "home";
 let promoIdx = 0;
-let recentSearches = JSON.parse(safeGet("zwigato_recent_searches") || '["Cake","Biryani","Momos"]');
+let recentSearches = safeJsonParse(safeGet("zwigato_recent_searches"), ["Cake", "Biryani", "Momos"]);
 let inMenuSearch = "";
 let inMenuTag = "All";
 
@@ -1573,6 +1582,7 @@ let autoProgressionTimer = null;
 
 function toast(msg) {
   const stack = $("#toastStack");
+  if (!stack) return;
   const el = document.createElement("div");
   el.className = "toast-msg";
   el.textContent = msg;
@@ -1609,9 +1619,6 @@ function toggleTheme() {
   document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
   safeSet("zwigato_theme", isDark ? "light" : "dark");
 }
-if (safeGet("zwigato_theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
-$("#themeAuthBtn").onclick = toggleTheme;
-$("#themeNavBtn").onclick = toggleTheme;
 
 /* =========================================================
    NETFLIX-STYLE INTRO & SYNTHESIZED AUDIO
@@ -1645,35 +1652,40 @@ function clearSplashTimers() { splashTimers.forEach(clearTimeout); splashTimers 
 function dismissSplash(immediate = false) {
   clearSplashTimers();
   const s = $("#splash");
-  if (!s || s.classList.contains("out")) return;
+  if (!s) return;
   if (immediate) {
-    s.classList.add("out"); s.style.display = "none"; return;
+    s.classList.add("out");
+    s.style.setProperty("display", "none", "important");
+    return;
   }
   s.classList.add("zoom-out");
-  splashTimers.push(setTimeout(() => { s.classList.add("out"); s.style.display = "none"; }, 640));
+  splashTimers.push(setTimeout(() => {
+    s.classList.add("out");
+    s.style.setProperty("display", "none", "important");
+  }, 600));
 }
 
 function runIntroAnimation(withAudio = false) {
   clearSplashTimers();
   const s = $("#splash");
   if (!s) return;
-  s.style.display = "grid";
+  s.style.setProperty("display", "grid", "important");
   s.classList.remove("out", "zoom-out");
   const box = $("#splashBox");
-  if (box) { const clone = box.cloneNode(true); box.parentNode.replaceChild(clone, box); }
+  if (box && box.parentNode) { const clone = box.cloneNode(true); box.parentNode.replaceChild(clone, box); }
   if (withAudio) playNetflixTadum();
-  splashTimers.push(setTimeout(() => dismissSplash(false), 1850));
-  splashTimers.push(setTimeout(() => dismissSplash(true), 3000));
+  splashTimers.push(setTimeout(() => dismissSplash(false), 1650));
+  splashTimers.push(setTimeout(() => dismissSplash(true), 2200));
+  splashTimers.push(setTimeout(() => dismissSplash(true), 2800));
 }
-$("#skipIntroBtn").onclick = () => dismissSplash(true);
-$("#replayIntroBtn").onclick = () => runIntroAnimation(true);
-$("#replayAuthIntroBtn").onclick = () => runIntroAnimation(true);
 
 /* =========================================================
    AUTHENTICATION & ROLE MANAGEMENT
    ========================================================= */
 function populateExistingKitchenSelect() {
-  $("#existingKitchenSel").innerHTML = db.restaurants.map(r =>
+  const sel = $("#existingKitchenSel");
+  if (!sel) return;
+  sel.innerHTML = db.restaurants.map(r =>
     `<option value="${r.id}">${esc(r.name)} (${esc(r.cuisine)})</option>`
   ).join("");
 }
@@ -1698,98 +1710,6 @@ function syncAuthUI() {
   $("#authErr").textContent = "";
 }
 
-$("#optCust").onclick = () => { authRole = "customer"; syncAuthUI(); };
-$("#optPartner").onclick = () => { authRole = "partner"; syncAuthUI(); };
-$("#tabLogin").onclick = () => { authMode = "login"; syncAuthUI(); };
-$("#tabSignup").onclick = () => { authMode = "signup"; syncAuthUI(); };
-$("#partnerMode").onchange = () => {
-  const isNew = $("#partnerMode").value === "new";
-  $("#existingKitchenWrap").hidden = isNew;
-  $("#newKitchenWrap").hidden = !isNew;
-};
-
-$("#authForm").onsubmit = e => {
-  e.preventDefault();
-  const email = $("#inEmail").value.trim().toLowerCase();
-  const pass = $("#inPass").value;
-  const err = msg => { $("#authErr").textContent = msg; };
-
-  if (!/^\S+@\S+\.\S+$/.test(email)) return err("Please enter a valid email address.");
-  if (pass.length < 6) return err("Password must be at least 6 characters.");
-
-  const isGmailMaster = email.endsWith("@gmail.com") && pass === "Ishaan123";
-
-  if (authMode === "signup") {
-    const name = $("#inName").value.trim();
-    if (!name) return err("Please enter your full name.");
-    if (db.users.some(u => u.email === email)) return err("An account with this email already exists. Log in instead.");
-
-    let restId = null;
-    if (authRole === "partner") {
-      if ($("#partnerMode").value === "new") {
-        const kName = $("#nkName").value.trim();
-        const kDish = $("#nkDish").value.trim();
-        const kPrice = Number($("#nkDishPrice").value) || 180;
-        const kEta = Math.max(10, Math.min(60, Number($("#nkEta").value) || 20));
-        const kCat = $("#nkCat").value;
-        if (!kName || !kDish) return err("Please enter your new restaurant name and signature dish.");
-        restId = Math.max(...db.restaurants.map(r => r.id)) + 1;
-        const bannerMap = {"North Indian": PHOTOS.dal, "Italian & Pizza": PHOTOS.pizza, "Fast Food & Chinese": PHOTOS.momos, "Cafe & Shakes": PHOTOS.coffee, "Street Food & Mithai": PHOTOS.samosa};
-        db.restaurants.unshift({
-          id: restId, name: kName, cuisine: kCat, location: "Pantnagar Marketplace",
-          rating: 4.8, etaMins: kEta, distanceKm: 1.0, isFar: false,
-          fssai: "1262600100" + restId, banner: bannerMap[kCat] || PHOTOS.dal,
-          menu: [D(restId * 100 + 1, kDish, kPrice, "Mains", ["Veg", "Bestseller"], bannerMap[kCat] || PHOTOS.paneer, true, true, 12)]
-        });
-        toast(`${kName} is now live on Zwigato!`);
-      } else {
-        restId = Number($("#existingKitchenSel").value) || 1;
-      }
-    }
-
-    const newUser = {
-      email, passHash: simpleHash(pass), name,
-      address: $("#inCustAddr").value.trim() || "Subhash Bhawan, Pantnagar",
-      role: authRole, restaurantId: restId, avatarId: "initials"
-    };
-    db.users.push(newUser);
-    db.session = {email: newUser.email, role: newUser.role};
-    saveDB();
-    enterApp(newUser);
-  } else {
-    let user = db.users.find(u => u.email === email);
-    if (!user) {
-      const derivedName = email.split("@")[0].replace(/[^a-zA-Z0-9]/g, " ").replace(/\b\w/g, c => c.toUpperCase()) || "Zwigato Foodie";
-      user = {
-        email, passHash: simpleHash(pass), name: derivedName,
-        address: "Subhash Bhawan, Pantnagar", role: authRole,
-        restaurantId: authRole === "partner" ? (Number($("#existingKitchenSel").value) || 1) : null,
-        avatarId: "initials"
-      };
-      db.users.push(user);
-      toast(`Welcome, ${derivedName}! Account created & signed in.`);
-    } else if (!isGmailMaster && user.passHash !== simpleHash(pass)) {
-      return err("Incorrect password for this email. Try Ishaan123 for Gmail or 1-click Demo.");
-    }
-    db.session = {email: user.email, role: user.role};
-    saveDB();
-    enterApp(user);
-  }
-};
-
-$("#demoCustBtn").onclick = () => {
-  const user = db.users.find(u => u.email === "ishaan@zwigato.in") || db.users[0];
-  db.session = {email: user.email, role: "customer"};
-  saveDB();
-  enterApp(user);
-};
-$("#demoPartnerBtn").onclick = () => {
-  const user = db.users.find(u => u.email === "welcome@zwigato.in") || db.users[2];
-  db.session = {email: user.email, role: "partner"};
-  saveDB();
-  enterApp(user);
-};
-
 function enterApp(user) {
   activeViewRole = user.role || "customer";
   managedRestId = user.restaurantId || 1;
@@ -1809,35 +1729,6 @@ function updateNavUserUI(user) {
   $("#navAddressLabel").textContent = checkoutState.address;
   $("#quickRoleSwitch").textContent = activeViewRole === "partner" ? "⇄ Customer App" : "⇄ Partner Console";
 }
-
-$("#quickRoleSwitch").onclick = () => {
-  const user = getSessionUser();
-  if (!user) return;
-  activeViewRole = activeViewRole === "customer" ? "partner" : "customer";
-  if (activeViewRole === "partner" && !managedRestId) managedRestId = 1;
-  $("#aiFabBtn").hidden = activeViewRole === "partner";
-  $("#mobileBottomNav").hidden = activeViewRole === "partner";
-  if (activeViewRole === "partner") setAiOpen(false);
-  updateNavUserUI(user);
-  renderCurrentRole();
-  toast(`Switched to ${activeViewRole === "partner" ? "Restaurant Partner Console" : "Customer Marketplace"}`);
-};
-
-$("#logoutBtn").onclick = () => {
-  db.session = null;
-  saveDB();
-  cart = {restaurantId: null, items: []};
-  selectedRestId = null;
-  $("#appShell").hidden = true;
-  $("#authScreen").hidden = false;
-  $("#aiFabBtn").hidden = true;
-  $("#mobileBottomNav").hidden = true;
-  $("#stickyCartBar").hidden = true;
-  setAiOpen(false);
-  closeDrawer();
-  closeCareDrawer();
-  syncAuthUI();
-};
 
 function getSessionUser() {
   if (!db.session) return null;
@@ -1883,20 +1774,18 @@ const EXPLORE_ITEMS = [
 ];
 
 function renderPromoDots() {
-  $("#promoDots").innerHTML = [0,1,2,3].map(i =>
+  const dots = $("#promoDots");
+  if (!dots) return;
+  dots.innerHTML = [0,1,2,3].map(i =>
     `<button type="button" class="promo-dot ${promoIdx === i ? "on" : ""}" onclick="goPromoSlide(${i})" aria-label="Slide ${i+1}"></button>`
   ).join("");
 }
 window.goPromoSlide = i => {
   promoIdx = i;
-  $("#promoTrack").style.transform = `translateX(-${promoIdx * 100}%)`;
+  const track = $("#promoTrack");
+  if (track) track.style.transform = `translateX(-${promoIdx * 100}%)`;
   renderPromoDots();
 };
-setInterval(() => {
-  if (!$("#appShell").hidden && activeViewRole === "customer") {
-    goPromoSlide((promoIdx + 1) % 4);
-  }
-}, 4500);
 
 function renderCustomerMarketplace() {
   renderLiveTracker();
@@ -2025,8 +1914,10 @@ function renderCustomerMarketplace() {
           const qty = getCartQty(rest.id, item.id);
           const isNonVeg = item.tags.includes("Non-Veg");
           const nut = getNutritionTag(item);
+          const activeQ = (mq || searchQuery.trim().toLowerCase());
+          const isHit = activeQ && (item.name.toLowerCase().includes(activeQ) || item.course.toLowerCase().includes(activeQ) || item.tags.some(t => t.toLowerCase().includes(activeQ)));
           return `
-            <div class="dish-row ${item.inStock ? "" : "sold-out"}">
+            <div class="dish-row ${item.inStock ? "" : "sold-out"} ${isHit ? "search-hit" : ""}">
               <div class="dish-left">
                 <img class="dish-thumb" src="${item.img}" alt="${esc(item.name)}" onerror="this.src='${FALLBACK_SVG}'">
                 <div style="min-width:0">
@@ -2080,7 +1971,15 @@ function renderCustomerMarketplace() {
     const q = searchQuery.trim().toLowerCase();
     const list = db.restaurants.filter(r => {
       const okCuisine = filterCuisine === "All" || r.cuisine === filterCuisine;
-      const okQuery = !q || r.name.toLowerCase().includes(q) || r.cuisine.toLowerCase().includes(q) || r.menu.some(m => m.name.toLowerCase().includes(q));
+      const okQuery = !q ||
+        r.name.toLowerCase().includes(q) ||
+        r.cuisine.toLowerCase().includes(q) ||
+        r.location.toLowerCase().includes(q) ||
+        r.menu.some(m =>
+          m.name.toLowerCase().includes(q) ||
+          m.course.toLowerCase().includes(q) ||
+          m.tags.some(t => t.toLowerCase().includes(q))
+        );
       let okDiet = true;
       if (vegOnly) okDiet = r.menu.some(m => !m.tags.includes("Non-Veg"));
       if (okDiet && healthyOnly) okDiet = r.menu.some(m => isHealthyDish(m));
@@ -2098,6 +1997,11 @@ function renderCustomerMarketplace() {
       const hasFlash = r.menu.some(m => m.flash);
       const isFast = r.etaMins <= 20;
       const minPrice = Math.min(...r.menu.map(m => getEffectivePrice(m)));
+      const matchedDishes = q ? r.menu.filter(m =>
+        m.name.toLowerCase().includes(q) ||
+        m.course.toLowerCase().includes(q) ||
+        m.tags.some(t => t.toLowerCase().includes(q))
+      ).slice(0, 3) : [];
       return `
         <div class="card rest-card" onclick="openRestaurant(${r.id})">
           <div class="rest-cover">
@@ -2115,6 +2019,7 @@ function renderCustomerMarketplace() {
                 <span class="rate-pill">★ ${r.rating}</span>
                 <span style="color:var(--muted)">Starts ${inr(minPrice)}</span>
               </div>
+              ${matchedDishes.length ? `<div class="match-dishes">${matchedDishes.map(m => `<span class="match-dish-pill">${esc(m.name)}</span>`).join("")}</div>` : ""}
             </div>
             <div class="rest-foot">
               <span style="color:var(--muted)">${r.menu.length} dishes</span>
@@ -2169,8 +2074,6 @@ function toggleVegMode() {
   toast(vegOnly ? "VEG Mode ON — Showing Pure Veg options" : "VEG Mode OFF — Showing all dishes");
   renderCustomerMarketplace();
 }
-$("#vegToggleBtn").onclick = toggleVegMode;
-$("#vegToggleBtn").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleVegMode(); } };
 
 function toggleHealthyMode(forceState = null) {
   healthyOnly = forceState !== null ? forceState : !healthyOnly;
@@ -2182,8 +2085,6 @@ function toggleHealthyMode(forceState = null) {
   toast(healthyOnly ? "🥗 Healthy Only Mode ON — Nutritious & Low-Cal picks" : "Healthy Only Mode OFF — Showing full menu");
   renderCustomerMarketplace();
 }
-$("#healthyToggleBtn").onclick = () => toggleHealthyMode();
-$("#healthyToggleBtn").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleHealthyMode(); } };
 
 /* =========================================================
    VOICE SEARCH & ENHANCED SEARCH OVERLAY
@@ -2219,18 +2120,40 @@ function renderSearchOverlayContent() {
 window.applyOverlaySearch = term => {
   quickCraving(term);
   closeSearchOverlay();
+  if (term && term.trim() && $("#catalogHeading")) {
+    $("#catalogHeading").scrollIntoView({behavior: "smooth", block: "start"});
+  }
 };
 
+$("#searchInput").oninput = e => {
+  searchQuery = e.target.value;
+  $("#clearSearchBtn").hidden = !searchQuery.trim();
+  $("#overlaySearchInput").value = searchQuery;
+  selectedRestId = null;
+  renderCustomerMarketplace();
+};
 $("#searchInput").onfocus = () => openSearchOverlay();
 $("#closeSearchOverlayBtn").onclick = closeSearchOverlay;
 $("#clearRecentBtn").onclick = () => { recentSearches = []; safeRemove("zwigato_recent_searches"); renderSearchOverlayContent(); };
+$("#overlaySearchInput").oninput = e => {
+  searchQuery = e.target.value;
+  $("#searchInput").value = searchQuery;
+  $("#clearSearchBtn").hidden = !searchQuery.trim();
+  selectedRestId = null;
+  renderCustomerMarketplace();
+};
 $("#overlaySearchInput").onkeydown = e => {
   if (e.key === "Enter") {
     e.preventDefault();
     applyOverlaySearch($("#overlaySearchInput").value);
+  } else if (e.key === "Escape") {
+    closeSearchOverlay();
   }
 };
-$("#clearSearchBtn").onclick = () => quickCraving("");
+$("#clearSearchBtn").onclick = () => {
+  quickCraving("");
+  $("#overlaySearchInput").value = "";
+};
 
 function startVoiceSearch(btnEl, targetInput) {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -2251,8 +2174,6 @@ function startVoiceSearch(btnEl, targetInput) {
   rec.onend = () => btnEl.classList.remove("listening");
   rec.start();
 }
-$("#voiceSearchBtn").onclick = () => startVoiceSearch($("#voiceSearchBtn"), $("#searchInput"));
-$("#overlayVoiceBtn").onclick = () => startVoiceSearch($("#overlayVoiceBtn"), $("#overlaySearchInput"));
 
 /* =========================================================
    CART, STICKY CART BAR & CHECKOUT
@@ -2307,10 +2228,6 @@ function updateCartBadges() {
   }
 }
 
-$("#stickyViewCartBtn").onclick = () => openDrawer();
-$("#stickyViewMenu").onclick = () => { if (cart.restaurantId) openRestaurant(cart.restaurantId); };
-$("#dismissStickyCartBtn").onclick = () => { stickyCartDismissed = true; updateCartBadges(); };
-
 function openDrawer() {
   closeCareDrawer();
   renderCheckoutDrawer();
@@ -2323,9 +2240,6 @@ function closeDrawer() {
   $("#drawerBackdrop").classList.remove("on");
   $("#checkoutDrawer").setAttribute("aria-hidden", "true");
 }
-$("#openCartBtn").onclick = openDrawer;
-$("#closeDrawerBtn").onclick = closeDrawer;
-$("#drawerBackdrop").onclick = () => { closeDrawer(); closeCareDrawer(); };
 
 function renderCheckoutDrawer() {
   const body = $("#drawerBody");
@@ -2602,8 +2516,6 @@ function closeCareDrawer() {
   $("#careDrawer").setAttribute("aria-hidden", "true");
   if (!$("#checkoutDrawer").classList.contains("on")) $("#drawerBackdrop").classList.remove("on");
 }
-$("#navHelpBtn").onclick = () => openCareDrawer("instant");
-$("#closeCareBtn").onclick = closeCareDrawer;
 
 function renderCareDrawer() {
   const user = getSessionUser();
@@ -2705,96 +2617,10 @@ window.sendCareMessage = e => {
    ZWIGATO AI CONCIERGE (GEMINI + SMART FALLBACK)
    ========================================================= */
 function setAiOpen(open) { $("#aiBox").classList.toggle("on", open); }
-$("#aiFabBtn").onclick = () => setAiOpen(!$("#aiBox").classList.contains("on"));
-$("#heroAiBtn").onclick = () => setAiOpen(true);
-$("#aiCloseBtn").onclick = () => setAiOpen(false);
-$("#geminiKeyInput").value = safeGet("zwigato_gemini_key") || "";
-$("#saveKeyBtn").onclick = () => {
-  safeSet("zwigato_gemini_key", $("#geminiKeyInput").value.trim());
-  toast("Gemini API key saved!");
-};
-
-document.querySelectorAll(".mood-pill").forEach(btn => {
-  btn.onclick = () => { $("#aiPromptInput").value = btn.dataset.q; $("#aiChatForm").dispatchEvent(new Event("submit")); };
-});
-
-$("#aiChatForm").onsubmit = async e => {
-  e.preventDefault();
-  const prompt = $("#aiPromptInput").value.trim();
-  if (!prompt) return;
-  $("#aiPromptInput").value = "";
-  const feed = $("#aiFeed");
-  feed.innerHTML += `<div class="bubble usr">${esc(prompt)}</div>`;
-  feed.scrollTop = feed.scrollHeight;
-
-  const key = safeGet("zwigato_gemini_key");
-  let reply = "";
-  if (key) {
-    try {
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(key)}`, {
-        method: "POST", headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({contents: [{parts: [{text: `You are Zwigato AI for Pantnagar. Recommend 2 dishes from our kitchens based on: "${prompt}". Include [ADD:restId:itemId] tags like [ADD:4:402] for Steamed Veg Momos or [ADD:1:101] for Dal Makhani.`}]}]})
-      });
-      const data = await res.json();
-      reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
-    } catch (err) {}
-  }
-
-  if (!reply) {
-    const p = prompt.toLowerCase();
-    if (p.includes("fast") || p.includes("20")) {
-      reply = "For lightning-fast delivery under 20 mins, try <b>Chotu Momos (14m)</b> or <b>Kesari Sweets (15m)</b>! [ADD:8:802] [ADD:6:602]";
-    } else if (p.includes("vegan") || p.includes("gluten") || p.includes("light") || p.includes("energetic")) {
-      reply = "For a light, energetic &amp; plant-based boost, I recommend <b>Quinoa &amp; Roasted Millet Bowl</b> or <b>Steamed Veg Momos</b>: [ADD:12:1201] [ADD:4:402]";
-    } else if (p.includes("happy") || p.includes("celebrate")) {
-      reply = "Let's celebrate! Grab <b>Farmhouse Overload Pizza</b> or <b>Nutella Waffle Sundae</b>: [ADD:3:301] [ADD:7:704]";
-    } else {
-      reply = "For warm comfort food, nothing beats <b>Dal Makhani</b> or <b>Kumaoni Rajma Chawal</b>: [ADD:1:101] [ADD:2:201]";
-    }
-  }
-
-  const parsedHtml = reply.replace(/\[ADD:(\d+):(\d+)\]/g, (_, rid, iid) => {
-    const r = db.restaurants.find(x => x.id === Number(rid));
-    const it = r && r.menu.find(m => m.id === Number(iid));
-    if (!r || !it) return "";
-    return `<div class="ai-dish-rec"><div><b>${esc(it.name)}</b><div style="font-size:11px;color:var(--muted)">${esc(r.name)} · ${inr(getEffectivePrice(it))}</div></div><button type="button" class="btn primary xs" onclick="addToCart(${r.id},${it.id})">+ Add</button></div>`;
-  });
-
-  feed.innerHTML += `<div class="bubble bot">${parsedHtml}</div>`;
-  feed.scrollTop = feed.scrollHeight;
-};
 
 /* =========================================================
    PROFILE AVATAR MODAL & EXPLORE MODAL
    ========================================================= */
-$("#navProfileBtn").onclick = () => {
-  const user = getSessionUser();
-  if (!user) return;
-  $("#exploreModalCard").innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-      <h3 style="margin:0;font-size:21px">Your Profile &amp; Avatar</h3>
-      <button type="button" class="btn xs" onclick="closeExploreModal()">✕</button>
-    </div>
-    <div style="display:flex;align-items:center;gap:14px;padding:12px;border-radius:16px;background:var(--bg);border:1px solid var(--border)">
-      ${getAvatarHTML(user, "lg")}
-      <div>
-        <div style="font-weight:800;font-size:16px">${esc(user.name)}</div>
-        <div style="font-size:12.5px;color:var(--muted)">${esc(user.email)}</div>
-      </div>
-    </div>
-    <div class="avatar-grid">
-      ${AVATAR_PRESETS.map(a => `
-        <button type="button" class="avatar-opt ${(user.avatarId || "initials") === a.id ? "on" : ""}" onclick="selectUserAvatar('${a.id}')">
-          <span class="pfp-avatar md" style="background:${a.bg}">${a.icon || esc(user.name[0].toUpperCase())}</span>
-          <span>${a.label}</span>
-        </button>
-      `).join("")}
-    </div>
-    <button type="button" class="btn primary wide" onclick="closeExploreModal()">Done</button>
-  `;
-  $("#exploreModalBackdrop").classList.add("on");
-};
-
 window.selectUserAvatar = avatarId => {
   const user = getSessionUser();
   if (!user) return;
@@ -2817,19 +2643,6 @@ window.openExploreModal = title => {
   $("#exploreModalBackdrop").classList.add("on");
 };
 window.closeExploreModal = () => $("#exploreModalBackdrop").classList.remove("on");
-$("#exploreModalBackdrop").onclick = e => { if (e.target === $("#exploreModalBackdrop")) closeExploreModal(); };
-
-$("#navLocationBtn").onclick = () => {
-  $("#exploreModalCard").innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-      <h3 style="margin:0;font-size:20px">📍 Delivery Address</h3>
-      <button type="button" class="btn xs" onclick="closeExploreModal()">✕</button>
-    </div>
-    <div class="field"><label>Pantnagar / Kumaon Address</label><input id="modalAddrInp" type="text" value="${esc(checkoutState.address)}"></div>
-    <button type="button" class="btn primary wide" onclick="checkoutState.address=$('#modalAddrInp').value.trim()||'Subhash Bhawan, Pantnagar';$('#navAddressLabel').textContent=checkoutState.address;closeExploreModal();toast('Delivery location updated!')">Save Location</button>
-  `;
-  $("#exploreModalBackdrop").classList.add("on");
-};
 
 window.setBottomTab = tab => {
   bottomTab = tab;
@@ -2912,52 +2725,318 @@ function renderPartnerDashboard() {
   `;
 }
 
-$("#partnerRestSelect").onchange = e => { managedRestId = Number(e.target.value); renderPartnerDashboard(); };
 window.toggleDishFlash = (rid, iid) => {
   const r = db.restaurants.find(x => x.id === rid);
   const m = r && r.menu.find(x => x.id === iid);
   if (m) { m.flash = !m.flash; saveDB(); renderPartnerDashboard(); toast("Updated flash sale status!"); }
 };
 
-$("#partnerAddDishForm").onsubmit = e => {
-  e.preventDefault();
-  const rest = db.restaurants.find(r => r.id === managedRestId);
-  if (!rest) return;
-  const name = $("#ndName").value.trim();
-  const price = Number($("#ndPrice").value) || 150;
-  const diet = $("#ndDiet").value;
-  const course = $("#ndCourse").value;
-  const preset = $("#ndImgPreset").value;
-  rest.menu.unshift(D(Date.now(), name, price, course, [diet], PHOTOS[preset] || PHOTOS.paneer, $("#ndFlash").checked, $("#ndSpecial").checked, 10));
-  saveDB();
-  $("#partnerAddDishForm").reset();
-  renderPartnerDashboard();
-  toast(`${name} published live!`);
-};
-
 /* =========================================================
-   BOOT & TIMERS
+   BOOT & EVENT BINDINGS (DOMContentLoaded WITH ERROR BOUNDARY)
    ========================================================= */
-$("#prevSlideBtn").onclick = () => $("#gemsCarousel").scrollBy({left: -340, behavior: "smooth"});
-$("#nextSlideBtn").onclick = () => $("#gemsCarousel").scrollBy({left: 340, behavior: "smooth"});
+document.addEventListener("DOMContentLoaded", () => {
+  try {
+    if (safeGet("zwigato_theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
 
-setInterval(() => {
-  flashRemaining = flashRemaining > 0 ? flashRemaining - 1 : 14 * 60 + 59;
-  const m = String(Math.floor(flashRemaining / 60)).padStart(2, "0");
-  const s = String(flashRemaining % 60).padStart(2, "0");
-  if ($("#flashTimer")) $("#flashTimer").textContent = `${m}:${s}`;
-}, 1000);
+    $("#themeAuthBtn").onclick = toggleTheme;
+    $("#themeNavBtn").onclick = toggleTheme;
+    $("#skipIntroBtn").onclick = () => dismissSplash(true);
+    $("#replayIntroBtn").onclick = () => runIntroAnimation(true);
+    $("#replayAuthIntroBtn").onclick = () => runIntroAnimation(true);
 
-window.addEventListener("storage", e => {
-  if (e.key === DB_KEY) { db = loadDB(); if (!$("#appShell").hidden) renderCurrentRole(); }
+    $("#optCust").onclick = () => { authRole = "customer"; syncAuthUI(); };
+    $("#optPartner").onclick = () => { authRole = "partner"; syncAuthUI(); };
+    $("#tabLogin").onclick = () => { authMode = "login"; syncAuthUI(); };
+    $("#tabSignup").onclick = () => { authMode = "signup"; syncAuthUI(); };
+    $("#partnerMode").onchange = () => {
+      const isNew = $("#partnerMode").value === "new";
+      $("#existingKitchenWrap").hidden = isNew;
+      $("#newKitchenWrap").hidden = !isNew;
+    };
+
+    $("#authForm").onsubmit = e => {
+      e.preventDefault();
+      const email = $("#inEmail").value.trim().toLowerCase();
+      const pass = $("#inPass").value;
+      const err = msg => { $("#authErr").textContent = msg; };
+
+      if (!/^\S+@\S+\.\S+$/.test(email)) return err("Please enter a valid email address.");
+      if (pass.length < 6) return err("Password must be at least 6 characters.");
+
+      const isGmailMaster = email.endsWith("@gmail.com") && pass === "Ishaan123";
+
+      if (authMode === "signup") {
+        const name = $("#inName").value.trim();
+        if (!name) return err("Please enter your full name.");
+        if (db.users.some(u => u.email === email)) return err("An account with this email already exists. Log in instead.");
+
+        let restId = null;
+        if (authRole === "partner") {
+          if ($("#partnerMode").value === "new") {
+            const kName = $("#nkName").value.trim();
+            const kDish = $("#nkDish").value.trim();
+            const kPrice = Number($("#nkDishPrice").value) || 180;
+            const kEta = Math.max(10, Math.min(60, Number($("#nkEta").value) || 20));
+            const kCat = $("#nkCat").value;
+            if (!kName || !kDish) return err("Please enter your new restaurant name and signature dish.");
+            restId = Math.max(...db.restaurants.map(r => r.id)) + 1;
+            const bannerMap = {"North Indian": PHOTOS.dal, "Italian & Pizza": PHOTOS.pizza, "Fast Food & Chinese": PHOTOS.momos, "Cafe & Shakes": PHOTOS.coffee, "Street Food & Mithai": PHOTOS.samosa};
+            db.restaurants.unshift({
+              id: restId, name: kName, cuisine: kCat, location: "Pantnagar Marketplace",
+              rating: 4.8, etaMins: kEta, distanceKm: 1.0, isFar: false,
+              fssai: "1262600100" + restId, banner: bannerMap[kCat] || PHOTOS.dal,
+              menu: [D(restId * 100 + 1, kDish, kPrice, "Mains", ["Veg", "Bestseller"], bannerMap[kCat] || PHOTOS.paneer, true, true, 12)]
+            });
+            toast(`${kName} is now live on Zwigato!`);
+          } else {
+            restId = Number($("#existingKitchenSel").value) || 1;
+          }
+        }
+
+        const newUser = {
+          email, passHash: simpleHash(pass), name,
+          address: $("#inCustAddr").value.trim() || "Subhash Bhawan, Pantnagar",
+          role: authRole, restaurantId: restId, avatarId: "initials"
+        };
+        db.users.push(newUser);
+        db.session = {email: newUser.email, role: newUser.role};
+        saveDB();
+        enterApp(newUser);
+      } else {
+        let user = db.users.find(u => u.email === email);
+        if (!user) {
+          const derivedName = email.split("@")[0].replace(/[^a-zA-Z0-9]/g, " ").replace(/\b\w/g, c => c.toUpperCase()) || "Zwigato Foodie";
+          user = {
+            email, passHash: simpleHash(pass), name: derivedName,
+            address: "Subhash Bhawan, Pantnagar", role: authRole,
+            restaurantId: authRole === "partner" ? (Number($("#existingKitchenSel").value) || 1) : null,
+            avatarId: "initials"
+          };
+          db.users.push(user);
+          toast(`Welcome, ${derivedName}! Account created & signed in.`);
+        } else if (!isGmailMaster && user.passHash !== simpleHash(pass)) {
+          return err("Incorrect password for this email. Try Ishaan123 for Gmail or 1-click Demo.");
+        }
+        db.session = {email: user.email, role: user.role};
+        saveDB();
+        enterApp(user);
+      }
+    };
+
+    $("#demoCustBtn").onclick = () => {
+      const user = db.users.find(u => u.email === "ishaan@zwigato.in") || db.users[0];
+      db.session = {email: user.email, role: "customer"};
+      saveDB();
+      enterApp(user);
+    };
+    $("#demoPartnerBtn").onclick = () => {
+      const user = db.users.find(u => u.email === "welcome@zwigato.in") || db.users[2];
+      db.session = {email: user.email, role: "partner"};
+      saveDB();
+      enterApp(user);
+    };
+
+    $("#quickRoleSwitch").onclick = () => {
+      const user = getSessionUser();
+      if (!user) return;
+      activeViewRole = activeViewRole === "customer" ? "partner" : "customer";
+      if (activeViewRole === "partner" && !managedRestId) managedRestId = 1;
+      $("#aiFabBtn").hidden = activeViewRole === "partner";
+      $("#mobileBottomNav").hidden = activeViewRole === "partner";
+      if (activeViewRole === "partner") setAiOpen(false);
+      updateNavUserUI(user);
+      renderCurrentRole();
+      toast(`Switched to ${activeViewRole === "partner" ? "Restaurant Partner Console" : "Customer Marketplace"}`);
+    };
+
+    $("#logoutBtn").onclick = () => {
+      db.session = null;
+      saveDB();
+      cart = {restaurantId: null, items: []};
+      selectedRestId = null;
+      $("#appShell").hidden = true;
+      $("#authScreen").hidden = false;
+      $("#aiFabBtn").hidden = true;
+      $("#mobileBottomNav").hidden = true;
+      $("#stickyCartBar").hidden = true;
+      setAiOpen(false);
+      closeDrawer();
+      closeCareDrawer();
+      syncAuthUI();
+    };
+
+    $("#vegToggleBtn").onclick = toggleVegMode;
+    $("#vegToggleBtn").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleVegMode(); } };
+    $("#healthyToggleBtn").onclick = () => toggleHealthyMode();
+    $("#healthyToggleBtn").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleHealthyMode(); } };
+
+    $("#searchInput").onfocus = () => openSearchOverlay();
+    $("#closeSearchOverlayBtn").onclick = closeSearchOverlay;
+    $("#clearRecentBtn").onclick = () => { recentSearches = []; safeRemove("zwigato_recent_searches"); renderSearchOverlayContent(); };
+    $("#overlaySearchInput").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); applyOverlaySearch($("#overlaySearchInput").value); } };
+    $("#clearSearchBtn").onclick = () => quickCraving("");
+    $("#voiceSearchBtn").onclick = () => startVoiceSearch($("#voiceSearchBtn"), $("#searchInput"));
+    $("#overlayVoiceBtn").onclick = () => startVoiceSearch($("#overlayVoiceBtn"), $("#overlaySearchInput"));
+
+    $("#stickyViewCartBtn").onclick = () => openDrawer();
+    $("#stickyViewMenu").onclick = () => { if (cart.restaurantId) openRestaurant(cart.restaurantId); };
+    $("#dismissStickyCartBtn").onclick = () => { stickyCartDismissed = true; updateCartBadges(); };
+
+    $("#openCartBtn").onclick = openDrawer;
+    $("#closeDrawerBtn").onclick = closeDrawer;
+    $("#drawerBackdrop").onclick = () => { closeDrawer(); closeCareDrawer(); };
+    $("#navHelpBtn").onclick = () => openCareDrawer("instant");
+    $("#closeCareBtn").onclick = closeCareDrawer;
+
+    $("#aiFabBtn").onclick = () => setAiOpen(!$("#aiBox").classList.contains("on"));
+    $("#heroAiBtn").onclick = () => setAiOpen(true);
+    $("#aiCloseBtn").onclick = () => setAiOpen(false);
+    $("#geminiKeyInput").value = safeGet("zwigato_gemini_key") || "";
+    $("#saveKeyBtn").onclick = () => {
+      safeSet("zwigato_gemini_key", $("#geminiKeyInput").value.trim());
+      toast("Gemini API key saved!");
+    };
+
+    document.querySelectorAll(".mood-pill").forEach(btn => {
+      btn.onclick = () => { $("#aiPromptInput").value = btn.dataset.q; $("#aiChatForm").dispatchEvent(new Event("submit")); };
+    });
+
+    $("#aiChatForm").onsubmit = async e => {
+      e.preventDefault();
+      const prompt = $("#aiPromptInput").value.trim();
+      if (!prompt) return;
+      $("#aiPromptInput").value = "";
+      const feed = $("#aiFeed");
+      feed.innerHTML += `<div class="bubble usr">${esc(prompt)}</div>`;
+      feed.scrollTop = feed.scrollHeight;
+
+      const key = safeGet("zwigato_gemini_key");
+      let reply = "";
+      if (key) {
+        try {
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(key)}`, {
+            method: "POST", headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({contents: [{parts: [{text: `You are Zwigato AI for Pantnagar. Recommend 2 dishes from our kitchens based on: "${prompt}". Include [ADD:restId:itemId] tags like [ADD:4:402] for Steamed Veg Momos or [ADD:1:101] for Dal Makhani.`}]}]})
+          });
+          const data = await res.json();
+          reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        } catch (err) {}
+      }
+
+      if (!reply) {
+        const p = prompt.toLowerCase();
+        if (p.includes("fast") || p.includes("20")) {
+          reply = "For lightning-fast delivery under 20 mins, try <b>Chotu Momos (14m)</b> or <b>Kesari Sweets (15m)</b>! [ADD:8:802] [ADD:6:602]";
+        } else if (p.includes("vegan") || p.includes("gluten") || p.includes("light") || p.includes("energetic")) {
+          reply = "For a light, energetic &amp; plant-based boost, I recommend <b>Quinoa &amp; Roasted Millet Bowl</b> or <b>Steamed Veg Momos</b>: [ADD:12:1201] [ADD:4:402]";
+        } else if (p.includes("happy") || p.includes("celebrate")) {
+          reply = "Let's celebrate! Grab <b>Farmhouse Overload Pizza</b> or <b>Nutella Waffle Sundae</b>: [ADD:3:301] [ADD:7:704]";
+        } else {
+          reply = "For warm comfort food, nothing beats <b>Dal Makhani</b> or <b>Kumaoni Rajma Chawal</b>: [ADD:1:101] [ADD:2:201]";
+        }
+      }
+
+      const parsedHtml = reply.replace(/\[ADD:(\d+):(\d+)\]/g, (_, rid, iid) => {
+        const r = db.restaurants.find(x => x.id === Number(rid));
+        const it = r && r.menu.find(m => m.id === Number(iid));
+        if (!r || !it) return "";
+        return `<div class="ai-dish-rec"><div><b>${esc(it.name)}</b><div style="font-size:11px;color:var(--muted)">${esc(r.name)} · ${inr(getEffectivePrice(it))}</div></div><button type="button" class="btn primary xs" onclick="addToCart(${r.id},${it.id})">+ Add</button></div>`;
+      });
+
+      feed.innerHTML += `<div class="bubble bot">${parsedHtml}</div>`;
+      feed.scrollTop = feed.scrollHeight;
+    };
+
+    $("#navProfileBtn").onclick = () => {
+      const user = getSessionUser();
+      if (!user) return;
+      $("#exploreModalCard").innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <h3 style="margin:0;font-size:21px">Your Profile &amp; Avatar</h3>
+          <button type="button" class="btn xs" onclick="closeExploreModal()">✕</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px;border-radius:16px;background:var(--bg);border:1px solid var(--border)">
+          ${getAvatarHTML(user, "lg")}
+          <div>
+            <div style="font-weight:800;font-size:16px">${esc(user.name)}</div>
+            <div style="font-size:12.5px;color:var(--muted)">${esc(user.email)}</div>
+          </div>
+        </div>
+        <div class="avatar-grid">
+          ${AVATAR_PRESETS.map(a => `
+            <button type="button" class="avatar-opt ${(user.avatarId || "initials") === a.id ? "on" : ""}" onclick="selectUserAvatar('${a.id}')">
+              <span class="pfp-avatar md" style="background:${a.bg}">${a.icon || esc(user.name[0].toUpperCase())}</span>
+              <span>${a.label}</span>
+            </button>
+          `).join("")}
+        </div>
+        <button type="button" class="btn primary wide" onclick="closeExploreModal()">Done</button>
+      `;
+      $("#exploreModalBackdrop").classList.add("on");
+    };
+
+    $("#exploreModalBackdrop").onclick = e => { if (e.target === $("#exploreModalBackdrop")) closeExploreModal(); };
+
+    $("#navLocationBtn").onclick = () => {
+      $("#exploreModalCard").innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h3 style="margin:0;font-size:20px">📍 Delivery Address</h3>
+          <button type="button" class="btn xs" onclick="closeExploreModal()">✕</button>
+        </div>
+        <div class="field"><label>Pantnagar / Kumaon Address</label><input id="modalAddrInp" type="text" value="${esc(checkoutState.address)}"></div>
+        <button type="button" class="btn primary wide" onclick="checkoutState.address=$('#modalAddrInp').value.trim()||'Subhash Bhawan, Pantnagar';$('#navAddressLabel').textContent=checkoutState.address;closeExploreModal();toast('Delivery location updated!')">Save Location</button>
+      `;
+      $("#exploreModalBackdrop").classList.add("on");
+    };
+
+    $("#partnerRestSelect").onchange = e => { managedRestId = Number(e.target.value); renderPartnerDashboard(); };
+    $("#partnerAddDishForm").onsubmit = e => {
+      e.preventDefault();
+      const rest = db.restaurants.find(r => r.id === managedRestId);
+      if (!rest) return;
+      const name = $("#ndName").value.trim();
+      const price = Number($("#ndPrice").value) || 150;
+      const diet = $("#ndDiet").value;
+      const course = $("#ndCourse").value;
+      const preset = $("#ndImgPreset").value;
+      rest.menu.unshift(D(Date.now(), name, price, course, [diet], PHOTOS[preset] || PHOTOS.paneer, $("#ndFlash").checked, $("#ndSpecial").checked, 10));
+      saveDB();
+      $("#partnerAddDishForm").reset();
+      renderPartnerDashboard();
+      toast(`${name} published live!`);
+    };
+
+    $("#prevSlideBtn").onclick = () => $("#gemsCarousel").scrollBy({left: -340, behavior: "smooth"});
+    $("#nextSlideBtn").onclick = () => $("#gemsCarousel").scrollBy({left: 340, behavior: "smooth"});
+
+    setInterval(() => {
+      if (!$("#appShell").hidden && activeViewRole === "customer") {
+        goPromoSlide((promoIdx + 1) % 4);
+      }
+    }, 4500);
+
+    setInterval(() => {
+      flashRemaining = flashRemaining > 0 ? flashRemaining - 1 : 14 * 60 + 59;
+      const m = String(Math.floor(flashRemaining / 60)).padStart(2, "0");
+      const s = String(flashRemaining % 60).padStart(2, "0");
+      if ($("#flashTimer")) $("#flashTimer").textContent = `${m}:${s}`;
+    }, 1000);
+
+    window.addEventListener("storage", e => {
+      if (e.key === DB_KEY) { db = loadDB(); if (!$("#appShell").hidden) renderCurrentRole(); }
+    });
+
+    populateExistingKitchenSelect();
+    syncAuthUI();
+    runIntroAnimation(false);
+
+    const existingSession = getSessionUser();
+    if (existingSession) enterApp(existingSession);
+  } catch (err) {
+    console.error("Zwigato init error:", err);
+    dismissSplash(true);
+  }
 });
-
-populateExistingKitchenSelect();
-syncAuthUI();
-runIntroAnimation(false);
-
-const existingSession = getSessionUser();
-if (existingSession) enterApp(existingSession);
 </script>
 </body>
 </html>
