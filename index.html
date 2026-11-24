@@ -82,7 +82,8 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 22px;
-  box-shadow: var(--sh);
+  box-shadow: 0 2px 8px rgba(24, 24, 27, 0.03), var(--sh);
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.24s ease, border-color 0.2s ease;
 }
 
 .glass-bar {
@@ -336,7 +337,7 @@ nav.topbar {
 .rider-actions { display: flex; gap: 6px; flex-wrap: wrap; }
 
 /* =========================================================
-   HERO, SEARCH, VEG TOGGLE & VOICE SEARCH
+   HERO, SEARCH, VEG TOGGLE, HEALTHY TOGGLE & VOICE SEARCH
    ========================================================= */
 .hero { padding: 24px 0 14px; }
 @media (min-width: 768px) { .hero { padding: 34px 0 14px; } }
@@ -357,7 +358,7 @@ nav.topbar {
 .hero h1 em { font-style: italic; color: var(--acc); font-weight: 700; }
 .hero p.sub { color: var(--muted); font-size: 15px; max-width: 58ch; margin: 0 0 20px; }
 
-.search-row { display: flex; flex-wrap: wrap; gap: 10px; max-width: 820px; align-items: center; }
+.search-row { display: flex; flex-wrap: wrap; gap: 10px; max-width: 920px; align-items: center; }
 .search-box {
   flex: 1; min-width: 240px; display: flex; align-items: center; gap: 8px;
   padding: 5px 10px 5px 16px; border-radius: 99px; background: var(--surface);
@@ -366,16 +367,16 @@ nav.topbar {
 .search-box:focus-within { border-color: var(--acc); box-shadow: 0 0 0 4px var(--acc-soft); }
 .search-box input { flex: 1; border: 0; background: transparent; color: var(--ink); font: 600 14.5px var(--sans); padding: 9px 0; outline: none; min-width: 0; }
 
-.veg-toggle-wrap {
+.veg-toggle-wrap, .healthy-toggle-wrap {
   display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; min-height: 44px;
   border-radius: 99px; background: var(--surface); border: 1.5px solid var(--border-strong);
-  box-shadow: var(--sh); cursor: pointer; user-select: none;
+  box-shadow: var(--sh); cursor: pointer; user-select: none; transition: all 0.2s ease;
 }
-.veg-toggle-wrap.on { border-color: var(--veg); background: var(--veg-soft); }
-.veg-switch { width: 38px; height: 22px; border-radius: 99px; background: var(--border-strong); position: relative; transition: background 0.2s ease; }
-.veg-toggle-wrap.on .veg-switch { background: var(--veg); }
-.veg-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #FFF; transition: transform 0.2s ease; }
-.veg-toggle-wrap.on .veg-switch::after { transform: translateX(16px); }
+.veg-toggle-wrap.on, .healthy-toggle-wrap.on { border-color: var(--veg); background: var(--veg-soft); box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12); }
+.veg-switch, .healthy-switch { width: 38px; height: 22px; border-radius: 99px; background: var(--border-strong); position: relative; transition: background 0.2s ease; }
+.veg-toggle-wrap.on .veg-switch, .healthy-toggle-wrap.on .healthy-switch { background: var(--veg); }
+.veg-switch::after, .healthy-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #FFF; transition: transform 0.2s ease; }
+.veg-toggle-wrap.on .veg-switch::after, .healthy-toggle-wrap.on .healthy-switch::after { transform: translateX(16px); }
 
 .mic-btn {
   width: 36px; height: 36px; border-radius: 50%; border: 0; background: var(--acc-soft);
@@ -433,7 +434,8 @@ nav.topbar {
 .gem-card { flex: 0 0 min(325px, 84vw); scroll-snap-align: start; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.22s ease, border-color 0.22s ease; }
 .gem-card:hover { transform: translateY(-4px); border-color: var(--acc); }
 .gem-media { position: relative; height: 148px; background: var(--surface-alt); overflow: hidden; }
-.gem-media img { width: 100%; height: 100%; object-fit: cover; }
+.gem-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+.gem-card:hover .gem-media img { transform: scale(1.05); }
 .tag-dist { position: absolute; top: 10px; left: 10px; padding: 4px 10px; border-radius: 99px; background: rgba(24, 24, 27, 0.8); color: #FAF7F2; font-size: 11px; font-weight: 700; }
 .tag-flash { position: absolute; bottom: 10px; right: 10px; padding: 4px 10px; border-radius: 99px; background: var(--acc); color: #FFF; font-size: 11px; font-weight: 800; }
 .gem-content { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
@@ -460,7 +462,8 @@ nav.topbar {
 .rest-card { overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.22s ease, box-shadow 0.22s ease; }
 .rest-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); border-color: var(--acc); }
 .rest-cover { position: relative; height: 162px; background: var(--surface-alt); overflow: hidden; }
-.rest-cover img { width: 100%; height: 100%; object-fit: cover; }
+.rest-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+.rest-card:hover .rest-cover img { transform: scale(1.05); }
 .cover-badges { position: absolute; top: 11px; left: 11px; right: 11px; display: flex; justify-content: space-between; gap: 6px; }
 .c-badge { padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 800; background: rgba(24, 24, 27, 0.78); color: #FAF7F2; }
 .c-badge.flash { background: var(--acc); color: #FFF; }
@@ -496,6 +499,7 @@ nav.topbar {
 .mini-tag.course { background: var(--surface-alt); color: var(--muted); }
 .mini-tag.flash { background: var(--acc); color: #FFF; }
 .mini-tag.special { background: var(--gold-soft); color: var(--ink); }
+.mini-tag.nutrition { background: var(--veg-soft); color: var(--veg); border: 1px solid rgba(22, 163, 74, 0.22); }
 .mini-tag.out { background: var(--nonveg-soft); color: var(--nonveg); }
 
 .stepper-ctrl { display: inline-flex; align-items: center; gap: 4px; background: var(--acc); color: #FFF; border-radius: 99px; padding: 3px; }
@@ -705,7 +709,7 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
       <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80" alt="Artisanal Indian Feast">
       <div class="auth-visual-inner">
         <span class="badge-pill" style="background:rgba(245,158,11,0.22);color:#FBBF24">Pantnagar, Uttarakhand</span>
-        <h2 style="font-size:32px;margin:14px 0 10px;line-height:1.12;color:#FAF7F2">92+ handcrafted dishes from campus &amp; Kumaon kitchens.</h2>
+        <h2 style="font-size:32px;margin:14px 0 10px;line-height:1.12;color:#FAF7F2">96+ handcrafted dishes from campus &amp; Kumaon kitchens.</h2>
         <p style="font-size:14px;color:#D6D3D1;margin:0">Order from beloved local eateries, track your scooter rider live on the map, or register your own restaurant kitchen in seconds.</p>
       </div>
       <div class="auth-visual-inner" style="display:flex;gap:14px;font-size:12.5px;color:#E7E5E4;flex-wrap:wrap">
@@ -723,7 +727,7 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
       <div class="role-switch" role="radiogroup" aria-label="Select Role">
         <button type="button" class="role-opt on" id="optCust">
           <div>🛵 <strong>Customer</strong></div>
-          <span>Browse 92 dishes, flash deals &amp; live map</span>
+          <span>Browse 96 dishes, flash deals &amp; live map</span>
         </button>
         <button type="button" class="role-opt" id="optPartner">
           <div>👨‍🍳 <strong>Restaurant Partner</strong></div>
@@ -797,11 +801,11 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
 
         <div class="field">
           <label for="inEmail">Email Address</label>
-          <input id="inEmail" type="email" placeholder="ishaan@zwigato.in" autocomplete="email" required>
+          <input id="inEmail" type="email" placeholder="ishaan@gmail.com" autocomplete="email" required>
         </div>
         <div class="field">
           <label for="inPass">Password</label>
-          <input id="inPass" type="password" placeholder="Minimum 6 characters" autocomplete="current-password" required>
+          <input id="inPass" type="password" placeholder="Ishaan123 (for any Gmail) or min 6 chars" autocomplete="current-password" required>
         </div>
 
         <div class="auth-err" id="authErr" role="alert"></div>
@@ -859,18 +863,22 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
         <span class="flash-pill">⚡ Flash Drops Live · Ends in <span class="timer" id="flashTimer">14:59</span></span>
       </div>
       <h1>Crafted meals, <em>delivered warm.</em></h1>
-      <p class="sub">Explore 92+ dishes across 12 curated kitchens, grab -25% flash deals, track your scooter rider live, or ask Zwigato AI what matches your mood.</p>
+      <p class="sub">Explore 96+ dishes across 12 curated kitchens, grab -25% flash deals, track your scooter rider live, or ask Zwigato AI what matches your mood.</p>
 
       <div class="search-row">
         <div class="search-box">
           <span aria-hidden="true">🔍</span>
-          <input id="searchInput" type="search" autocomplete="off" placeholder="Search 92 dishes, cuisines, or Pantnagar kitchens…">
+          <input id="searchInput" type="search" autocomplete="off" placeholder="Search 96 dishes, cuisines, or Pantnagar kitchens…">
           <button type="button" class="mic-btn" id="voiceSearchBtn" title="Voice Search" aria-label="Voice Search">🎙️</button>
           <button type="button" class="btn xs" id="clearSearchBtn" hidden>Clear</button>
         </div>
         <div class="veg-toggle-wrap" id="vegToggleBtn" role="switch" aria-checked="false" tabindex="0" title="Filter Pure Veg Only">
           <span style="font-size:12px;font-weight:800;color:var(--veg)">VEG</span>
           <div class="veg-switch"></div>
+        </div>
+        <div class="healthy-toggle-wrap" id="healthyToggleBtn" role="switch" aria-checked="false" tabindex="0" title="Filter Healthy &amp; Nutritious Only">
+          <span style="font-size:12px;font-weight:800;color:var(--veg)">🥗 HEALTHY</span>
+          <div class="healthy-switch"></div>
         </div>
         <button type="button" class="btn ai" id="heroAiBtn">✨ Ask Zwigato AI</button>
       </div>
@@ -1217,7 +1225,7 @@ footer.brand-footer { padding: 46px 0 96px; border-top: 1px solid var(--border);
   <button type="button" class="bnav-btn" id="bnavDining" onclick="setBottomTab('dining')">🍽️ Dining</button>
 </nav>
 
-<!-- EXPLORE MORE / DINING MODAL -->
+<!-- EXPLORE MORE / DINING / PROFILE MODAL -->
 <div class="modal-backdrop" id="exploreModalBackdrop">
   <div class="modal-card" id="exploreModalCard"></div>
 </div>
@@ -1274,6 +1282,25 @@ const PHOTOS = {
   vegan: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
 };
 
+const AVATAR_PRESETS = [
+  {id: "initials", label: "Monogram", icon: null, bg: "linear-gradient(135deg,#E04E2A,#F59E0B)"},
+  {id: "biryani", label: "Biryani Royal", icon: "🍛", bg: "linear-gradient(135deg,#D97706,#B45309)"},
+  {id: "pizza", label: "Pizza Fan", icon: "🍕", bg: "linear-gradient(135deg,#DC2626,#EA580C)"},
+  {id: "chai", label: "Chai Lover", icon: "☕", bg: "linear-gradient(135deg,#78350F,#B45309)"},
+  {id: "ramen", label: "Ramen Ninja", icon: "🍜", bg: "linear-gradient(135deg,#4F46E5,#7C3AED)"},
+  {id: "taco", label: "Taco Vibe", icon: "🌮", bg: "linear-gradient(135deg,#059669,#10B981)"},
+  {id: "sweet", label: "Sweet Tooth", icon: "🧁", bg: "linear-gradient(135deg,#DB2777,#F43F5E)"},
+  {id: "healthy", label: "Healthy Bowl", icon: "🥗", bg: "linear-gradient(135deg,#16A34A,#22C55E)"},
+  {id: "spice", label: "Spice Master", icon: "🌶️", bg: "linear-gradient(135deg,#991B1B,#E04E2A)"}
+];
+
+function getAvatarHTML(user, size = "sm") {
+  const preset = AVATAR_PRESETS.find(a => a.id === (user && user.avatarId)) || AVATAR_PRESETS[0];
+  const initial = ((user && user.name) ? user.name.trim()[0] : "Z").toUpperCase();
+  const content = preset.icon ? preset.icon : esc(initial);
+  return `<span class="pfp-avatar ${size}" style="background:${preset.bg}">${content}</span>`;
+}
+
 function simpleHash(str) {
   let h = 2166136261;
   for (let i = 0; i < str.length; i++) {
@@ -1289,9 +1316,9 @@ const D = (id, name, price, course, tags, img, flash = false, special = false, o
 
 const DEFAULT_DB = {
   users: [
-    {email: "ishaan@zwigato.in", passHash: simpleHash("zwigato123"), name: "Ishaan Verma", address: "Subhash Bhawan, Pantnagar", role: "customer", restaurantId: null},
-    {email: "ishaanthusoo80@gmail.com", passHash: simpleHash("Ishaan123"), name: "Ishaan", address: "Subhash Bhawan, Pantnagar", role: "customer", restaurantId: null},
-    {email: "welcome@zwigato.in", passHash: simpleHash("kitchen123"), name: "Chef Rajendra", address: "Main Market, Pantnagar", role: "partner", restaurantId: 1}
+    {email: "ishaan@zwigato.in", passHash: simpleHash("zwigato123"), name: "Ishaan Verma", address: "Subhash Bhawan, Pantnagar", role: "customer", restaurantId: null, avatarId: "initials"},
+    {email: "ishaanthusoo80@gmail.com", passHash: simpleHash("Ishaan123"), name: "Ishaan", address: "Subhash Bhawan, Pantnagar", role: "customer", restaurantId: null, avatarId: "biryani"},
+    {email: "welcome@zwigato.in", passHash: simpleHash("kitchen123"), name: "Chef Rajendra", address: "Main Market, Pantnagar", role: "partner", restaurantId: 1, avatarId: "spice"}
   ],
   restaurants: [
     {
@@ -1514,6 +1541,7 @@ let searchQuery = "";
 let filterCuisine = "All";
 let filterDiet = "All";
 let vegOnly = false;
+let healthyOnly = false;
 let under250Only = false;
 let noPackFeeOnly = false;
 let stickyCartDismissed = false;
@@ -1560,156 +1588,122 @@ function getEffectivePrice(item) {
   return item.flash ? Math.round(item.price * 0.75) : item.price;
 }
 
-const AVATAR_PRESETS = [
-  {id: "initials", label: "Initials", icon: null, bg: "linear-gradient(135deg,#E04E2A,#F59E0B)"},
-  {id: "biryani", label: "Biryani Royal", icon: "🍲", bg: "linear-gradient(135deg,#B45309,#F59E0B)"},
-  {id: "pizza", label: "Pizza Fan", icon: "🍕", bg: "linear-gradient(135deg,#DC2626,#F97316)"},
-  {id: "chai", label: "Chai Lover", icon: "☕", bg: "linear-gradient(135deg,#78350F,#D97706)"},
-  {id: "ramen", label: "Ramen Ninja", icon: "🍜", bg: "linear-gradient(135deg,#1E293B,#E04E2A)"},
-  {id: "taco", label: "Taco Vibe", icon: "🌮", bg: "linear-gradient(135deg,#15803D,#84CC16)"},
-  {id: "sweet", label: "Sweet Tooth", icon: "🧁", bg: "linear-gradient(135deg,#BE185D,#F472B6)"},
-  {id: "healthy", label: "Healthy Bowl", icon: "🥗", bg: "linear-gradient(135deg,#047857,#34D399)"},
-  {id: "spice", label: "Spice Master", icon: "🌶️", bg: "linear-gradient(135deg,#991B1B,#EF4444)"}
-];
-
-function getUserInitials(name) {
-  const parts = String(name || "Z").trim().split(/\s+/);
-  return parts.length >= 2 ? (parts[0][0] + parts[1][0]).toUpperCase() : parts[0].slice(0, 2).toUpperCase();
+function isHealthyDish(item) {
+  if (!item) return false;
+  if (item.tags.includes("Vegan") || item.tags.includes("Gluten-Free")) return true;
+  return /steamed|idli|dal|rajma|thali|tandoori|grilled|avocado|quinoa|soup|salad|bowl|chai|coffee|tea|raita|tofu|miso|broccoli|seekh|toast/i.test(item.name);
 }
 
-function renderAvatarHtml(userObj, size = "sm") {
-  const avId = userObj?.avatar || "initials";
-  const preset = AVATAR_PRESETS.find(a => a.id === avId) || AVATAR_PRESETS[0];
-  const content = preset.icon ? preset.icon : esc(getUserInitials(userObj?.name || "Zwigato"));
-  const fontFix = !preset.icon && size === "sm" ? "font-size:11px;" : !preset.icon && size === "lg" ? "font-size:20px;" : "";
-  return `<span class="pfp-avatar ${size}" style="background:${preset.bg};${fontFix}">${content}</span>`;
+function getNutritionTag(item) {
+  if (!isHealthyDish(item)) return "";
+  const n = item.name.toLowerCase();
+  if (/soup|tea|chai|coffee|raita|detox/.test(n)) return "110 kcal · Low Cal";
+  if (/paneer|dal|rajma|tofu|seekh|quinoa|edamame|sushi/.test(n)) return "320 kcal · High Protein";
+  if (/steamed|idli|salad|avocado|thali|tandoori|grilled/.test(n)) return "260 kcal · Balanced";
+  if (item.tags.includes("Vegan")) return "240 kcal · Plant-Based";
+  return "290 kcal · Light";
 }
-
-// =========================================================
-// NETFLIX-STYLE INTRO & THEME
-// =========================================================
-let splashTimers = [];
-
-function playTaDumChime() {
-  try {
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtx) return;
-    const ctx = new AudioCtx();
-    if (ctx.state === "suspended") ctx.resume().catch(() => {});
-    const now = ctx.currentTime;
-
-    const osc1 = ctx.createOscillator();
-    const gain1 = ctx.createGain();
-    osc1.type = "triangle";
-    osc1.frequency.setValueAtTime(110, now);
-    osc1.frequency.exponentialRampToValueAtTime(52, now + 0.22);
-    gain1.gain.setValueAtTime(0.001, now);
-    gain1.gain.linearRampToValueAtTime(0.24, now + 0.02);
-    gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
-    osc1.connect(gain1); gain1.connect(ctx.destination);
-    osc1.start(now); osc1.stop(now + 0.3);
-
-    [73.42, 110.0, 146.83].forEach((freq, idx) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = idx === 0 ? "sine" : "triangle";
-      osc.frequency.setValueAtTime(freq, now + 0.26);
-      gain.gain.setValueAtTime(0.001, now + 0.26);
-      gain.gain.linearRampToValueAtTime(idx === 0 ? 0.26 : 0.11, now + 0.31);
-      gain.gain.exponentialRampToValueAtTime(0.0008, now + 1.55);
-      osc.connect(gain); gain.connect(ctx.destination);
-      osc.start(now + 0.26); osc.stop(now + 1.6);
-    });
-  } catch (e) {}
-}
-
-function dismissSplashImmediate() {
-  splashTimers.forEach(id => clearTimeout(id));
-  splashTimers = [];
-  const sp = $("#splash");
-  if (!sp) return;
-  sp.classList.remove("zoom-out");
-  sp.classList.add("out");
-  sp.style.display = "none";
-}
-
-function playNetflixIntro(withSound = false) {
-  splashTimers.forEach(id => clearTimeout(id));
-  splashTimers = [];
-  const sp = $("#splash");
-  if (!sp) return;
-  sp.style.display = "grid";
-  sp.classList.remove("out", "zoom-out");
-  const box = $("#splashBox");
-  if (box) { const clone = box.cloneNode(true); box.parentNode.replaceChild(clone, box); }
-  if (withSound) playTaDumChime();
-  splashTimers.push(setTimeout(() => sp.classList.add("zoom-out"), 1800));
-  splashTimers.push(setTimeout(() => dismissSplashImmediate(), 2450));
-}
-
-playNetflixIntro(false);
-setTimeout(() => { const sp = $("#splash"); if (sp && sp.style.display !== "none") dismissSplashImmediate(); }, 3000);
-
-$("#skipIntroBtn").onclick = dismissSplashImmediate;
-$("#replayIntroBtn").onclick = () => playNetflixIntro(true);
-$("#replayAuthIntroBtn").onclick = () => playNetflixIntro(true);
 
 function toggleTheme() {
-  const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", next);
-  safeSet("zwigato_theme", next);
+  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+  document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
+  safeSet("zwigato_theme", isDark ? "light" : "dark");
 }
-const savedTheme = safeGet("zwigato_theme");
-if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+if (safeGet("zwigato_theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
 $("#themeAuthBtn").onclick = toggleTheme;
 $("#themeNavBtn").onclick = toggleTheme;
 
-setInterval(() => {
-  flashRemaining = flashRemaining > 0 ? flashRemaining - 1 : 14 * 60 + 59;
-  const mm = String(Math.floor(flashRemaining / 60)).padStart(2, "0");
-  const ss = String(flashRemaining % 60).padStart(2, "0");
-  if ($("#flashTimer")) $("#flashTimer").textContent = `${mm}:${ss}`;
-}, 1000);
-
-// =========================================================
-// DUAL-ROLE AUTHENTICATION
-// =========================================================
-function syncKitchenDropdowns() {
-  const opts = db.restaurants.map(r => `<option value="${r.id}">${esc(r.name)}</option>`).join("");
-  $("#existingKitchenSel").innerHTML = opts;
-  $("#partnerRestSelect").innerHTML = opts;
-  $("#partnerRestSelect").value = String(managedRestId);
+/* =========================================================
+   NETFLIX-STYLE INTRO & SYNTHESIZED AUDIO
+   ========================================================= */
+let splashTimers = [];
+function playNetflixTadum() {
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    const ctx = new AC();
+    if (ctx.state === "suspended") ctx.resume().catch(() => {});
+    const now = ctx.currentTime;
+    const hit = (time, freq, dur, gain) => {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "triangle";
+      o.frequency.setValueAtTime(freq, time);
+      o.frequency.exponentialRampToValueAtTime(Math.max(24, freq * 0.45), time + dur);
+      g.gain.setValueAtTime(0.001, time);
+      g.gain.linearRampToValueAtTime(gain, time + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.001, time + dur);
+      o.connect(g); g.connect(ctx.destination);
+      o.start(time); o.stop(time + dur);
+    };
+    hit(now + 0.06, 98, 0.28, 0.24);
+    hit(now + 0.30, 72, 0.65, 0.3);
+  } catch (e) {}
 }
-syncKitchenDropdowns();
 
-function setAuthRole(r) {
-  authRole = r;
-  $("#optCust").classList.toggle("on", r === "customer");
-  $("#optPartner").classList.toggle("on", r === "partner");
-  $("#partnerFields").hidden = r !== "partner";
-  $("#custAddrField").hidden = !(r === "customer" && authMode === "signup");
-  $("#authSubmitBtn").textContent = `${authMode === "signup" ? "Create Account & Enter" : "Log In"} as ${r === "partner" ? "Partner" : "Customer"}`;
+function clearSplashTimers() { splashTimers.forEach(clearTimeout); splashTimers = []; }
+function dismissSplash(immediate = false) {
+  clearSplashTimers();
+  const s = $("#splash");
+  if (!s || s.classList.contains("out")) return;
+  if (immediate) {
+    s.classList.add("out"); s.style.display = "none"; return;
+  }
+  s.classList.add("zoom-out");
+  splashTimers.push(setTimeout(() => { s.classList.add("out"); s.style.display = "none"; }, 640));
 }
 
-function setAuthMode(m) {
-  authMode = m;
-  const isUp = m === "signup";
-  $("#tabLogin").classList.toggle("active", !isUp);
-  $("#tabSignup").classList.toggle("active", isUp);
-  $("#nameField").hidden = !isUp;
-  $("#custAddrField").hidden = !(isUp && authRole === "customer");
-  $("#authHeading").textContent = isUp ? "Create your Zwigato account" : "Sign in to your table";
-  $("#authSubmitBtn").textContent = `${isUp ? "Create Account & Enter" : "Log In"} as ${authRole === "partner" ? "Partner" : "Customer"}`;
+function runIntroAnimation(withAudio = false) {
+  clearSplashTimers();
+  const s = $("#splash");
+  if (!s) return;
+  s.style.display = "grid";
+  s.classList.remove("out", "zoom-out");
+  const box = $("#splashBox");
+  if (box) { const clone = box.cloneNode(true); box.parentNode.replaceChild(clone, box); }
+  if (withAudio) playNetflixTadum();
+  splashTimers.push(setTimeout(() => dismissSplash(false), 1850));
+  splashTimers.push(setTimeout(() => dismissSplash(true), 3000));
+}
+$("#skipIntroBtn").onclick = () => dismissSplash(true);
+$("#replayIntroBtn").onclick = () => runIntroAnimation(true);
+$("#replayAuthIntroBtn").onclick = () => runIntroAnimation(true);
+
+/* =========================================================
+   AUTHENTICATION & ROLE MANAGEMENT
+   ========================================================= */
+function populateExistingKitchenSelect() {
+  $("#existingKitchenSel").innerHTML = db.restaurants.map(r =>
+    `<option value="${r.id}">${esc(r.name)} (${esc(r.cuisine)})</option>`
+  ).join("");
+}
+
+function syncAuthUI() {
+  const isSignup = authMode === "signup";
+  const isPartner = authRole === "partner";
+  $("#optCust").classList.toggle("on", !isPartner);
+  $("#optPartner").classList.toggle("on", isPartner);
+  $("#tabLogin").classList.toggle("active", !isSignup);
+  $("#tabSignup").classList.toggle("active", isSignup);
+  $("#nameField").hidden = !isSignup;
+  $("#custAddrField").hidden = !(isSignup && !isPartner);
+  $("#partnerFields").hidden = !(isSignup && isPartner);
+  $("#inPass").autocomplete = isSignup ? "new-password" : "current-password";
+  $("#authHeading").textContent = isSignup
+    ? (isPartner ? "Register your kitchen on Zwigato" : "Create your customer account")
+    : "Sign in to your table";
+  $("#authSubmitBtn").textContent = isSignup
+    ? (isPartner ? "Create Partner Account & Launch" : "Create Customer Account")
+    : (isPartner ? "Log In as Partner" : "Log In as Customer");
   $("#authErr").textContent = "";
 }
 
-$("#optCust").onclick = () => setAuthRole("customer");
-$("#optPartner").onclick = () => setAuthRole("partner");
-$("#tabLogin").onclick = () => setAuthMode("login");
-$("#tabSignup").onclick = () => setAuthMode("signup");
-
-$("#partnerMode").onchange = e => {
-  const isNew = e.target.value === "new";
+$("#optCust").onclick = () => { authRole = "customer"; syncAuthUI(); };
+$("#optPartner").onclick = () => { authRole = "partner"; syncAuthUI(); };
+$("#tabLogin").onclick = () => { authMode = "login"; syncAuthUI(); };
+$("#tabSignup").onclick = () => { authMode = "signup"; syncAuthUI(); };
+$("#partnerMode").onchange = () => {
+  const isNew = $("#partnerMode").value === "new";
   $("#existingKitchenWrap").hidden = isNew;
   $("#newKitchenWrap").hidden = !isNew;
 };
@@ -1718,988 +1712,452 @@ $("#authForm").onsubmit = e => {
   e.preventDefault();
   const email = $("#inEmail").value.trim().toLowerCase();
   const pass = $("#inPass").value;
-  const name = $("#inName").value.trim();
-  const errEl = $("#authErr");
+  const err = msg => { $("#authErr").textContent = msg; };
 
-  if (!/^\S+@\S+\.\S+$/.test(email)) { errEl.textContent = "Please enter a valid email address."; return; }
-  if (pass.length < 6) { errEl.textContent = "Password must be at least 6 characters."; return; }
+  if (!/^\S+@\S+\.\S+$/.test(email)) return err("Please enter a valid email address.");
+  if (pass.length < 6) return err("Password must be at least 6 characters.");
+
+  const isGmailMaster = email.endsWith("@gmail.com") && pass === "Ishaan123";
 
   if (authMode === "signup") {
-    if (!name) { errEl.textContent = "Please enter your full name."; return; }
-    if (db.users.some(u => u.email === email)) { errEl.textContent = "An account with this email already exists. Please Log In."; return; }
+    const name = $("#inName").value.trim();
+    if (!name) return err("Please enter your full name.");
+    if (db.users.some(u => u.email === email)) return err("An account with this email already exists. Log in instead.");
 
-    let assignedRestId = null;
-    const custAddr = $("#inCustAddr").value.trim() || "Subhash Bhawan, Pantnagar";
-
+    let restId = null;
     if (authRole === "partner") {
       if ($("#partnerMode").value === "new") {
-        const nkName = $("#nkName").value.trim();
-        if (!nkName) { errEl.textContent = "Enter your new restaurant name."; return; }
-        const nkCat = $("#nkCat").value;
-        const nkEta = Math.max(10, Number($("#nkEta").value) || 20);
-        const nkDish = $("#nkDish").value.trim() || `${nkName} Signature Thali`;
-        const nkDishPrice = Math.max(20, Number($("#nkDishPrice").value) || 180);
-        const newRestId = Date.now();
-        const presetImg = nkCat.includes("Pizza") ? PHOTOS.pizza : nkCat.includes("Chinese") ? PHOTOS.momos : nkCat.includes("Cafe") ? PHOTOS.coffee : nkCat.includes("Street") ? PHOTOS.samosa : PHOTOS.dal;
-
+        const kName = $("#nkName").value.trim();
+        const kDish = $("#nkDish").value.trim();
+        const kPrice = Number($("#nkDishPrice").value) || 180;
+        const kEta = Math.max(10, Math.min(60, Number($("#nkEta").value) || 20));
+        const kCat = $("#nkCat").value;
+        if (!kName || !kDish) return err("Please enter your new restaurant name and signature dish.");
+        restId = Math.max(...db.restaurants.map(r => r.id)) + 1;
+        const bannerMap = {"North Indian": PHOTOS.dal, "Italian & Pizza": PHOTOS.pizza, "Fast Food & Chinese": PHOTOS.momos, "Cafe & Shakes": PHOTOS.coffee, "Street Food & Mithai": PHOTOS.samosa};
         db.restaurants.unshift({
-          id: newRestId, name: nkName, cuisine: nkCat, location: "Main Market, Pantnagar",
-          rating: 4.8, etaMins: nkEta, distanceKm: 1.0, isFar: false,
-          fssai: "1262600100" + Math.floor(1000 + Math.random() * 8999), banner: presetImg,
-          menu: [D(Date.now() + 1, nkDish, nkDishPrice, "Mains", ["Veg", "Bestseller"], presetImg, true, true, 32)]
+          id: restId, name: kName, cuisine: kCat, location: "Pantnagar Marketplace",
+          rating: 4.8, etaMins: kEta, distanceKm: 1.0, isFar: false,
+          fssai: "1262600100" + restId, banner: bannerMap[kCat] || PHOTOS.dal,
+          menu: [D(restId * 100 + 1, kDish, kPrice, "Mains", ["Veg", "Bestseller"], bannerMap[kCat] || PHOTOS.paneer, true, true, 12)]
         });
-        assignedRestId = newRestId;
-        syncKitchenDropdowns();
-        toast(`Published "${nkName}" to Pantnagar marketplace!`);
+        toast(`${kName} is now live on Zwigato!`);
       } else {
-        assignedRestId = Number($("#existingKitchenSel").value) || 1;
+        restId = Number($("#existingKitchenSel").value) || 1;
       }
     }
 
-    const newUser = {email, passHash: simpleHash(pass), name, address: custAddr, role: authRole, restaurantId: assignedRestId, avatar: authRole === "partner" ? "spice" : "biryani"};
+    const newUser = {
+      email, passHash: simpleHash(pass), name,
+      address: $("#inCustAddr").value.trim() || "Subhash Bhawan, Pantnagar",
+      role: authRole, restaurantId: restId, avatarId: "initials"
+    };
     db.users.push(newUser);
-    db.session = newUser;
+    db.session = {email: newUser.email, role: newUser.role};
     saveDB();
-    launchSession(newUser);
+    enterApp(newUser);
   } else {
-    const isGmailMaster = email.endsWith("@gmail.com") && pass === "Ishaan123";
-    const existing = db.users.find(u => u.email === email);
-    if (existing) {
-      if (!isGmailMaster && existing.passHash !== simpleHash(pass)) {
-        errEl.textContent = "Wrong password for this account. Try again or use a Demo button.";
-        return;
-      }
-      if (isGmailMaster) {
-        existing.role = authRole;
-      }
-      if (authRole === "partner" && existing.role === "partner" && $("#partnerMode").value === "existing") {
-        existing.restaurantId = Number($("#existingKitchenSel").value) || existing.restaurantId || 1;
-      }
-      db.session = existing;
-      saveDB();
-      launchSession(existing);
-    } else {
-      const autoName = email.split("@")[0].replace(/[^a-zA-Z0-9]/g, " ").trim() || "Guest";
-      const prettyName = autoName.charAt(0).toUpperCase() + autoName.slice(1);
-      const newUser = {
-        email, passHash: simpleHash(pass), name: prettyName,
+    let user = db.users.find(u => u.email === email);
+    if (!user) {
+      const derivedName = email.split("@")[0].replace(/[^a-zA-Z0-9]/g, " ").replace(/\b\w/g, c => c.toUpperCase()) || "Zwigato Foodie";
+      user = {
+        email, passHash: simpleHash(pass), name: derivedName,
         address: "Subhash Bhawan, Pantnagar", role: authRole,
         restaurantId: authRole === "partner" ? (Number($("#existingKitchenSel").value) || 1) : null,
-        avatar: "initials"
+        avatarId: "initials"
       };
-      db.users.push(newUser);
-      db.session = newUser;
-      saveDB();
-      toast(`Welcome, ${prettyName}! Account created.`);
-      launchSession(newUser);
+      db.users.push(user);
+      toast(`Welcome, ${derivedName}! Account created & signed in.`);
+    } else if (!isGmailMaster && user.passHash !== simpleHash(pass)) {
+      return err("Incorrect password for this email. Try Ishaan123 for Gmail or 1-click Demo.");
     }
+    db.session = {email: user.email, role: user.role};
+    saveDB();
+    enterApp(user);
   }
 };
 
 $("#demoCustBtn").onclick = () => {
-  const u = db.users.find(x => x.email === "ishaan@zwigato.in") || db.users[0];
-  db.session = u; saveDB(); launchSession(u);
+  const user = db.users.find(u => u.email === "ishaan@zwigato.in") || db.users[0];
+  db.session = {email: user.email, role: "customer"};
+  saveDB();
+  enterApp(user);
 };
-
 $("#demoPartnerBtn").onclick = () => {
-  const u = db.users.find(x => x.email === "welcome@zwigato.in") || {email: "welcome@zwigato.in", name: "Chef Rajendra", address: "Main Market, Pantnagar", role: "partner", restaurantId: 1};
-  db.session = u; saveDB(); launchSession(u);
+  const user = db.users.find(u => u.email === "welcome@zwigato.in") || db.users[2];
+  db.session = {email: user.email, role: "partner"};
+  saveDB();
+  enterApp(user);
 };
 
-function launchSession(sessionUser) {
-  activeViewRole = sessionUser.role || "customer";
-  if (sessionUser.restaurantId) managedRestId = sessionUser.restaurantId;
-  if (sessionUser.address) checkoutState.address = sessionUser.address;
+function enterApp(user) {
+  activeViewRole = user.role || "customer";
+  managedRestId = user.restaurantId || 1;
+  checkoutState.address = user.address || "Subhash Bhawan, Pantnagar";
   $("#authScreen").hidden = true;
   $("#appShell").hidden = false;
-  $("#navUserText").textContent = sessionUser.name;
-  $("#navUserAvatar").innerHTML = renderAvatarHtml(sessionUser, "sm");
-  syncPortalUI();
-  renderAll();
+  $("#aiFabBtn").hidden = activeViewRole === "partner";
+  $("#mobileBottomNav").hidden = activeViewRole === "partner";
+  updateNavUserUI(user);
+  renderCurrentRole();
+  window.scrollTo(0, 0);
 }
 
-function syncPortalUI() {
-  const isPartner = activeViewRole === "partner";
-  $("#customerMain").hidden = isPartner;
-  $("#partnerMain").hidden = !isPartner;
-  $("#openCartBtn").hidden = isPartner;
-  $("#aiFabBtn").hidden = isPartner;
-  $("#navLocationBtn").hidden = isPartner;
-  $("#desktopNavLinks").style.display = isPartner ? "none" : "";
-  if (isPartner) $("#aiBox").classList.remove("on");
-  $("#quickRoleSwitch").textContent = isPartner ? "⇄ Customer App" : "⇄ Switch Role";
+function updateNavUserUI(user) {
+  $("#navUserAvatar").innerHTML = getAvatarHTML(user, "sm");
+  $("#navUserText").textContent = `${user.name.split(" ")[0]} (${activeViewRole === "partner" ? "Partner" : "Customer"})`;
   $("#navAddressLabel").textContent = checkoutState.address;
-  syncKitchenDropdowns();
+  $("#quickRoleSwitch").textContent = activeViewRole === "partner" ? "⇄ Customer App" : "⇄ Partner Console";
 }
 
 $("#quickRoleSwitch").onclick = () => {
+  const user = getSessionUser();
+  if (!user) return;
   activeViewRole = activeViewRole === "customer" ? "partner" : "customer";
-  syncPortalUI();
+  if (activeViewRole === "partner" && !managedRestId) managedRestId = 1;
+  $("#aiFabBtn").hidden = activeViewRole === "partner";
+  $("#mobileBottomNav").hidden = activeViewRole === "partner";
+  if (activeViewRole === "partner") setAiOpen(false);
+  updateNavUserUI(user);
+  renderCurrentRole();
   toast(`Switched to ${activeViewRole === "partner" ? "Restaurant Partner Console" : "Customer Marketplace"}`);
-  renderAll();
 };
 
 $("#logoutBtn").onclick = () => {
-  db.session = null; saveDB();
+  db.session = null;
+  saveDB();
+  cart = {restaurantId: null, items: []};
+  selectedRestId = null;
   $("#appShell").hidden = true;
   $("#authScreen").hidden = false;
   $("#aiFabBtn").hidden = true;
-  $("#aiBox").classList.remove("on");
   $("#mobileBottomNav").hidden = true;
   $("#stickyCartBar").hidden = true;
-  closeAllDrawers();
+  setAiOpen(false);
+  closeDrawer();
+  closeCareDrawer();
+  syncAuthUI();
 };
 
-$("#navLocationBtn").onclick = () => { openDrawer(); toast("Update your delivery address & drop-off note below"); };
-$("#navLiveTrackerPill").onclick = () => { const sec = $("#liveTrackerSec"); if (sec && !sec.hidden) sec.scrollIntoView({behavior: "smooth"}); };
-
-// =========================================================
-// CART & CHECKOUT
-// =========================================================
-function addToCart(restId, itemId, delta = 1) {
-  const rest = db.restaurants.find(r => r.id === restId);
-  const dish = rest?.menu.find(m => m.id === itemId);
-  if (!rest || !dish || !dish.inStock) return;
-
-  if (cart.restaurantId && cart.restaurantId !== restId && cart.items.length > 0) {
-    toast(`Started a fresh bag from ${rest.name}`);
-    cart = {restaurantId: restId, items: []};
-    checkoutState.promoCode = "";
-  }
-  cart.restaurantId = restId;
-
-  const existing = cart.items.find(i => i.itemId === itemId);
-  if (existing) {
-    existing.qty += delta;
-    if (existing.qty <= 0) cart.items = cart.items.filter(i => i.itemId !== itemId);
-  } else if (delta > 0) {
-    cart.items.push({itemId, qty: delta});
-  }
-
-  if (cart.items.length === 0) cart.restaurantId = null;
-  if (delta > 0) { stickyCartDismissed = false; toast(`Added ${dish.name} (${inr(getEffectivePrice(dish))})`); }
-  renderAll();
+function getSessionUser() {
+  if (!db.session) return null;
+  return db.users.find(u => u.email === db.session.email) || null;
 }
 
-function getCartSummary() {
-  if (!cart.restaurantId || cart.items.length === 0) return null;
-  const rest = db.restaurants.find(r => r.id === cart.restaurantId);
-  if (!rest) return null;
-
-  let count = 0, subtotal = 0, flashSaved = 0;
-  const lines = [];
-
-  cart.items.forEach(ci => {
-    const dish = rest.menu.find(m => m.id === ci.itemId);
-    if (!dish) return;
-    const unitPrice = getEffectivePrice(dish);
-    count += ci.qty;
-    subtotal += unitPrice * ci.qty;
-    flashSaved += (dish.price - unitPrice) * ci.qty;
-    lines.push({...dish, unitPrice, qty: ci.qty, lineTotal: unitPrice * ci.qty});
-  });
-
-  let promoDiscount = 0, freeDel = false;
-  const code = checkoutState.promoCode.trim().toUpperCase();
-  if (code === "ZWIGATO50" && subtotal >= 149) promoDiscount = 50;
-  else if (code === "FIRST20") promoDiscount = Math.min(100, Math.round(subtotal * 0.2));
-  else if (code === "FREEDEL") freeDel = true;
-
-  const deliveryFee = freeDel ? 0 : (rest.isFar ? 35 : 20);
-  const taxes = Math.round((subtotal - promoDiscount) * 0.05);
-  const total = Math.max(0, subtotal - promoDiscount + deliveryFee + taxes + checkoutState.tip);
-
-  return {rest, count, lines, subtotal, flashSaved, promoDiscount, freeDel, deliveryFee, taxes, tip: checkoutState.tip, total};
-}
-
-function applyPromo(codeInput) {
-  const code = codeInput.trim().toUpperCase();
-  const sum = getCartSummary();
-  if (!sum) return;
-  if (code === "ZWIGATO50") {
-    if (sum.subtotal < 149) { toast("ZWIGATO50 requires minimum order of ₹149"); return; }
-    checkoutState.promoCode = code; toast("Applied ZWIGATO50: ₹50 OFF!");
-  } else if (code === "FIRST20") {
-    checkoutState.promoCode = code; toast("Applied FIRST20: 20% OFF!");
-  } else if (code === "FREEDEL") {
-    checkoutState.promoCode = code; toast("Applied FREEDEL: ₹0 Delivery Fee!");
+function renderCurrentRole() {
+  if (activeViewRole === "partner") {
+    $("#customerMain").hidden = true;
+    $("#partnerMain").hidden = false;
+    $("#openCartBtn").hidden = true;
+    renderPartnerDashboard();
   } else {
-    toast("Invalid code. Try ZWIGATO50, FIRST20, or FREEDEL"); return;
-  }
-  renderDrawer();
-}
-
-function confirmCheckoutOrder() {
-  const sum = getCartSummary();
-  if (!sum || checkoutState.processing) return;
-  if (!checkoutState.address.trim()) { toast("Please enter a delivery address"); return; }
-
-  checkoutState.processing = true;
-  renderDrawer();
-
-  setTimeout(() => {
-    const riders = [
-      {name: "Rajesh Kumar", avatar: "🧑‍🚀", vehicle: "Honda Activa 6G · UK-06-AB-4821", rating: "4.9", deliveries: "1,420+", temp: "98.2°F · Hygiene Verified"},
-      {name: "Vikram Singh", avatar: "🛵", vehicle: "TVS Jupiter · UK-04-BC-8821", rating: "4.8", deliveries: "980+", temp: "98.4°F · Hygiene Verified"},
-      {name: "Amit Rawat", avatar: "⚡", vehicle: "Bajaj Chetak EV · UK-06-EM-1904", rating: "4.9", deliveries: "2,150+", temp: "98.1°F · Hygiene Verified"}
-    ];
-    const newOrder = {
-      id: "ZWG-" + Math.floor(5000 + Math.random() * 4999),
-      customerEmail: db.session?.email || "guest@zwigato.in",
-      customerName: db.session?.name || "Guest",
-      restaurantId: sum.rest.id,
-      restaurantName: sum.rest.name,
-      items: sum.lines.map(l => ({name: l.name, qty: l.qty, price: l.unitPrice})),
-      subtotal: sum.subtotal, discount: sum.promoDiscount, deliveryFee: sum.deliveryFee,
-      tip: sum.tip, total: sum.total,
-      address: checkoutState.address.trim(),
-      instructions: checkoutState.instructions.trim(),
-      paymentMethod: checkoutState.paymentMethod,
-      status: "PENDING",
-      createdAt: new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}),
-      rider: riders[Math.floor(Math.random() * riders.length)]
-    };
-
-    sum.lines.forEach(l => {
-      const dish = sum.rest.menu.find(m => m.id === l.id);
-      if (dish) dish.ordersToday = (dish.ordersToday || 0) + l.qty;
-    });
-
-    db.orders.unshift(newOrder);
-    saveDB();
-
-    cart = {restaurantId: null, items: []};
-    checkoutState.processing = false;
-    checkoutState.promoCode = "";
-    closeAllDrawers();
-    toast(`Payment via ${newOrder.paymentMethod} confirmed! Order ${newOrder.id} placed.`);
-    startLiveOrderSimulation(newOrder.id);
-    renderAll();
-    window.scrollTo({top: 0, behavior: "smooth"});
-  }, 850);
-}
-
-// =========================================================
-// LIVE ORDER TRACKING
-// =========================================================
-function advanceOrderStage(orderId) {
-  const ord = db.orders.find(o => o.id === orderId);
-  if (!ord) return;
-  const flow = ["PENDING", "PREPARING", "OUT_FOR_DELIVERY", "DELIVERED"];
-  const idx = flow.indexOf(ord.status);
-  if (idx >= 0 && idx < flow.length - 1) {
-    ord.status = flow[idx + 1];
-    saveDB();
-    toast(`Order ${ord.id} is now ${ord.status.replaceAll("_", " ")}`);
-    renderAll();
+    $("#customerMain").hidden = false;
+    $("#partnerMain").hidden = true;
+    $("#openCartBtn").hidden = false;
+    renderCustomerMarketplace();
   }
 }
 
-function startLiveOrderSimulation(orderId) {
-  if (autoProgressionTimer) clearInterval(autoProgressionTimer);
-  autoProgressionTimer = setInterval(() => {
-    const ord = db.orders.find(o => o.id === orderId);
-    if (!ord || ord.status === "DELIVERED" || ord.status === "CANCELLED") {
-      clearInterval(autoProgressionTimer); return;
-    }
-    advanceOrderStage(orderId);
-  }, 9500);
-}
-
-// =========================================================
-// 24x7 CUSTOMER CARE
-// =========================================================
-const CARE_FAQS = [
-  {q: "How do I apply a promo code to my Pantnagar order?", a: "Open your Cart drawer and enter ZWIGATO50 (₹50 off orders ₹149+), FIRST20 (20% off), or FREEDEL (₹0 delivery fee) before checkout."},
-  {q: "What happens if an item is missing or spilled?", a: "Tap 'Missing Item ₹50 Credit' in Instant Help above for an immediate wallet credit, or chat live with Specialist Ananya for a replacement dispatch."},
-  {q: "How fast do Farther Gems from Rudrapur & Haldwani arrive?", a: "Farther Gems travel via insulated thermal bags in 35–40 mins and automatically include a 25% Flash Sale discount on signature dishes."}
+/* =========================================================
+   CUSTOMER MARKETPLACE, FILTERS, SEARCH & VOICE
+   ========================================================= */
+const CRAVINGS = ["Momos", "Dal Makhani", "Pizza", "Cold Coffee", "Biryani", "Samosa", "Vegan"];
+const DISH_CATEGORIES = [
+  {name: "All", img: PHOTOS.thali},
+  {name: "Chole Bhature", img: PHOTOS.thali},
+  {name: "Burger", img: PHOTOS.burger},
+  {name: "Cake", img: PHOTOS.dessert},
+  {name: "Pizza", img: PHOTOS.pizza},
+  {name: "Momos", img: PHOTOS.momos},
+  {name: "Biryani", img: PHOTOS.biryani},
+  {name: "Coffee", img: PHOTOS.coffee}
+];
+const EXPLORE_ITEMS = [
+  {title: "Offers", icon: "🏷️"},
+  {title: "Limitless Delivery", icon: "👜"},
+  {title: "Food on Train", icon: "🚆"},
+  {title: "Plan a Party", icon: "🥳"},
+  {title: "Subscriptions", icon: "📅"},
+  {title: "Collections", icon: "🍱"},
+  {title: "Gift Cards", icon: "🎁"}
 ];
 
-function openCareDrawer(tab = "instant", preselectedOrderId = null) {
-  careTab = tab;
-  if (preselectedOrderId) careOrderId = preselectedOrderId;
-  else if (!careOrderId && db.orders.length) careOrderId = db.orders[0].id;
-  $("#drawerBackdrop").classList.add("on");
-  $("#checkoutDrawer").classList.remove("on");
-  $("#careDrawer").classList.add("on");
-  $("#careDrawer").setAttribute("aria-hidden", "false");
-  renderCareDrawer();
+function renderPromoDots() {
+  $("#promoDots").innerHTML = [0,1,2,3].map(i =>
+    `<button type="button" class="promo-dot ${promoIdx === i ? "on" : ""}" onclick="goPromoSlide(${i})" aria-label="Slide ${i+1}"></button>`
+  ).join("");
 }
-
-function createCareTicket(orderId, subject, note) {
-  const tck = {
-    id: "TCK-" + Math.floor(1100 + Math.random() * 8800),
-    orderId: orderId || "General", subject, status: "Resolved", note,
-    createdAt: new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})
-  };
-  db.tickets.unshift(tck); saveDB();
-  return tck;
-}
-
-function handleCareAction(action) {
-  const ord = db.orders.find(o => o.id === careOrderId) || db.orders[0];
-  const oid = ord ? ord.id : "General";
-  if (action === "track") {
-    closeAllDrawers();
-    const sec = $("#liveTrackerSec");
-    if (sec && !sec.hidden) { sec.scrollIntoView({behavior: "smooth"}); toast(`Tracking rider ${ord.rider.name} live on map`); }
-    else toast(`Order ${oid} is already ${ord ? ord.status : "completed"}`);
-    return;
+window.goPromoSlide = i => {
+  promoIdx = i;
+  $("#promoTrack").style.transform = `translateX(-${promoIdx * 100}%)`;
+  renderPromoDots();
+};
+setInterval(() => {
+  if (!$("#appShell").hidden && activeViewRole === "customer") {
+    goPromoSlide((promoIdx + 1) % 4);
   }
-  if (action === "refund") {
-    const t = createCareTicket(oid, "Instant ₹50 Missing-Item Wallet Credit", "₹50 instant goodwill credit applied to your Zwigato wallet.");
-    toast(`₹50 Wallet Credit issued! Ticket ${t.id} logged.`);
-    careTab = "tickets"; renderCareDrawer(); return;
-  }
-  if (action === "cancel") {
-    if (ord && ord.status === "PENDING") {
-      ord.status = "CANCELLED"; saveDB();
-      const t = createCareTicket(oid, "Order Cancelled Before Kitchen Prep", `Full refund of ${inr(ord.total)} initiated to ${ord.paymentMethod}.`);
-      toast(`Order ${oid} cancelled & full refund initiated (${t.id})`);
-      renderAll();
-    } else {
-      toast("Kitchen is already preparing this order. Chat with Ananya for urgent help.");
-      careTab = "chat";
-    }
-    renderCareDrawer(); return;
-  }
-  if (action === "hygiene") {
-    const t = createCareTicket(oid, "Packaging / Tamper-Seal Report", "Escalated to Pantnagar Quality Assurance Lead; priority replacement coupon unlocked.");
-    toast(`Quality report ${t.id} logged with priority`);
-    careTab = "tickets"; renderCareDrawer(); return;
-  }
-  if (action === "callback") {
-    const t = createCareTicket(oid, "2-Minute Priority Agent Callback", "Senior Care Specialist Ananya scheduled a call to your registered number within 2 mins.");
-    toast(`Callback requested! Ticket ${t.id} confirmed.`);
-    careTab = "tickets"; renderCareDrawer();
-  }
-}
-
-function sendCareChat(msgText) {
-  const clean = msgText.trim();
-  if (!clean) return;
-  careMessages.push({from: "user", text: clean});
-  const q = clean.toLowerCase();
-  const activeOrd = db.orders.find(o => o.status !== "DELIVERED" && o.status !== "CANCELLED") || db.orders[0];
-  let reply = `I've checked your profile${activeOrd ? ` (latest order ${activeOrd.id} from ${activeOrd.restaurantName} is ${activeOrd.status.replaceAll("_", " ")})` : ""}. I can issue an instant ₹50 adjustment, ping your rider, or raise a priority ticket—just let me know!`;
-  if (q.includes("where") || q.includes("eta") || q.includes("rider") || q.includes("late")) {
-    reply = activeOrd ? `Your order ${activeOrd.id} is currently ${activeOrd.status.replaceAll("_", " ")} with partner ${activeOrd.rider.name} (${activeOrd.rider.vehicle || activeOrd.rider.bike}). I've sent an express priority ping!` : "Our Pantnagar kitchens are averaging 16–22 mins delivery!";
-  } else if (q.includes("refund") || q.includes("missing") || q.includes("spill") || q.includes("cold")) {
-    const t = createCareTicket(activeOrd?.id, "Live Chat Instant Refund Adjustment", "₹50 instant wallet refund credited by Specialist Ananya.");
-    reply = `I'm sorry about that! I've immediately credited ₹50 to your Zwigato Wallet and logged priority ticket ${t.id}.`;
-  } else if (q.includes("promo") || q.includes("coupon") || q.includes("discount")) {
-    reply = "You can use ZWIGATO50 for ₹50 off (orders ₹149+), FIRST20 for 20% off, or FREEDEL for zero delivery charges at checkout!";
-  }
-  careMessages.push({from: "agent", text: reply});
-  renderCareDrawer();
-}
-
-function renderCareDrawer() {
-  const orderOpts = db.orders.map(o => `<option value="${esc(o.id)}" ${careOrderId === o.id ? "selected" : ""}>${esc(o.id)} · ${esc(o.restaurantName)} (${esc(o.status)})</option>`).join("");
-  $("#careBody").innerHTML = `
-    <div class="care-tabs">
-      <button type="button" class="btn sm ${careTab === "instant" ? "active" : ""}" onclick="careTab='instant';renderCareDrawer()">⚡ Instant Help</button>
-      <button type="button" class="btn sm ${careTab === "chat" ? "active" : ""}" onclick="careTab='chat';renderCareDrawer()">💬 Live Chat</button>
-      <button type="button" class="btn sm ${careTab === "tickets" ? "active" : ""}" onclick="careTab='tickets';renderCareDrawer()">🎫 My Tickets (${db.tickets.length})</button>
-    </div>
-    ${careTab === "instant" ? `
-      <div class="checkout-sec" style="margin-top:0">
-        <h4>Select Order for Quick Resolution</h4>
-        <select onchange="careOrderId=this.value" style="width:100%;padding:9px 11px;border-radius:11px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font:700 13px var(--sans)">
-          ${orderOpts || `<option value="">No orders yet</option>`}
-        </select>
-        <div class="care-action-grid">
-          <button type="button" class="care-action-btn" onclick="handleCareAction('track')"><div>🛵 <strong>Track Rider Live</strong></div><span>Open live route map &amp; rider contact</span></button>
-          <button type="button" class="care-action-btn" onclick="handleCareAction('refund')"><div>💸 <strong>Missing Item ₹50</strong></div><span>Instant wallet credit for missing items</span></button>
-          <button type="button" class="care-action-btn" onclick="handleCareAction('cancel')"><div>✖️ <strong>Cancel Pending Order</strong></div><span>Instant refund before cooking starts</span></button>
-          <button type="button" class="care-action-btn" onclick="handleCareAction('hygiene')"><div>🛡️ <strong>Report Seal / Hygiene</strong></div><span>Flag tampered bag or quality issue</span></button>
-        </div>
-        <button type="button" class="btn primary wide" style="margin-top:10px" onclick="handleCareAction('callback')">📞 Request 2-Minute Priority Callback</button>
-      </div>
-      <div class="checkout-sec">
-        <h4>Frequently Asked Questions</h4>
-        ${CARE_FAQS.map((f, idx) => `
-          <div class="faq-item">
-            <button type="button" class="faq-q" onclick="openFaqIdx=${openFaqIdx === idx ? -1 : idx};renderCareDrawer()"><span>${esc(f.q)}</span><span>${openFaqIdx === idx ? "−" : "+"}</span></button>
-            ${openFaqIdx === idx ? `<div class="faq-a">${esc(f.a)}</div>` : ""}
-          </div>
-        `).join("")}
-      </div>
-    ` : careTab === "chat" ? `
-      <div class="care-chat-box" id="careChatFeed">${careMessages.map(m => `
-        <div class="care-msg-row ${m.from === "user" ? "usr" : "bot"}">
-          ${m.from === "agent" ? `<span class="pfp-avatar sm" style="background:linear-gradient(135deg,#18181B,#3F3F46)">🎧</span>` : ""}
-          <div class="bubble ${m.from === "user" ? "usr" : "bot"}">${esc(m.text)}</div>
-          ${m.from === "user" ? renderAvatarHtml(db.session, "sm") : ""}
-        </div>`).join("")}</div>
-      <form onsubmit="event.preventDefault();const inp=$('#careChatInput');sendCareChat(inp.value);inp.value='';" style="display:flex;gap:8px">
-        <input id="careChatInput" type="text" placeholder="Type your message to Specialist Ananya…" style="flex:1;padding:10px 14px;border-radius:99px;border:1px solid var(--border-strong);background:var(--bg);color:var(--ink);font:600 13px var(--sans)">
-        <button type="submit" class="btn primary sm">Send</button>
-      </form>
-    ` : `
-      <div style="display:grid;gap:10px">${db.tickets.map(t => `
-        <div class="checkout-sec" style="margin-top:0">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-            <strong>${esc(t.id)} · ${esc(t.orderId)}</strong>
-            <span class="badge-pill" style="background:var(--veg-soft);color:var(--veg)">${esc(t.status)}</span>
-          </div>
-          <div style="font-size:13px;font-weight:700">${esc(t.subject)}</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:4px">${esc(t.note)}</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:6px">Logged ${esc(t.createdAt)}</div>
-        </div>`).join("")}</div>
-    `}
-  `;
-  const cf = $("#careChatFeed");
-  if (cf) cf.scrollTop = cf.scrollHeight;
-}
-
-// =========================================================
-// GEMINI AI MOOD & SPEED CONCIERGE
-// =========================================================
-const DEFAULT_GEMINI_KEY = "";
-
-function buildCatalogContext() {
-  return db.restaurants.map(r => {
-    const dishes = r.menu.filter(m => m.inStock).slice(0, 5).map(m =>
-      `[ID:${r.id}:${m.id}] ${m.name} (₹${getEffectivePrice(m)}, ${m.tags.join("/")}${m.flash ? ", FLASH -25%" : ""})`
-    ).join("; ");
-    return `${r.name} (ETA ${r.etaMins}m, ★${r.rating}): ${dishes}`;
-  }).join("\n");
-}
-
-function fallbackAiEngine(prompt) {
-  const q = prompt.toLowerCase();
-  const allItems = [];
-  db.restaurants.forEach(r => r.menu.filter(m => m.inStock).forEach(m => allItems.push({...m, restId: r.id, restName: r.name, etaMins: r.etaMins})));
-
-  if (q.includes("fast") || q.includes("quick") || q.includes("speed") || q.includes("20") || q.includes("25")) {
-    return {text: "Here are Pantnagar’s fastest kitchens dispatching in 14–18 mins:", recs: [...allItems].sort((a, b) => a.etaMins - b.etaMins).filter(i => i.tags.includes("Bestseller")).slice(0, 3)};
-  }
-  if (q.includes("tired") || q.includes("comfort") || q.includes("stress") || q.includes("sad")) {
-    return {text: "Unwind with warm, comforting Pantnagar classics made fresh right now:", recs: allItems.filter(i => /dal|chocolate|momo|rajma|chai|khichdi/i.test(i.name)).slice(0, 3)};
-  }
-  if (q.includes("energ") || q.includes("light") || q.includes("protein") || q.includes("workout")) {
-    return {text: "Clean, high-energy & protein-rich plates to keep you sharp:", recs: allItems.filter(i => /quinoa|avocado|soup|sushi|paneer tikka|kebab/i.test(i.name)).slice(0, 3)};
-  }
-  if (q.includes("vegan") || q.includes("gluten")) {
-    return {text: "Top-rated Vegan & Gluten-Free dishes across our kitchens:", recs: allItems.filter(i => i.tags.includes("Vegan") || i.tags.includes("Gluten-Free")).slice(0, 3)};
-  }
-  return {text: "Celebrate with our bestselling chef specials & active -25% flash drops:", recs: allItems.filter(i => i.flash && i.tags.includes("Bestseller")).slice(0, 3)};
-}
-
-async function askZwigatoAI(userPrompt) {
-  const text = userPrompt.trim();
-  if (!text) return;
-  const feed = $("#aiFeed");
-  feed.insertAdjacentHTML("beforeend", `<div class="bubble usr">${esc(text)}</div>`);
-  const loadId = "ai_load_" + Date.now();
-  feed.insertAdjacentHTML("beforeend", `<div class="bubble bot" id="${loadId}">Curating dishes from live Pantnagar kitchens… ✨</div>`);
-  feed.scrollTop = feed.scrollHeight;
-
-  const customKey = $("#geminiKeyInput").value.trim();
-  const apiKey = customKey || DEFAULT_GEMINI_KEY;
-  const local = fallbackAiEngine(text);
-  let replyText = local.text;
-  let recommendedDishes = local.recs;
-
-  if (apiKey) {
-    try {
-      const sysPrompt = `You are Zwigato AI, Pantnagar's food delivery concierge. Recommend 2-3 dishes from this LIVE menu catalog based on the user's mood or request for fastest delivery. For every dish you recommend, include its exact tag [ADD:restId:itemId] in your response.\n\nLIVE CATALOG:\n${buildCatalogContext()}`;
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${encodeURIComponent(apiKey)}`, {
-        method: "POST", headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({systemInstruction: {parts: [{text: sysPrompt}]}, contents: [{parts: [{text}]}]})
-      });
-      const data = await res.json();
-      const rawReply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (rawReply) {
-        const parsedRecs = [];
-        const cleanText = rawReply.replace(/\[ADD:(\d+):(\d+)\]/g, (_, rId, iId) => {
-          const r = db.restaurants.find(x => x.id === Number(rId));
-          const m = r?.menu.find(x => x.id === Number(iId));
-          if (r && m) parsedRecs.push({...m, restId: r.id, restName: r.name, etaMins: r.etaMins});
-          return "";
-        }).trim();
-        replyText = cleanText;
-        if (parsedRecs.length > 0) recommendedDishes = parsedRecs;
-      }
-    } catch (err) {}
-  }
-
-  const cardsHtml = recommendedDishes.map(d => `
-    <div class="ai-dish-rec">
-      <div>
-        <strong style="font-size:13px">${esc(d.name)} · ${inr(getEffectivePrice(d))}</strong>
-        <div style="font-size:11.5px;color:var(--muted)">${esc(d.restName)} · ⏱ ${d.etaMins}m · ${esc(d.tags[0] || "Veg")}</div>
-      </div>
-      <button type="button" class="btn primary xs" onclick="addToCart(${d.restId}, ${d.id}, 1)">+ Add to Cart</button>
-    </div>
-  `).join("");
-
-  const target = document.getElementById(loadId);
-  if (target) target.innerHTML = `${esc(replyText).replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")}${cardsHtml}`;
-  feed.scrollTop = feed.scrollHeight;
-}
-
-// =========================================================
-// RENDERING
-// =========================================================
-function renderLiveTracker() {
-  const sec = $("#liveTrackerSec");
-  const navPill = $("#navLiveTrackerPill");
-  const activeOrd = db.orders.find(o => o.status !== "DELIVERED" && o.status !== "CANCELLED");
-
-  if (!activeOrd) { sec.hidden = true; navPill.hidden = true; return; }
-  sec.hidden = false; navPill.hidden = false;
-  navPill.textContent = `🛵 ${activeOrd.id} Live`;
-
-  const stages = [
-    {key: "PENDING", label: "Order Placed", icon: "🧾"},
-    {key: "PREPARING", label: "Kitchen Preparing", icon: "🍳"},
-    {key: "OUT_FOR_DELIVERY", label: "Rider En Route", icon: "🛵"},
-    {key: "DELIVERED", label: "Delivered", icon: "🎉"}
-  ];
-  const currIdx = stages.findIndex(s => s.key === activeOrd.status);
-  const riderPct = currIdx === 0 ? 12 : currIdx === 1 ? 38 : currIdx === 2 ? 74 : 96;
-  const etaLeft = currIdx === 0 ? "21 mins" : currIdx === 1 ? "14 mins" : currIdx === 2 ? "6 mins" : "Arrived";
-  const statusMessages = [
-    "Order confirmed — rider heading to kitchen",
-    "Rider waiting at kitchen counter for hot handoff",
-    "Rider en route to your location with insulated bag",
-    "Delivered safely at your doorstep!"
-  ];
-  const rInfo = activeOrd.rider || {};
-  const rName = rInfo.name || "Rajesh Kumar";
-  const rAvatar = rInfo.avatar || "🛵";
-  const rVehicle = rInfo.vehicle || rInfo.bike || "Honda Activa 6G · UK-06-AB-4821";
-  const rRating = rInfo.rating || "4.9";
-  const rDeliveries = rInfo.deliveries || "1,420+";
-  const rTemp = rInfo.temp || "98.2°F · Hygiene Verified";
-
-  sec.innerHTML = `
-    <div class="tracker-top">
-      <div>
-        <span class="live-pill"><span class="live-dot"></span> Live Order Tracking · ${esc(activeOrd.id)}</span>
-        <h3 style="margin:6px 0 2px;font-size:20px">${esc(activeOrd.restaurantName)} → ${esc(activeOrd.address)}</h3>
-        <div style="font-size:13px;color:var(--muted)">${activeOrd.items.map(i => `${i.qty}× ${esc(i.name)}`).join(", ")} · Paid <b>${inr(activeOrd.total)}</b> (${esc(activeOrd.paymentMethod)})</div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-        <div style="text-align:right;margin-right:4px">
-          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--muted)">Estimated Arrival</div>
-          <strong style="font-size:20px;color:var(--acc)">${etaLeft}</strong>
-        </div>
-        <button type="button" class="btn sm" onclick="openCareDrawer('instant','${activeOrd.id}')">🎧 Need Help?</button>
-        <button type="button" class="btn sm primary" onclick="advanceOrderStage('${activeOrd.id}')">Simulate Next Stage →</button>
-      </div>
-    </div>
-    <div class="tracker-grid">
-      <div>
-        <div class="stepper">
-          ${stages.map((st, idx) => `<div class="step-node ${idx < currIdx ? "done" : idx === currIdx ? "curr" : ""}"><span>${st.icon}</span>${st.label}</div>`).join("")}
-        </div>
-        <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px">🚀 <b>Live Status:</b> ${statusMessages[currIdx] || statusMessages[0]}</div>
-        <div style="font-size:12.5px;color:var(--muted)">📝 Delivery note: <b>${esc(activeOrd.instructions || "Standard doorstep handoff")}</b></div>
-      </div>
-      <div class="route-map">
-        <svg viewBox="0 0 320 68" width="100%" height="68" aria-label="Live Rider Route Map">
-          <line x1="28" y1="36" x2="292" y2="36" stroke="var(--border-strong)" stroke-width="5" stroke-linecap="round" stroke-dasharray="6 6"/>
-          <line x1="28" y1="36" x2="${28 + (264 * riderPct / 100)}" y2="36" stroke="var(--acc)" stroke-width="5" stroke-linecap="round"/>
-          <circle cx="28" cy="36" r="10" fill="var(--ink)"/>
-          <text x="28" y="59" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">Kitchen</text>
-          <circle cx="292" cy="36" r="10" fill="var(--veg)"/>
-          <text x="292" y="59" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">Campus</text>
-          <g transform="translate(${14 + (264 * riderPct / 100)}, 14)">
-            <rect width="28" height="22" rx="8" fill="var(--acc)"/>
-            <text x="14" y="15" text-anchor="middle" font-size="13">🛵</text>
-          </g>
-        </svg>
-        <div class="rider-card">
-          <div class="rider-profile">
-            <div class="rider-avatar" aria-hidden="true">${rAvatar}</div>
-            <div>
-              <div><strong>${esc(rName)}</strong> · <span style="color:var(--veg);font-weight:800">★ ${esc(rRating)}</span> <span style="font-size:11.5px;color:var(--muted)">(${esc(rDeliveries)} deliveries)</span></div>
-              <div style="font-size:11.5px;color:var(--muted)">${esc(rVehicle)}</div>
-              <div class="rider-badges"><span class="rider-badge">🛡️ ${esc(rTemp)}</span></div>
-            </div>
-          </div>
-          <div class="rider-actions">
-            <button type="button" class="btn xs" onclick="toast('Calling ${esc(rName)}…')">📞 Call Rider</button>
-            <button type="button" class="btn xs" onclick="toast('Message sent to ${esc(rName)}: Please call at gate')">💬 Message</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
+}, 4500);
 
 function renderCustomerMarketplace() {
   renderLiveTracker();
-  $("#navAddressLabel").textContent = checkoutState.address || "Set Address";
+  renderPromoDots();
 
-  const cravings = ["Momos", "Dal Makhani", "Pizza", "Cold Coffee", "Thali", "Biryani", "Samosa", "Vegan"];
-  $("#cravingChips").innerHTML = cravings.map(c =>
+  $("#cravingChips").innerHTML = CRAVINGS.map(c =>
     `<button type="button" class="craving-pill ${searchQuery.toLowerCase() === c.toLowerCase() ? "on" : ""}" onclick="quickCraving('${c}')">${c}</button>`
   ).join("");
-  $("#clearSearchBtn").hidden = !searchQuery.length;
 
-  const catItems = [
-    {label: "All", img: PHOTOS.thali}, {label: "Chole Bhature", img: PHOTOS.samosa},
-    {label: "Burger", img: PHOTOS.burger}, {label: "Cake", img: PHOTOS.dessert},
-    {label: "Rolls", img: PHOTOS.naan}, {label: "Poha", img: PHOTOS.vegan},
-    {label: "Rajma Rice", img: PHOTOS.dal}, {label: "Dosa", img: PHOTOS.thali},
-    {label: "Biryani", img: PHOTOS.biryani}
-  ];
   $("#dishCatStrip").innerHTML = `
-    <button type="button" class="cat-under-badge" onclick="under250Only=!under250Only;renderCustomerMarketplace()">
-      <span>MEALS UNDER</span><strong style="font-size:15px">₹250</strong><span>${under250Only ? "✓ Active" : "Explore ›"}</span>
+    <button type="button" class="cat-under-badge" onclick="toggleUnder250()">
+      <span>MEALS UNDER</span><span style="font-size:15px">₹250</span><span>Explore ›</span>
     </button>
-    ${catItems.map(c => `
-      <button type="button" class="cat-item ${searchQuery.toLowerCase() === c.label.toLowerCase() || (c.label === "All" && !searchQuery) ? "on" : ""}" onclick="quickCraving('${c.label === "All" ? "" : c.label}')">
-        <img src="${c.img}" alt="${c.label}" onerror="this.src='${FALLBACK_SVG}'"><span>${c.label}</span>
-      </button>
-    `).join("")}
-  `;
-
-  const exploreItems = [
-    {name: "Offers", icon: "🏷️"}, {name: "Limitless Delivery", icon: "⚡"},
-    {name: "Food on Train", icon: "🚆"}, {name: "Plan a Party", icon: "🎉"},
-    {name: "Subscriptions", icon: "📅"}, {name: "Collections", icon: "🍱"},
-    {name: "Gift Cards", icon: "🎁"}
-  ];
-  $("#exploreStrip").innerHTML = exploreItems.map(ex => `
-    <button type="button" class="explore-card" onclick="openExploreModal('${ex.name}')">
-      <div class="explore-icon">${ex.icon}</div><span>${ex.name}</span>
+  ` + DISH_CATEGORIES.map(c => `
+    <button type="button" class="cat-item ${(c.name === "All" && !searchQuery) || searchQuery.toLowerCase() === c.name.toLowerCase() ? "on" : ""}" onclick="quickCraving('${c.name === "All" ? "" : c.name}')">
+      <img src="${c.img}" alt="${c.name}" onerror="this.src='${FALLBACK_SVG}'">
+      <span>${c.name}</span>
     </button>
   `).join("");
 
-  const gems = db.restaurants.filter(r => r.isFar && (!vegOnly || r.menu.some(m => !m.tags.includes("Non-Veg"))));
+  $("#exploreStrip").innerHTML = EXPLORE_ITEMS.map(ex => `
+    <button type="button" class="explore-card" onclick="openExploreModal('${ex.title}')">
+      <div class="explore-icon">${ex.icon}</div>
+      <span>${ex.title}</span>
+    </button>
+  `).join("");
+
+  const gems = db.restaurants.filter(r =>
+    r.isFar &&
+    (!vegOnly || r.menu.some(m => !m.tags.includes("Non-Veg"))) &&
+    (!healthyOnly || r.menu.some(m => isHealthyDish(m)))
+  );
   $("#gemsCarousel").innerHTML = gems.map(r => {
-    const dish = r.menu[0];
+    const dish = (healthyOnly ? r.menu.find(m => isHealthyDish(m)) : null) || r.menu[0];
     return `
-      <article class="card gem-card" onclick="openRestaurant(${r.id})">
+      <div class="card gem-card" onclick="openRestaurant(${r.id})">
         <div class="gem-media">
-          <img src="${esc(r.banner)}" alt="${esc(r.name)}" onerror="this.src='${FALLBACK_SVG}'">
-          <span class="tag-dist">📍 ${r.distanceKm} km · ${r.etaMins} min</span>
-          <span class="tag-flash">⚡ -25% FLASH DROP</span>
+          <img src="${r.banner}" alt="${esc(r.name)}" onerror="this.src='${FALLBACK_SVG}'">
+          <span class="tag-dist">📍 ${r.distanceKm} km · ${r.etaMins}m</span>
+          <span class="tag-flash">⚡ -25% Flash</span>
         </div>
         <div class="gem-content">
-          <div><h3 style="margin:0;font-size:17px">${esc(r.name)}</h3><div style="font-size:12.5px;color:var(--muted)">${esc(r.cuisine)} · ★ ${r.rating} · ${r.menu.length} dishes</div></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
-            <div><div style="font-size:12px;font-weight:700">${esc(dish.name)}</div><div><s style="color:var(--muted);font-size:12px">${inr(dish.price)}</s> <strong style="color:var(--acc);font-size:16px">${inr(getEffectivePrice(dish))}</strong></div></div>
-            <button type="button" class="btn primary sm" onclick="event.stopPropagation();addToCart(${r.id},${dish.id},1)">+ Add</button>
+          <div>
+            <h3 style="margin:0;font-size:17px">${esc(r.name)}</h3>
+            <div style="font-size:12.5px;color:var(--muted);margin-top:2px">${esc(r.cuisine)} · ★ ${r.rating}</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:12.5px">
+            <span>Try <b>${esc(dish ? dish.name : "Chef Special")}</b></span>
+            <span style="color:var(--acc);font-weight:800">Menu →</span>
           </div>
         </div>
-      </article>
+      </div>
     `;
   }).join("");
 
   const allDishes = [];
-  db.restaurants.forEach(r => r.menu.filter(m => m.inStock).forEach(m => allDishes.push({...m, restId: r.id, restName: r.name})));
+  db.restaurants.forEach(r => r.menu.filter(m =>
+    m.inStock &&
+    (!vegOnly || !m.tags.includes("Non-Veg")) &&
+    (!healthyOnly || isHealthyDish(m))
+  ).forEach(m => allDishes.push({...m, restId: r.id, restName: r.name})));
   const trending = allDishes.sort((a, b) => (b.ordersToday || 50) - (a.ordersToday || 50)).slice(0, 8);
   $("#trendingCarousel").innerHTML = trending.map(d => `
     <div class="card trend-card" onclick="openRestaurant(${d.restId})">
-      <img src="${esc(d.img)}" alt="${esc(d.name)}" onerror="this.src='${FALLBACK_SVG}'">
-      <div style="flex:1;min-width:0">
-        <div style="font-size:11px;font-weight:800;color:var(--acc)">🔥 ${d.ordersToday}+ ordered today</div>
-        <strong style="display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(d.name)}</strong>
-        <div style="font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(d.restName)}</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
-          <strong>${inr(getEffectivePrice(d))}</strong>
-          <button type="button" class="btn primary xs" onclick="event.stopPropagation();addToCart(${d.restId},${d.id},1)">+ Add</button>
+      <img src="${d.img}" alt="${esc(d.name)}" onerror="this.src='${FALLBACK_SVG}'">
+      <div style="min-width:0;flex:1">
+        <div style="font-weight:800;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(d.name)}</div>
+        <div style="font-size:11.5px;color:var(--muted)">${esc(d.restName)} · ${d.ordersToday}+ today</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+          <b style="font-size:13.5px">${inr(getEffectivePrice(d))}</b>
+          <button type="button" class="btn primary xs" onclick="event.stopPropagation();addToCart(${d.restId},${d.id})">+ Add</button>
         </div>
       </div>
     </div>
   `).join("");
 
-  const cuisines = ["All", "North Indian", "Homestyle Thali", "Italian & Pizza", "Fast Food & Chinese", "Cafe & Shakes", "Street Food & Mithai", "Desserts & Cafe", "Momos & Soups", "Asian & Sushi"];
-  const diets = ["All", "Pure Veg", "Vegan", "Gluten-Free", "Flash Deals", "Express <22m", "Top Rated 4.6+"];
-  $("#cuisineChips").innerHTML = cuisines.map(c => `<button type="button" class="chip-btn ${filterCuisine === c && !selectedRestId ? "on" : ""}" onclick="setCuisineFilter('${c}')">${c}</button>`).join("");
-  $("#dietChips").innerHTML = `
-    <button type="button" class="chip-btn diet ${noPackFeeOnly ? "on" : ""}" onclick="noPackFeeOnly=!noPackFeeOnly;renderCustomerMarketplace()">📦 No Packaging Fee</button>
-    <button type="button" class="chip-btn diet ${under250Only ? "on" : ""}" onclick="under250Only=!under250Only;renderCustomerMarketplace()">💸 Under ₹250</button>
-  ` + diets.map(d => `<button type="button" class="chip-btn diet ${filterDiet === d && !selectedRestId ? "on" : ""}" onclick="setDietFilter('${d}')">${d}</button>`).join("");
-
   if (selectedRestId !== null) {
+    $("#filtersWrap").hidden = true;
     const rest = db.restaurants.find(r => r.id === selectedRestId);
-    if (!rest) { selectedRestId = null; renderCustomerMarketplace(); return; }
+    if (!rest) { selectedRestId = null; return renderCustomerMarketplace(); }
     $("#catalogHeading").textContent = rest.name;
-    $("#resultCount").textContent = `${rest.menu.length} dishes · FSSAI ${rest.fssai}`;
-    const mq = inMenuSearch.toLowerCase().trim();
+    $("#resultCount").textContent = `${rest.menu.length} dishes`;
+
+    const mq = inMenuSearch.trim().toLowerCase();
     const filteredMenu = rest.menu.filter(item => {
       const okSearch = !mq || item.name.toLowerCase().includes(mq) || item.course.toLowerCase().includes(mq) || item.tags.some(t => t.toLowerCase().includes(mq));
+      const okHealthy = !healthyOnly || isHealthyDish(item);
+      const okVeg = !vegOnly || !item.tags.includes("Non-Veg");
       let okTag = true;
-      if (inMenuTag === "Daily Specials") okTag = item.special;
+      if (inMenuTag === "Healthy Only") okTag = isHealthyDish(item);
+      else if (inMenuTag === "Daily Specials") okTag = item.special;
       else if (inMenuTag === "Flash Deals") okTag = item.flash;
       else if (inMenuTag === "Veg") okTag = !item.tags.includes("Non-Veg");
       else if (inMenuTag === "Vegan") okTag = item.tags.includes("Vegan");
       else if (inMenuTag === "Gluten-Free") okTag = item.tags.includes("Gluten-Free");
-      return okSearch && okTag;
+      return okSearch && okHealthy && okVeg && okTag;
     });
-    const menuFilterTabs = ["All", "Daily Specials", "Flash Deals", "Veg", "Vegan", "Gluten-Free"];
+
+    const menuFilterTabs = ["All", "Healthy Only", "Daily Specials", "Flash Deals", "Veg", "Vegan", "Gluten-Free"];
     $("#catalogContainer").innerHTML = `
-      <button type="button" class="btn sm" onclick="openRestaurant(null)">← Back to All 12 Kitchens</button>
+      <div style="margin-bottom:12px">
+        <button type="button" class="btn sm" onclick="closeRestaurant()">← Back to All Kitchens</button>
+      </div>
       <div class="card menu-header">
-        <div style="display:flex;align-items:center;gap:16px">
-          <img src="${esc(rest.banner)}" alt="${esc(rest.name)}" style="width:70px;height:70px;border-radius:16px;object-fit:cover" onerror="this.src='${FALLBACK_SVG}'">
+        <div style="display:flex;align-items:center;gap:14px">
+          <img src="${rest.banner}" alt="${esc(rest.name)}" style="width:72px;height:72px;border-radius:16px;object-fit:cover" onerror="this.src='${FALLBACK_SVG}'">
           <div>
             <h3 style="margin:0;font-size:22px">${esc(rest.name)}</h3>
-            <div style="color:var(--muted);font-size:13px;margin-top:2px">${esc(rest.cuisine)} · <strong style="color:var(--veg)">★ ${rest.rating}</strong> · ⏱ ${rest.etaMins} mins · 📍 ${esc(rest.location)}</div>
+            <div style="font-size:13px;color:var(--muted)">${esc(rest.cuisine)} · ${esc(rest.location)}</div>
+            <div style="font-size:12px;font-weight:700;margin-top:4px">★ ${rest.rating} · ⏱ ${rest.etaMins} mins · FSSAI ${rest.fssai}</div>
           </div>
         </div>
-        <span class="badge-pill">FSSAI Lic. ${esc(rest.fssai)}</span>
       </div>
       <div class="card in-menu-bar">
-        <div class="in-menu-search"><span aria-hidden="true">🔍</span><input type="search" value="${esc(inMenuSearch)}" oninput="inMenuSearch=this.value;renderCustomerMarketplace()" placeholder="Search inside ${esc(rest.name)} menu…"></div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px">${menuFilterTabs.map(t => `<button type="button" class="chip-btn diet ${inMenuTag === t ? "on" : ""}" onclick="inMenuTag='${t}';renderCustomerMarketplace()">${t}</button>`).join("")}</div>
+        <div class="in-menu-search">
+          <span>🔍</span>
+          <input id="inMenuSearchInput" type="search" placeholder="Filter ${esc(rest.name)} menu…" value="${esc(inMenuSearch)}">
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          ${menuFilterTabs.map(t => `<button type="button" class="chip-btn diet ${inMenuTag === t ? "on" : ""}" onclick="setInMenuTag('${t}')">${t}</button>`).join("")}
+        </div>
       </div>
       <div class="card menu-list">
         ${filteredMenu.length ? filteredMenu.map(item => {
-          const inCart = cart.restaurantId === rest.id ? cart.items.find(x => x.itemId === item.id) : null;
-          const qty = inCart ? inCart.qty : 0;
-          const price = getEffectivePrice(item);
+          const eff = getEffectivePrice(item);
+          const qty = getCartQty(rest.id, item.id);
           const isNonVeg = item.tags.includes("Non-Veg");
+          const nut = getNutritionTag(item);
           return `
-            <div class="dish-row ${!item.inStock ? "sold-out" : ""}">
+            <div class="dish-row ${item.inStock ? "" : "sold-out"}">
               <div class="dish-left">
-                <img class="dish-thumb" src="${esc(item.img || rest.banner)}" alt="${esc(item.name)}" onerror="this.src='${FALLBACK_SVG}'">
-                <div>
-                  <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-weight:800;font-size:15px">
-                    <span class="veg-mark ${isNonVeg ? "nonveg" : ""}" title="${isNonVeg ? "Non-Veg" : "Veg"}"></span>
-                    ${esc(item.name)}
+                <img class="dish-thumb" src="${item.img}" alt="${esc(item.name)}" onerror="this.src='${FALLBACK_SVG}'">
+                <div style="min-width:0">
+                  <div style="display:flex;align-items:center;gap:7px">
+                    <span class="veg-mark ${isNonVeg ? "nonveg" : ""}"></span>
+                    <strong style="font-size:15px">${esc(item.name)}</strong>
+                  </div>
+                  <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px">
                     <span class="mini-tag course">${esc(item.course)}</span>
-                    ${item.tags.filter(t => t !== "Veg" && t !== "Non-Veg").map(t => `<span class="mini-tag diet">${esc(t)}</span>`).join("")}
                     ${item.special ? `<span class="mini-tag special">★ Special</span>` : ""}
                     ${item.flash ? `<span class="mini-tag flash">⚡ -25%</span>` : ""}
+                    ${nut ? `<span class="mini-tag nutrition">🥗 ${nut}</span>` : ""}
                     ${!item.inStock ? `<span class="mini-tag out">Sold Out</span>` : ""}
                   </div>
-                  <div style="margin-top:4px;font-size:12px;color:var(--muted)">Freshly prepared · ${item.ordersToday}+ ordered today</div>
+                  <div style="margin-top:6px;font-weight:800;font-size:14.5px">
+                    ${item.flash ? `<s style="color:var(--muted);font-weight:500;margin-right:5px">${inr(item.price)}</s>` : ""}${inr(eff)}
+                  </div>
                 </div>
               </div>
-              <div style="display:flex;align-items:center;gap:12px">
-                <div>${item.flash ? `<s style="color:var(--muted);font-size:12px;margin-right:4px">${inr(item.price)}</s>` : ""}<strong style="font-size:15.5px">${inr(price)}</strong></div>
-                ${!item.inStock ? `<button class="btn sm" disabled>Sold Out</button>` : qty > 0 ? `<div class="stepper-ctrl"><button type="button" onclick="addToCart(${rest.id},${item.id},-1)">−</button><b>${qty}</b><button type="button" onclick="addToCart(${rest.id},${item.id},1)">+</button></div>` : `<button type="button" class="btn primary sm" onclick="addToCart(${rest.id},${item.id},1)">Add +</button>`}
+              <div>
+                ${!item.inStock ? `<span style="font-size:12px;font-weight:700;color:var(--muted)">Unavailable</span>` :
+                  qty > 0 ? `
+                    <div class="stepper-ctrl">
+                      <button type="button" onclick="updateCartQty(${rest.id},${item.id},-1)">−</button>
+                      <b>${qty}</b>
+                      <button type="button" onclick="updateCartQty(${rest.id},${item.id},1)">+</button>
+                    </div>
+                  ` : `<button type="button" class="btn primary sm" onclick="addToCart(${rest.id},${item.id})">+ Add</button>`
+                }
               </div>
             </div>
           `;
-        }).join("") : `<div style="padding:26px;text-align:center;color:var(--muted)">No dishes match this in-menu filter.</div>`}
+        }).join("") : `<div style="padding:28px;text-align:center;color:var(--muted)">No dishes match this filter.</div>`}
       </div>
     `;
+    const mInp = $("#inMenuSearchInput");
+    if (mInp) mInp.oninput = e => { inMenuSearch = e.target.value; renderCustomerMarketplace(); };
   } else {
-    $("#catalogHeading").textContent = filterCuisine === "All" ? "All Partner Kitchens" : `${filterCuisine} Kitchens`;
-    const q = searchQuery.toLowerCase().trim();
-    const visible = db.restaurants.filter(r => {
+    $("#filtersWrap").hidden = false;
+    $("#catalogHeading").textContent = healthyOnly ? "🥗 Healthy & Nutritious Kitchens" : "All Partner Kitchens";
+
+    const cuisines = ["All", "North Indian", "Homestyle Thali", "Italian & Pizza", "Fast Food & Chinese", "Cafe & Shakes", "Street Food & Mithai", "Desserts & Cafe", "Momos & Soups", "Asian & Sushi"];
+    const diets = ["All", "Pure Veg", "Vegan", "Gluten-Free", "Flash Deals", "Top Rated 4.6+", "Under ₹250", "No Packaging Fee"];
+
+    $("#cuisineChips").innerHTML = cuisines.map(c => `<button type="button" class="chip-btn ${filterCuisine === c ? "on" : ""}" onclick="setCuisineFilter('${c}')">${c}</button>`).join("");
+    $("#dietChips").innerHTML = diets.map(d => {
+      const isActive = (d === "Under ₹250" && under250Only) || (d === "No Packaging Fee" && noPackFeeOnly) || filterDiet === d;
+      return `<button type="button" class="chip-btn diet ${isActive ? "on" : ""}" onclick="setDietFilter('${d}')">${d}</button>`;
+    }).join("");
+
+    const q = searchQuery.trim().toLowerCase();
+    const list = db.restaurants.filter(r => {
       const okCuisine = filterCuisine === "All" || r.cuisine === filterCuisine;
-      const okSearch = !q || r.name.toLowerCase().includes(q) || r.cuisine.toLowerCase().includes(q) || r.menu.some(m => m.name.toLowerCase().includes(q) || m.tags.some(t => t.toLowerCase().includes(q)));
+      const okQuery = !q || r.name.toLowerCase().includes(q) || r.cuisine.toLowerCase().includes(q) || r.menu.some(m => m.name.toLowerCase().includes(q));
       let okDiet = true;
       if (vegOnly) okDiet = r.menu.some(m => !m.tags.includes("Non-Veg"));
+      if (okDiet && healthyOnly) okDiet = r.menu.some(m => isHealthyDish(m));
       if (okDiet && under250Only) okDiet = r.menu.some(m => getEffectivePrice(m) <= 250);
       if (okDiet && filterDiet === "Pure Veg") okDiet = r.menu.every(m => !m.tags.includes("Non-Veg"));
       else if (okDiet && filterDiet === "Vegan") okDiet = r.menu.some(m => m.tags.includes("Vegan"));
       else if (okDiet && filterDiet === "Gluten-Free") okDiet = r.menu.some(m => m.tags.includes("Gluten-Free"));
       else if (okDiet && filterDiet === "Flash Deals") okDiet = r.menu.some(m => m.flash);
-      else if (okDiet && filterDiet === "Express <22m") okDiet = r.etaMins <= 22;
       else if (okDiet && filterDiet === "Top Rated 4.6+") okDiet = r.rating >= 4.6;
-      return okCuisine && okSearch && okDiet;
+      return okCuisine && okQuery && okDiet;
     });
-    const totalDishCount = visible.reduce((acc, r) => acc + r.menu.length, 0);
-    $("#resultCount").textContent = `${visible.length} kitchens · ${totalDishCount} dishes`;
-    $("#catalogContainer").innerHTML = visible.length ? `<div class="rest-grid">${visible.map(r => {
+
+    $("#resultCount").textContent = `${list.length} kitchens`;
+    $("#catalogContainer").innerHTML = list.length ? `<div class="rest-grid">${list.map(r => {
       const hasFlash = r.menu.some(m => m.flash);
-      const matchedDishes = q ? r.menu.filter(m => m.name.toLowerCase().includes(q) || m.tags.some(t => t.toLowerCase().includes(q))) : [];
+      const isFast = r.etaMins <= 20;
+      const minPrice = Math.min(...r.menu.map(m => getEffectivePrice(m)));
       return `
-        <article class="card rest-card" onclick="openRestaurant(${r.id})">
+        <div class="card rest-card" onclick="openRestaurant(${r.id})">
           <div class="rest-cover">
-            <img src="${esc(r.banner)}" alt="${esc(r.name)}" onerror="this.src='${FALLBACK_SVG}'">
+            <img src="${r.banner}" alt="${esc(r.name)}" onerror="this.src='${FALLBACK_SVG}'">
             <div class="cover-badges">
-              ${hasFlash ? `<span class="c-badge flash">⚡ Flash Deal -25%</span>` : `<span></span>`}
-              ${r.etaMins <= 20 ? `<span class="c-badge fast">🚀 Express ${r.etaMins}m</span>` : `<span class="c-badge">⏱ ${r.etaMins} mins</span>`}
+              ${isFast ? `<span class="c-badge fast">⚡ ${r.etaMins} min</span>` : `<span class="c-badge">⏱ ${r.etaMins} min</span>`}
+              ${hasFlash ? `<span class="c-badge flash">⚡ -25% Flash</span>` : ""}
             </div>
           </div>
           <div class="rest-body">
             <div>
               <h3 class="rest-title">${esc(r.name)}</h3>
               <div class="rest-sub">${esc(r.cuisine)} · ${esc(r.location)}</div>
-              <div class="rest-meta"><span class="rate-pill">★ ${r.rating}</span><span style="color:var(--muted)">📍 ${r.distanceKm} km away</span></div>
+              <div class="rest-meta">
+                <span class="rate-pill">★ ${r.rating}</span>
+                <span style="color:var(--muted)">Starts ${inr(minPrice)}</span>
+              </div>
             </div>
             <div class="rest-foot">
-              <span style="color:var(--muted);font-weight:600">${matchedDishes.length ? `Matches: <b style="color:var(--acc)">${matchedDishes.slice(0, 2).map(d => esc(d.name)).join(", ")}</b>` : `${r.menu.length} handcrafted dishes`}</span>
-              <strong style="color:var(--acc)">View Menu →</strong>
+              <span style="color:var(--muted)">${r.menu.length} dishes</span>
+              <span style="color:var(--acc);font-weight:800">Open Menu →</span>
             </div>
           </div>
-        </article>
+        </div>
       `;
-    }).join("")}</div>` : `<div class="card" style="padding:28px;text-align:center;color:var(--muted)">No kitchens match your current search or filters.</div>`;
+    }).join("")}</div>` : `<div class="card" style="padding:32px;text-align:center;color:var(--muted)">No kitchens match your current filters. Try clearing a filter.</div>`;
   }
 
-  $("#customerHistoryList").innerHTML = db.orders.length ? `<div style="display:grid;gap:12px">${db.orders.slice(0, 5).map(o => `
-    <div class="card" style="padding:16px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
-      <div><strong>${esc(o.id)} · ${esc(o.restaurantName)}</strong><div style="font-size:13px;color:var(--muted)">${o.items.map(i => `${i.qty}× ${esc(i.name)}`).join(", ")} · ${esc(o.createdAt)}</div></div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <strong>${inr(o.total)}</strong>
-        <span class="badge-pill" style="background:${o.status === "DELIVERED" ? "var(--veg-soft)" : "var(--acc-soft)"};color:${o.status === "DELIVERED" ? "var(--veg)" : "var(--acc)"}">${esc(o.status.replaceAll("_", " "))}</span>
-        <button type="button" class="btn xs" onclick="openCareDrawer('instant','${o.id}')">🎧 Help</button>
-      </div>
-    </div>`).join("")}</div>` : `<div class="card" style="padding:20px;color:var(--muted)">No orders placed yet.</div>`;
+  renderCustomerHistory();
+  updateCartBadges();
 }
 
-function renderDrawer() {
-  const sum = getCartSummary();
-  $("#openCartBtn").textContent = `🛒 Cart · ${sum ? sum.count : 0}`;
-
-  const stickyBar = $("#stickyCartBar");
-  if (sum && !stickyCartDismissed && activeViewRole === "customer") {
-    stickyBar.hidden = false;
-    $("#stickyCartRest").textContent = sum.rest.name;
-    $("#stickyViewCartBtn").textContent = `View Cart · ${sum.count} item${sum.count > 1 ? "s" : ""}`;
-    $("#stickyViewMenu").onclick = () => openRestaurant(sum.rest.id);
-    $("#stickyViewCartBtn").onclick = openDrawer;
-    $("#dismissStickyCartBtn").onclick = () => { stickyCartDismissed = true; stickyBar.hidden = true; };
-  } else {
-    stickyBar.hidden = true;
-  }
-
-  $("#mobileBottomNav").hidden = activeViewRole !== "customer" || !db.session;
-
-  if (!sum) {
-    $("#drawerBody").innerHTML = `<div style="padding:28px 0;text-align:center;color:var(--muted)">Your bag is empty. Add dishes from any Pantnagar kitchen or ask Zwigato AI!</div>`;
-    return;
-  }
-
-  $("#drawerBody").innerHTML = `
-    <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--bg);border:1px solid var(--border);margin-bottom:12px">
-      ${renderAvatarHtml(db.session, "md")}
-      <div style="min-width:0">
-        <strong style="display:block;font-size:14px">${esc(db.session?.name || "Guest")}</strong>
-        <div style="font-size:12px;color:var(--muted)">Ordering from <strong style="color:var(--ink)">${esc(sum.rest.name)}</strong> · ⏱ ${sum.rest.etaMins} mins</div>
-      </div>
-    </div>
-    ${sum.lines.map(l => `
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--border)">
-        <div><strong style="font-size:14px">${esc(l.name)}</strong><div style="font-size:12.5px;color:var(--muted)">${inr(l.unitPrice)} × ${l.qty} = <b>${inr(l.lineTotal)}</b></div></div>
-        <div class="stepper-ctrl"><button type="button" onclick="addToCart(${sum.rest.id},${l.id},-1)">−</button><b>${l.qty}</b><button type="button" onclick="addToCart(${sum.rest.id},${l.id},1)">+</button></div>
-      </div>
-    `).join("")}
-    <div class="checkout-sec">
-      <h4>🎟️ Promo Code</h4>
-      <div class="promo-row"><input id="promoField" type="text" value="${esc(checkoutState.promoCode)}" placeholder="ZWIGATO50 / FIRST20 / FREEDEL"><button type="button" class="btn primary sm" onclick="applyPromo($('#promoField').value)">Apply</button></div>
-      <div style="font-size:11.5px;color:var(--muted);margin-top:6px">Try: <b>ZWIGATO50</b> (₹50 off ≥₹149), <b>FIRST20</b> (20% off), <b>FREEDEL</b></div>
-    </div>
-    <div class="checkout-sec">
-      <h4>📍 Delivery Address &amp; Instructions</h4>
-      <div class="field" style="margin-bottom:8px"><input type="text" value="${esc(checkoutState.address)}" oninput="checkoutState.address=this.value;$('#navAddressLabel').textContent=this.value||'Set Address'" placeholder="Bhawan / Hostel / Market address"></div>
-      <div class="field" style="margin:0"><input type="text" value="${esc(checkoutState.instructions)}" oninput="checkoutState.instructions=this.value" placeholder="Delivery note (e.g. Leave at security gate)"></div>
-    </div>
-    <div class="checkout-sec">
-      <h4>🛵 Tip Your Delivery Valet</h4>
-      <div class="tip-grid">${[0, 20, 30, 50].map(amt => `<button type="button" class="tip-btn ${checkoutState.tip === amt ? "on" : ""}" onclick="checkoutState.tip=${amt};renderDrawer()">${amt === 0 ? "₹0" : inr(amt)}</button>`).join("")}</div>
-    </div>
-    <div class="checkout-sec">
-      <h4>💳 Payment Method</h4>
-      <div class="pay-grid">
-        <button type="button" class="pay-opt ${checkoutState.paymentMethod === "UPI / GPay" ? "on" : ""}" onclick="checkoutState.paymentMethod='UPI / GPay';renderDrawer()"><span>📱</span>UPI / GPay</button>
-        <button type="button" class="pay-opt ${checkoutState.paymentMethod === "Credit / Debit Card" ? "on" : ""}" onclick="checkoutState.paymentMethod='Credit / Debit Card';renderDrawer()"><span>💳</span>Card</button>
-        <button type="button" class="pay-opt ${checkoutState.paymentMethod === "Cash on Delivery" ? "on" : ""}" onclick="checkoutState.paymentMethod='Cash on Delivery';renderDrawer()"><span>💵</span>Cash (COD)</button>
-      </div>
-    </div>
-    <div class="checkout-sec">
-      <h4>🧾 Bill Breakdown</h4>
-      <div class="bill-line"><span>Item Subtotal</span><span>${inr(sum.subtotal)}</span></div>
-      ${sum.flashSaved > 0 ? `<div class="bill-line" style="color:var(--veg);font-weight:700"><span>⚡ Flash Sale Savings</span><span>−${inr(sum.flashSaved)}</span></div>` : ""}
-      ${sum.promoDiscount > 0 ? `<div class="bill-line" style="color:var(--veg);font-weight:700"><span>🎟️ Promo (${esc(checkoutState.promoCode)})</span><span>−${inr(sum.promoDiscount)}</span></div>` : ""}
-      <div class="bill-line"><span>Delivery Fee</span><span>${sum.deliveryFee === 0 ? "FREE" : inr(sum.deliveryFee)}</span></div>
-      <div class="bill-line"><span>GST &amp; Packaging (5%)</span><span>${inr(sum.taxes)}</span></div>
-      <div class="bill-line"><span>Rider Tip</span><span>${inr(sum.tip)}</span></div>
-      <div class="bill-total"><span>Total Payable</span><span>${inr(sum.total)}</span></div>
-    </div>
-    <button type="button" class="btn primary wide" style="margin-top:16px" ${checkoutState.processing ? "disabled" : ""} onclick="confirmCheckoutOrder()">
-      ${checkoutState.processing ? "Confirming Payment…" : `Pay ${inr(sum.total)} & Place Order →`}
-    </button>
-  `;
-}
-
-function renderPartnerConsole() {
-  const rest = db.restaurants.find(r => r.id === managedRestId) || db.restaurants[0];
-  if (!rest) return;
-  const allValidOrders = db.orders.filter(o => o.status !== "CANCELLED");
-  const grossRev = allValidOrders.reduce((acc, o) => acc + o.total, 0);
-  const activeOrders = db.orders.filter(o => o.status === "PENDING" || o.status === "PREPARING" || o.status === "OUT_FOR_DELIVERY");
-
-  $("#partnerKpis").innerHTML = `
-    <div class="card kpi-card"><span>Today's Revenue</span><strong>${inr(grossRev)}</strong><small>↑ ${allValidOrders.length} active &amp; completed orders</small></div>
-    <div class="card kpi-card"><span>Active Kitchen Orders</span><strong>${activeOrders.length}</strong><small>Syncs live with customer tracker</small></div>
-    <div class="card kpi-card"><span>Avg Prep Time</span><strong>${rest.etaMins} mins</strong><small>★ ${rest.rating} customer rating</small></div>
-    <div class="card kpi-card"><span>Active Menu Items</span><strong>${rest.menu.filter(m => m.inStock).length} / ${rest.menu.length}</strong><small>${rest.menu.filter(m => m.flash).length} Flash Deals live</small></div>
-  `;
-
-  const cols = [
-    {title: "New Incoming", status: "PENDING", nextLabel: "Accept & Cook →", nextStatus: "PREPARING"},
-    {title: "Kitchen Preparing", status: "PREPARING", nextLabel: "Mark Out for Delivery →", nextStatus: "OUT_FOR_DELIVERY"},
-    {title: "Out for Delivery / Done", status: "OUT_FOR_DELIVERY", nextLabel: "Complete Delivery ✓", nextStatus: "DELIVERED"}
-  ];
-
-  $("#partnerKdsGrid").innerHTML = cols.map(col => {
-    const list = db.orders.filter(o => col.status === "OUT_FOR_DELIVERY" ? (o.status === "OUT_FOR_DELIVERY" || o.status === "DELIVERED") : o.status === col.status);
-    return `
-      <div class="card kds-col">
-        <h3><span>${col.title}</span><span class="badge-pill">${list.length}</span></h3>
-        ${list.length ? list.map(o => `
-          <div class="order-ticket">
-            <div style="display:flex;justify-content:space-between;align-items:center"><strong>${esc(o.id)} · ${esc(o.customerName)}</strong><span class="badge-pill">${esc(o.paymentMethod)}</span></div>
-            <div style="font-size:12px;color:var(--muted);margin:3px 0 8px">${esc(o.restaurantName)} · ${esc(o.address)}</div>
-            <div style="font-size:13px;margin-bottom:10px">${o.items.map(i => `${i.qty}× <b>${esc(i.name)}</b>`).join(", ")} · <strong>${inr(o.total)}</strong></div>
-            ${o.status !== "DELIVERED" ? `<div style="display:flex;gap:6px"><button type="button" class="btn primary xs" onclick="setOrderStatus('${o.id}','${col.nextStatus}')">${col.nextLabel}</button>${o.status === "PENDING" ? `<button type="button" class="btn xs" onclick="setOrderStatus('${o.id}','CANCELLED')">Decline</button>` : ""}</div>` : `<span style="font-size:12px;font-weight:800;color:var(--veg)">✓ Delivered to Customer</span>`}
-          </div>
-        `).join("") : `<div style="color:var(--muted);font-size:13px;padding:12px 0">No orders in this column.</div>`}
-      </div>
-    `;
-  }).join("");
-
-  $("#partnerMenuItems").innerHTML = rest.menu.map(m => `
-    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:var(--bg);border:1px solid var(--border);margin-bottom:8px">
-      <div><strong>${esc(m.name)} · ${inr(getEffectivePrice(m))}</strong><div style="font-size:12px;color:var(--muted)">${esc(m.course)} · ${esc(m.tags[0] || "Veg")} ${m.special ? "· ★ Daily Special" : ""} ${m.flash ? "· ⚡ -25% Flash" : ""}</div></div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <button type="button" class="btn xs ${m.inStock ? "veg" : ""}" onclick="toggleMenuProp(${rest.id},${m.id},'inStock')">${m.inStock ? "✓ In Stock" : "Sold Out"}</button>
-        <button type="button" class="btn xs ${m.special ? "active" : ""}" onclick="toggleMenuProp(${rest.id},${m.id},'special')">★ Special</button>
-        <button type="button" class="btn xs ${m.flash ? "primary" : ""}" onclick="toggleMenuProp(${rest.id},${m.id},'flash')">⚡ Flash -25%</button>
-      </div>
-    </div>
-  `).join("");
-
-  const topMenu = [...rest.menu].sort((a, b) => (b.ordersToday || 0) - (a.ordersToday || 0)).slice(0, 5);
-  const maxOrd = topMenu[0]?.ordersToday || 1;
-  $("#analyticsTopDishes").innerHTML = topMenu.map(m => `<div class="bar-item"><div class="bar-top"><span>${esc(m.name)}</span><span>${m.ordersToday} orders</span></div><div class="bar-bg"><div class="bar-val" style="width:${Math.round((m.ordersToday / maxOrd) * 100)}%"></div></div></div>`).join("");
-
-  const vegCount = rest.menu.filter(m => !m.tags.includes("Non-Veg")).length;
-  const veganCount = rest.menu.filter(m => m.tags.includes("Vegan")).length;
-  const gfCount = rest.menu.filter(m => m.tags.includes("Gluten-Free")).length;
-  const tot = rest.menu.length || 1;
-  $("#analyticsPayments").innerHTML = [["Vegetarian Dishes", vegCount], ["100% Vegan Options", veganCount], ["Gluten-Free Options", gfCount]].map(([lbl, cnt]) => {
-    const pct = Math.round((cnt / tot) * 100);
-    return `<div class="bar-item"><div class="bar-top"><span>${lbl}</span><span>${pct}% (${cnt})</span></div><div class="bar-bg"><div class="bar-val" style="width:${pct}%;background:var(--veg)"></div></div></div>`;
-  }).join("");
-}
-
-function renderAll() {
-  if (!db.session) return;
-  renderCustomerMarketplace();
-  renderDrawer();
-  if (activeViewRole === "partner") renderPartnerConsole();
-}
-
-// =========================================================
-// EVENT WIRING
-// =========================================================
 window.openRestaurant = id => {
-  selectedRestId = id; inMenuSearch = ""; inMenuTag = "All";
+  selectedRestId = id;
+  inMenuSearch = "";
+  inMenuTag = "All";
   renderCustomerMarketplace();
-  if (id !== null) window.scrollTo({top: $("#catalogHeading").offsetTop - 90, behavior: "smooth"});
+  window.scrollTo({top: $("#catalogHeading").offsetTop - 90, behavior: "smooth"});
 };
-window.setCuisineFilter = c => { filterCuisine = c; selectedRestId = null; renderCustomerMarketplace(); };
-window.setDietFilter = d => { filterDiet = d; selectedRestId = null; renderCustomerMarketplace(); };
-window.quickCraving = term => {
-  searchQuery = searchQuery.toLowerCase() === term.toLowerCase() ? "" : term;
-  $("#searchInput").value = searchQuery;
-  if (searchQuery) saveRecentSearch(searchQuery);
+window.closeRestaurant = () => { selectedRestId = null; renderCustomerMarketplace(); };
+window.setInMenuTag = t => { inMenuTag = t; renderCustomerMarketplace(); };
+window.setCuisineFilter = c => { filterCuisine = c; renderCustomerMarketplace(); };
+window.setDietFilter = d => {
+  if (d === "Under ₹250") under250Only = !under250Only;
+  else if (d === "No Packaging Fee") { noPackFeeOnly = !noPackFeeOnly; toast(noPackFeeOnly ? "No Packaging Fee filter applied" : "Removed Packaging Fee filter"); }
+  else filterDiet = d;
   selectedRestId = null;
+  renderCustomerMarketplace();
+};
+window.toggleUnder250 = () => {
+  under250Only = !under250Only;
+  toast(under250Only ? "Showing meals under ₹250" : "Showing all price ranges");
+  renderCustomerMarketplace();
+};
+window.quickCraving = word => {
+  searchQuery = word;
+  $("#searchInput").value = word;
+  $("#clearSearchBtn").hidden = !word;
+  selectedRestId = null;
+  if (word) saveRecentSearch(word);
   renderCustomerMarketplace();
 };
 
@@ -2712,129 +2170,666 @@ function toggleVegMode() {
   renderCustomerMarketplace();
 }
 $("#vegToggleBtn").onclick = toggleVegMode;
+$("#vegToggleBtn").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleVegMode(); } };
 
-function triggerVoiceSearch() {
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SR) { toast("Voice search isn't supported in this browser — try typing!"); return; }
-  try {
-    const rec = new SR(); rec.lang = "en-IN";
-    $("#voiceSearchBtn").classList.add("listening");
-    $("#overlayVoiceBtn").classList.add("listening");
-    toast("Listening… say a dish like 'Momos' or 'Pizza'");
-    rec.onresult = e => {
-      const transcript = e.results[0][0].transcript;
-      searchQuery = transcript; $("#searchInput").value = transcript; $("#overlaySearchInput").value = transcript;
-      saveRecentSearch(transcript); closeSearchOverlay(); renderCustomerMarketplace();
-    };
-    rec.onend = () => { $("#voiceSearchBtn").classList.remove("listening"); $("#overlayVoiceBtn").classList.remove("listening"); };
-    rec.start();
-  } catch (err) { toast("Microphone access unavailable."); }
+function toggleHealthyMode(forceState = null) {
+  healthyOnly = forceState !== null ? forceState : !healthyOnly;
+  const btn = $("#healthyToggleBtn");
+  if (btn) {
+    btn.classList.toggle("on", healthyOnly);
+    btn.setAttribute("aria-checked", String(healthyOnly));
+  }
+  toast(healthyOnly ? "🥗 Healthy Only Mode ON — Nutritious & Low-Cal picks" : "Healthy Only Mode OFF — Showing full menu");
+  renderCustomerMarketplace();
 }
-$("#voiceSearchBtn").onclick = e => { e.stopPropagation(); triggerVoiceSearch(); };
-$("#overlayVoiceBtn").onclick = triggerVoiceSearch;
+$("#healthyToggleBtn").onclick = () => toggleHealthyMode();
+$("#healthyToggleBtn").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleHealthyMode(); } };
 
-function renderPromoDots() {
-  $("#promoDots").innerHTML = [0, 1, 2, 3].map(i => `<button type="button" class="promo-dot ${promoIdx === i ? "on" : ""}" onclick="goPromoSlide(${i})" aria-label="Slide ${i + 1}"></button>`).join("");
-}
-window.goPromoSlide = idx => {
-  promoIdx = idx; $("#promoTrack").style.transform = `translateX(-${promoIdx * 100}%)`; renderPromoDots();
-};
-renderPromoDots();
-setInterval(() => { if (activeViewRole === "customer" && db.session) goPromoSlide((promoIdx + 1) % 4); }, 4200);
-
+/* =========================================================
+   VOICE SEARCH & ENHANCED SEARCH OVERLAY
+   ========================================================= */
 function saveRecentSearch(term) {
-  const clean = term.trim(); if (!clean) return;
+  const clean = term.trim();
+  if (!clean) return;
   recentSearches = [clean, ...recentSearches.filter(x => x.toLowerCase() !== clean.toLowerCase())].slice(0, 6);
   safeSet("zwigato_recent_searches", JSON.stringify(recentSearches));
 }
+
 function openSearchOverlay() {
   $("#searchOverlay").classList.add("on");
   $("#overlaySearchInput").value = searchQuery;
-  $("#recentSearchChips").innerHTML = recentSearches.map(s => `<button type="button" class="btn xs" onclick="pickOverlaySearch('${esc(s)}')">🕒 ${esc(s)}</button>`).join("");
-  const mindItems = [
-    {label: "Chole Bhature", img: PHOTOS.samosa}, {label: "Burger", img: PHOTOS.burger},
-    {label: "Cake", img: PHOTOS.dessert}, {label: "Paratha", img: PHOTOS.naan},
-    {label: "North Indian", img: PHOTOS.dal}, {label: "Tea", img: PHOTOS.coffee}
-  ];
-  $("#mindGrid").innerHTML = mindItems.map(m => `<div class="mind-card" onclick="pickOverlaySearch('${m.label}')"><img src="${m.img}" alt="${m.label}" onerror="this.src='${FALLBACK_SVG}'"><span>${m.label}</span></div>`).join("");
-  setTimeout(() => $("#overlaySearchInput").focus(), 50);
+  renderSearchOverlayContent();
+  setTimeout(() => $("#overlaySearchInput").focus(), 60);
 }
 function closeSearchOverlay() { $("#searchOverlay").classList.remove("on"); }
-window.pickOverlaySearch = term => {
-  searchQuery = term; $("#searchInput").value = term; saveRecentSearch(term); closeSearchOverlay(); renderCustomerMarketplace();
-};
-$("#searchInput").onfocus = openSearchOverlay;
-$("#closeSearchOverlayBtn").onclick = closeSearchOverlay;
-$("#clearRecentBtn").onclick = () => {
-  recentSearches = []; safeRemove("zwigato_recent_searches");
-  $("#recentSearchChips").innerHTML = `<span style="font-size:12px;color:var(--muted)">No recent searches</span>`;
-};
-$("#overlaySearchInput").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); pickOverlaySearch(e.target.value); } };
 
-window.openExploreModal = title => {
-  if (title === "Offers") { setDietFilter("Flash Deals"); toast("Showing all -25% Flash Deals"); return; }
-  if (title === "Limitless Delivery") { setDietFilter("Express <22m"); toast("Showing Express <22m kitchens"); return; }
-  const descriptions = {
-    "Food on Train": "Order fresh Pantnagar & Rudrapur meals delivered directly to your train seat at Pantnagar / Lalkuan Junction.",
-    "Plan a Party": "Host a hostel fest or birthday? Get 20% off bulk trays from Welcome Restaurant & Kumaon Royal Kebabs.",
-    "Subscriptions": "Homely Subscriptions: ₹1,999/month for daily afternoon Kumaoni Veg Thalis delivered to your hostel.",
-    "Collections": "Curated Collections: Late-Night Momos, Campus Coffee Spots, and 100% Vegan Plates.",
-    "Gift Cards": "Send a Zwigato Gift Card (₹250 – ₹2,000) to friends across Pantnagar campus."
+function renderSearchOverlayContent() {
+  $("#recentSearchChips").innerHTML = recentSearches.length
+    ? recentSearches.map(s => `<button type="button" class="craving-pill" onclick="applyOverlaySearch('${esc(s)}')">🕒 ${esc(s)}</button>`).join("")
+    : `<span style="font-size:12.5px;color:var(--muted)">No recent searches yet.</span>`;
+
+  $("#mindGrid").innerHTML = DISH_CATEGORIES.filter(c => c.name !== "All").map(c => `
+    <button type="button" class="mind-card" onclick="applyOverlaySearch('${c.name}')">
+      <img src="${c.img}" alt="${c.name}" onerror="this.src='${FALLBACK_SVG}'">
+      <span>${c.name}</span>
+    </button>
+  `).join("");
+}
+
+window.applyOverlaySearch = term => {
+  quickCraving(term);
+  closeSearchOverlay();
+};
+
+$("#searchInput").onfocus = () => openSearchOverlay();
+$("#closeSearchOverlayBtn").onclick = closeSearchOverlay;
+$("#clearRecentBtn").onclick = () => { recentSearches = []; safeRemove("zwigato_recent_searches"); renderSearchOverlayContent(); };
+$("#overlaySearchInput").onkeydown = e => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    applyOverlaySearch($("#overlaySearchInput").value);
+  }
+};
+$("#clearSearchBtn").onclick = () => quickCraving("");
+
+function startVoiceSearch(btnEl, targetInput) {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    toast("Voice search demo: Listening... matched 'Momos'");
+    applyOverlaySearch("Momos");
+    return;
+  }
+  const rec = new SR();
+  rec.lang = "en-IN";
+  btnEl.classList.add("listening");
+  rec.onresult = ev => {
+    const text = ev.results[0][0].transcript;
+    if (targetInput) targetInput.value = text;
+    applyOverlaySearch(text);
   };
+  rec.onerror = () => toast("Could not hear clearly. Try typing!");
+  rec.onend = () => btnEl.classList.remove("listening");
+  rec.start();
+}
+$("#voiceSearchBtn").onclick = () => startVoiceSearch($("#voiceSearchBtn"), $("#searchInput"));
+$("#overlayVoiceBtn").onclick = () => startVoiceSearch($("#overlayVoiceBtn"), $("#overlaySearchInput"));
+
+/* =========================================================
+   CART, STICKY CART BAR & CHECKOUT
+   ========================================================= */
+function getCartQty(restId, itemId) {
+  if (cart.restaurantId !== restId) return 0;
+  const f = cart.items.find(i => i.itemId === itemId);
+  return f ? f.qty : 0;
+}
+
+window.addToCart = (restId, itemId) => {
+  const rest = db.restaurants.find(r => r.id === restId);
+  const item = rest && rest.menu.find(m => m.id === itemId);
+  if (!rest || !item || !item.inStock) return;
+  if (cart.restaurantId && cart.restaurantId !== restId) {
+    cart = {restaurantId: restId, items: [{itemId, qty: 1}]};
+    toast(`Started fresh cart from ${rest.name}`);
+  } else {
+    cart.restaurantId = restId;
+    const ex = cart.items.find(i => i.itemId === itemId);
+    if (ex) ex.qty++;
+    else cart.items.push({itemId, qty: 1});
+    toast(`Added ${item.name}`);
+  }
+  stickyCartDismissed = false;
+  renderCustomerMarketplace();
+  if ($("#checkoutDrawer").classList.contains("on")) renderCheckoutDrawer();
+};
+
+window.updateCartQty = (restId, itemId, delta) => {
+  if (cart.restaurantId !== restId) return;
+  const idx = cart.items.findIndex(i => i.itemId === itemId);
+  if (idx === -1) return;
+  cart.items[idx].qty += delta;
+  if (cart.items[idx].qty <= 0) cart.items.splice(idx, 1);
+  if (cart.items.length === 0) cart.restaurantId = null;
+  renderCustomerMarketplace();
+  if ($("#checkoutDrawer").classList.contains("on")) renderCheckoutDrawer();
+};
+
+function updateCartBadges() {
+  const totalQty = cart.items.reduce((s, i) => s + i.qty, 0);
+  $("#openCartBtn").textContent = `🛒 Cart · ${totalQty}`;
+  const bar = $("#stickyCartBar");
+  if (totalQty > 0 && !stickyCartDismissed && activeViewRole === "customer") {
+    const rest = db.restaurants.find(r => r.id === cart.restaurantId);
+    $("#stickyCartRest").textContent = rest ? rest.name : "Your Cart";
+    $("#stickyViewCartBtn").textContent = `View Cart · ${totalQty} item${totalQty > 1 ? "s" : ""}`;
+    bar.hidden = false;
+  } else {
+    bar.hidden = true;
+  }
+}
+
+$("#stickyViewCartBtn").onclick = () => openDrawer();
+$("#stickyViewMenu").onclick = () => { if (cart.restaurantId) openRestaurant(cart.restaurantId); };
+$("#dismissStickyCartBtn").onclick = () => { stickyCartDismissed = true; updateCartBadges(); };
+
+function openDrawer() {
+  closeCareDrawer();
+  renderCheckoutDrawer();
+  $("#checkoutDrawer").classList.add("on");
+  $("#drawerBackdrop").classList.add("on");
+  $("#checkoutDrawer").setAttribute("aria-hidden", "false");
+}
+function closeDrawer() {
+  $("#checkoutDrawer").classList.remove("on");
+  $("#drawerBackdrop").classList.remove("on");
+  $("#checkoutDrawer").setAttribute("aria-hidden", "true");
+}
+$("#openCartBtn").onclick = openDrawer;
+$("#closeDrawerBtn").onclick = closeDrawer;
+$("#drawerBackdrop").onclick = () => { closeDrawer(); closeCareDrawer(); };
+
+function renderCheckoutDrawer() {
+  const body = $("#drawerBody");
+  const user = getSessionUser();
+  if (!cart.restaurantId || cart.items.length === 0) {
+    body.innerHTML = `<div style="text-align:center;padding:40px 10px;color:var(--muted)"><div style="font-size:44px;margin-bottom:10px">🛒</div><b>Your Zwigato bag is empty</b><p style="font-size:13px">Add dishes from any Pantnagar kitchen to start your order.</p></div>`;
+    return;
+  }
+  const rest = db.restaurants.find(r => r.id === cart.restaurantId);
+  let subtotal = 0;
+  const rowsHtml = cart.items.map(ci => {
+    const item = rest.menu.find(m => m.id === ci.itemId);
+    const price = getEffectivePrice(item);
+    subtotal += price * ci.qty;
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+        <div>
+          <div style="font-weight:700;font-size:14px">${esc(item.name)}</div>
+          <div style="font-size:12px;color:var(--muted)">${inr(price)} each</div>
+        </div>
+        <div class="stepper-ctrl">
+          <button type="button" onclick="updateCartQty(${rest.id},${item.id},-1)">−</button>
+          <b>${ci.qty}</b>
+          <button type="button" onclick="updateCartQty(${rest.id},${item.id},1)">+</button>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  let discount = 0;
+  const code = checkoutState.promoCode.trim().toUpperCase();
+  if (code === "ZWIGATO50" && subtotal >= 149) discount = 50;
+  else if (code === "FIRST20") discount = Math.round(subtotal * 0.2);
+
+  const deliveryFee = code === "FREEDEL" ? 0 : (rest.isFar ? 35 : 20);
+  const packFee = noPackFeeOnly ? 0 : 12;
+  const gst = Math.round(subtotal * 0.05);
+  const total = Math.max(0, subtotal - discount + deliveryFee + packFee + gst + checkoutState.tip);
+
+  body.innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--border)">
+      ${user ? getAvatarHTML(user, "md") : ""}
+      <div>
+        <div style="font-weight:800;font-size:14.5px">${esc(rest.name)}</div>
+        <div style="font-size:12px;color:var(--muted)">ETA ${rest.etaMins} mins · ${esc(user ? user.name : "Guest")}</div>
+      </div>
+    </div>
+    ${rowsHtml}
+    <div class="checkout-sec">
+      <h4>Promo Code (ZWIGATO50 · FIRST20 · FREEDEL)</h4>
+      <div class="promo-row">
+        <input id="promoInput" type="text" placeholder="Enter code" value="${esc(checkoutState.promoCode)}">
+        <button type="button" class="btn primary sm" onclick="applyPromo()">Apply</button>
+      </div>
+    </div>
+    <div class="checkout-sec">
+      <h4>Delivery Address</h4>
+      <div class="field" style="margin-bottom:8px"><input id="coAddress" type="text" value="${esc(checkoutState.address)}"></div>
+      <div class="field" style="margin:0"><input id="coInstr" type="text" placeholder="Delivery instructions" value="${esc(checkoutState.instructions)}"></div>
+    </div>
+    <div class="checkout-sec">
+      <h4>Tip Your Scooter Rider</h4>
+      <div class="tip-grid">
+        ${[0, 10, 20, 40].map(t => `<button type="button" class="tip-btn ${checkoutState.tip === t ? "on" : ""}" onclick="setTip(${t})">${t === 0 ? "No Tip" : inr(t)}</button>`).join("")}
+      </div>
+    </div>
+    <div class="checkout-sec">
+      <h4>Payment Method</h4>
+      <div class="pay-grid">
+        ${[{id:"UPI / GPay",ic:"📱"},{id:"Card",ic:"💳"},{id:"Cash",ic:"💵"}].map(p =>
+          `<button type="button" class="pay-opt ${checkoutState.paymentMethod === p.id ? "on" : ""}" onclick="setPay('${p.id}')"><span>${p.ic}</span>${p.id}</button>`
+        ).join("")}
+      </div>
+    </div>
+    <div class="checkout-sec">
+      <div class="bill-line"><span>Item Subtotal</span><span>${inr(subtotal)}</span></div>
+      ${discount ? `<div class="bill-line" style="color:var(--veg)"><span>Promo Discount (${code})</span><span>−${inr(discount)}</span></div>` : ""}
+      <div class="bill-line"><span>Delivery Fee</span><span>${deliveryFee === 0 ? "FREE" : inr(deliveryFee)}</span></div>
+      <div class="bill-line"><span>Packaging &amp; GST (5%)</span><span>${inr(packFee + gst)}</span></div>
+      <div class="bill-line"><span>Rider Tip</span><span>${inr(checkoutState.tip)}</span></div>
+      <div class="bill-total"><span>To Pay</span><span>${inr(total)}</span></div>
+    </div>
+    <button type="button" class="btn primary wide" style="margin-top:14px" onclick="placeOrder(${total},${subtotal},${discount},${deliveryFee})">
+      ${checkoutState.processing ? "Processing Payment…" : `Pay ${inr(total)} &amp; Place Order`}
+    </button>
+  `;
+}
+
+window.applyPromo = () => {
+  checkoutState.promoCode = $("#promoInput").value.trim().toUpperCase();
+  toast(checkoutState.promoCode ? `Promo ${checkoutState.promoCode} applied!` : "Promo cleared");
+  renderCheckoutDrawer();
+};
+window.setTip = t => { checkoutState.tip = t; renderCheckoutDrawer(); };
+window.setPay = p => { checkoutState.paymentMethod = p; renderCheckoutDrawer(); };
+
+window.placeOrder = (total, subtotal, discount, deliveryFee) => {
+  if (checkoutState.processing) return;
+  checkoutState.address = $("#coAddress").value.trim() || "Subhash Bhawan, Pantnagar";
+  checkoutState.instructions = $("#coInstr").value.trim();
+  checkoutState.processing = true;
+  renderCheckoutDrawer();
+
+  setTimeout(() => {
+    const rest = db.restaurants.find(r => r.id === cart.restaurantId);
+    const user = getSessionUser();
+    const riders = [
+      {name: "Rohan Negi", avatar: "🛵", vehicle: "Honda Activa 6G · UK-06-AW-4192", rating: "4.9", deliveries: "1,420+", temp: "98.2°F · Hygiene Verified"},
+      {name: "Vikram Bisht", avatar: "🏍️", vehicle: "TVS Jupiter · UK-06-BK-7731", rating: "4.8", deliveries: "980+", temp: "98.4°F · Hygiene Verified"}
+    ];
+    const newOrder = {
+      id: "ZWG-" + Math.floor(1000 + Math.random() * 9000),
+      customerEmail: user ? user.email : "guest@zwigato.in",
+      customerName: user ? user.name : "Guest",
+      restaurantId: rest.id,
+      restaurantName: rest.name,
+      items: cart.items.map(ci => {
+        const it = rest.menu.find(m => m.id === ci.itemId);
+        return {name: it.name, qty: ci.qty, price: getEffectivePrice(it)};
+      }),
+      subtotal, discount, deliveryFee, tip: checkoutState.tip, total,
+      address: checkoutState.address, instructions: checkoutState.instructions,
+      paymentMethod: checkoutState.paymentMethod,
+      status: "PLACED",
+      createdAt: "Just now",
+      rider: riders[Math.floor(Math.random() * riders.length)]
+    };
+    db.orders.unshift(newOrder);
+    saveDB();
+    cart = {restaurantId: null, items: []};
+    checkoutState.processing = false;
+    closeDrawer();
+    toast(`Order ${newOrder.id} placed! Tracking live.`);
+    startLiveProgression(newOrder.id);
+    renderCustomerMarketplace();
+    window.scrollTo({top: 0, behavior: "smooth"});
+  }, 600);
+};
+
+/* =========================================================
+   LIVE DELIVERY TRACKER & RIDER CARD
+   ========================================================= */
+function startLiveProgression(orderId) {
+  if (autoProgressionTimer) clearInterval(autoProgressionTimer);
+  const stages = ["PLACED", "PREPARING", "OUT_FOR_DELIVERY", "DELIVERED"];
+  autoProgressionTimer = setInterval(() => {
+    const o = db.orders.find(x => x.id === orderId);
+    if (!o || o.status === "DELIVERED") { clearInterval(autoProgressionTimer); return; }
+    const idx = stages.indexOf(o.status);
+    if (idx >= 0 && idx < stages.length - 1) {
+      o.status = stages[idx + 1];
+      saveDB();
+      if (activeViewRole === "customer") renderLiveTracker();
+    }
+  }, 5500);
+}
+
+function renderLiveTracker() {
+  const user = getSessionUser();
+  const active = db.orders.find(o => o.status !== "DELIVERED" && (!user || o.customerEmail === user.email || o.customerEmail === "ishaan@zwigato.in"));
+  const sec = $("#liveTrackerSec");
+  const pill = $("#navLiveTrackerPill");
+  if (!active) { sec.hidden = true; pill.hidden = true; return; }
+  sec.hidden = false; pill.hidden = false;
+  pill.onclick = () => sec.scrollIntoView({behavior: "smooth"});
+
+  const stages = [
+    {k: "PLACED", lbl: "Order Placed", ic: "🧾", pct: 15, msg: "Kitchen has received your order"},
+    {k: "PREPARING", lbl: "Preparing", ic: "🍳", pct: 45, msg: "Chef is freshly preparing your meal"},
+    {k: "OUT_FOR_DELIVERY", lbl: "On the Way", ic: "🛵", pct: 78, msg: `${active.rider.name} is riding towards ${active.address}`},
+    {k: "DELIVERED", lbl: "Delivered", ic: "✅", pct: 100, msg: "Enjoy your meal!"}
+  ];
+  const currIdx = Math.max(0, stages.findIndex(s => s.k === active.status));
+  const curr = stages[currIdx];
+  const rx = 24 + (curr.pct / 100) * 252;
+
+  sec.innerHTML = `
+    <div class="tracker-top">
+      <div>
+        <span class="live-pill"><span class="live-dot"></span> LIVE ORDER · ${esc(active.id)}</span>
+        <h3 style="margin:6px 0 2px;font-size:20px">${esc(active.restaurantName)}</h3>
+        <div style="font-size:13px;color:var(--muted)">${esc(curr.msg)}</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button type="button" class="btn sm" onclick="openCareDrawer('instant','${esc(active.id)}')">🎧 Need Help?</button>
+        <button type="button" class="btn xs" onclick="advanceOrderDemo('${esc(active.id)}')">Fast-Forward ›</button>
+      </div>
+    </div>
+    <div class="tracker-grid">
+      <div>
+        <div class="stepper">
+          ${stages.map((s, i) => `
+            <div class="step-node ${i < currIdx ? "done" : i === currIdx ? "curr" : ""}">
+              <span>${s.ic}</span>${s.lbl}
+            </div>
+          `).join("")}
+        </div>
+      </div>
+      <div class="route-map">
+        <svg viewBox="0 0 300 54" style="width:100%;height:54px">
+          <path d="M 24 34 Q 150 6 276 34" fill="none" stroke="var(--border-strong)" stroke-width="4" stroke-dasharray="6 5"/>
+          <circle cx="24" cy="34" r="7" fill="var(--acc)"/>
+          <circle cx="276" cy="34" r="7" fill="var(--veg)"/>
+          <g transform="translate(${rx - 12}, 10)">
+            <circle cx="12" cy="12" r="13" fill="var(--surface)" stroke="var(--acc)" stroke-width="2"/>
+            <text x="12" y="16" text-anchor="middle" font-size="13">🛵</text>
+          </g>
+        </svg>
+        <div class="rider-card">
+          <div class="rider-profile">
+            <div class="rider-avatar">${active.rider.avatar}</div>
+            <div>
+              <div style="font-weight:800">${esc(active.rider.name)} · ★ ${active.rider.rating}</div>
+              <div style="font-size:11.5px;color:var(--muted)">${esc(active.rider.vehicle)}</div>
+              <div class="rider-badges">
+                <span class="rider-badge">${active.rider.deliveries} deliveries</span>
+                <span class="rider-badge">🛡️ ${active.rider.temp}</span>
+              </div>
+            </div>
+          </div>
+          <div class="rider-actions">
+            <button type="button" class="btn xs" onclick="toast('Calling ${esc(active.rider.name)}...')">📞 Call</button>
+            <button type="button" class="btn xs" onclick="toast('Message sent to ${esc(active.rider.name)}')">💬 Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+window.advanceOrderDemo = id => {
+  const o = db.orders.find(x => x.id === id);
+  if (!o) return;
+  const stages = ["PLACED", "PREPARING", "OUT_FOR_DELIVERY", "DELIVERED"];
+  const idx = stages.indexOf(o.status);
+  if (idx < stages.length - 1) o.status = stages[idx + 1];
+  saveDB();
+  renderCustomerMarketplace();
+};
+
+function renderCustomerHistory() {
+  const user = getSessionUser();
+  const list = db.orders.filter(o => !user || o.customerEmail === user.email || o.customerEmail === "ishaan@zwigato.in").slice(0, 5);
+  $("#customerHistoryList").innerHTML = list.length ? `<div style="display:grid;gap:12px">${list.map(o => `
+    <div class="card" style="padding:16px 18px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
+      <div>
+        <div style="font-weight:800;font-size:15px">${esc(o.restaurantName)} <span style="color:var(--muted);font-weight:600;font-size:12.5px">· ${esc(o.id)}</span></div>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:2px">${o.items.map(i => `${i.qty}× ${esc(i.name)}`).join(", ")}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px">${esc(o.createdAt)} · ${esc(o.paymentMethod)}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="badge-pill" style="background:${o.status === "DELIVERED" ? "var(--veg-soft)" : "var(--acc-soft)"};color:${o.status === "DELIVERED" ? "var(--veg)" : "var(--acc)"}">${o.status}</span>
+        <b>${inr(o.total)}</b>
+        <button type="button" class="btn xs" onclick="openCareDrawer('instant','${esc(o.id)}')">Help</button>
+      </div>
+    </div>
+  `).join("")}</div>` : `<div class="card" style="padding:20px;color:var(--muted)">No past orders yet.</div>`;
+}
+
+/* =========================================================
+   24x7 CUSTOMER CARE DRAWER
+   ========================================================= */
+window.openCareDrawer = (tab = "instant", orderId = "") => {
+  closeDrawer();
+  careTab = tab;
+  if (orderId) careOrderId = orderId;
+  renderCareDrawer();
+  $("#careDrawer").classList.add("on");
+  $("#drawerBackdrop").classList.add("on");
+  $("#careDrawer").setAttribute("aria-hidden", "false");
+};
+function closeCareDrawer() {
+  $("#careDrawer").classList.remove("on");
+  $("#careDrawer").setAttribute("aria-hidden", "true");
+  if (!$("#checkoutDrawer").classList.contains("on")) $("#drawerBackdrop").classList.remove("on");
+}
+$("#navHelpBtn").onclick = () => openCareDrawer("instant");
+$("#closeCareBtn").onclick = closeCareDrawer;
+
+function renderCareDrawer() {
+  const user = getSessionUser();
+  const faqs = [
+    {q: "Where is my scooter rider?", a: "You can track your rider live on the top map banner, or tap Call/Message directly on the rider card."},
+    {q: "An item is missing or spilled", a: "Use Instant ₹50 Wallet Refund below for immediate credit without waiting for an agent."},
+    {q: "How do I cancel an order?", a: "Orders can be cancelled before the kitchen marks them as Preparing."}
+  ];
+
+  let tabHtml = "";
+  if (careTab === "instant") {
+    tabHtml = `
+      <div class="field">
+        <label>Select Order</label>
+        <select id="careOrderSel" onchange="careOrderId=this.value">
+          ${db.orders.map(o => `<option value="${esc(o.id)}" ${careOrderId === o.id ? "selected" : ""}>${esc(o.id)} · ${esc(o.restaurantName)} (${inr(o.total)})</option>`).join("")}
+        </select>
+      </div>
+      <div class="care-action-grid">
+        <button type="button" class="care-action-btn" onclick="createCareTicket('Missing item — Instant ₹50 refund')"><strong>💸 Instant ₹50 Refund</strong><span>Missing/spilled item</span></button>
+        <button type="button" class="care-action-btn" onclick="createCareTicket('Rider location & ETA check')"><strong>🛵 Rider ETA Check</strong><span>Ping Pantnagar dispatch</span></button>
+        <button type="button" class="care-action-btn" onclick="createCareTicket('Hygiene or tamper-seal report')"><strong>🛡️ Hygiene / Seal Issue</strong><span>Priority FSSAI audit</span></button>
+        <button type="button" class="care-action-btn" onclick="toast('Callback scheduled! Ananya will call within 2 mins.')"><strong>📞 2-Min Callback</strong><span>Speak to specialist</span></button>
+      </div>
+      <div style="margin-top:18px">
+        <h4 style="margin:0 0 8px;font-size:12px;text-transform:uppercase;color:var(--muted)">Quick FAQs</h4>
+        ${faqs.map((f, i) => `
+          <div class="faq-item">
+            <button type="button" class="faq-q" onclick="openFaqIdx=${i};renderCareDrawer()"><span>${f.q}</span><span>${openFaqIdx === i ? "−" : "+"}</span></button>
+            ${openFaqIdx === i ? `<div class="faq-a">${f.a}</div>` : ""}
+          </div>
+        `).join("")}
+      </div>
+    `;
+  } else if (careTab === "chat") {
+    tabHtml = `
+      <div class="care-chat-box" id="careChatBox">
+        ${careMessages.map(m => `
+          <div class="care-msg-row ${m.from === "user" ? "usr" : "bot"}">
+            ${m.from === "user" && user ? getAvatarHTML(user, "sm") : ""}
+            <div class="bubble ${m.from === "user" ? "usr" : "bot"}">${esc(m.text)}</div>
+          </div>
+        `).join("")}
+      </div>
+      <form style="display:flex;gap:8px" onsubmit="sendCareMessage(event)">
+        <input id="careMsgInput" type="text" placeholder="Type your message to Ananya…" style="flex:1;padding:10px 14px;border-radius:99px;border:1px solid var(--border-strong);background:var(--bg);color:var(--ink)" required>
+        <button type="submit" class="btn primary sm">Send</button>
+      </form>
+    `;
+  } else {
+    tabHtml = db.tickets.map(t => `
+      <div class="card" style="padding:14px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-weight:800;font-size:13.5px">
+          <span>${esc(t.id)} · ${esc(t.orderId)}</span>
+          <span style="color:var(--veg)">${esc(t.status)}</span>
+        </div>
+        <div style="font-size:13px;margin-top:4px;font-weight:700">${esc(t.subject)}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">${esc(t.note)}</div>
+      </div>
+    `).join("");
+  }
+
+  $("#careBody").innerHTML = `
+    <div class="care-tabs">
+      <button type="button" class="btn sm ${careTab === "instant" ? "active" : ""}" onclick="careTab='instant';renderCareDrawer()">Instant Help</button>
+      <button type="button" class="btn sm ${careTab === "chat" ? "active" : ""}" onclick="careTab='chat';renderCareDrawer()">Live Chat</button>
+      <button type="button" class="btn sm ${careTab === "tickets" ? "active" : ""}" onclick="careTab='tickets';renderCareDrawer()">My Tickets (${db.tickets.length})</button>
+    </div>
+    ${tabHtml}
+  `;
+}
+
+window.createCareTicket = subject => {
+  const oid = careOrderId || (db.orders[0] ? db.orders[0].id : "ZWG-4810");
+  db.tickets.unshift({
+    id: "TCK-" + Math.floor(1000 + Math.random() * 9000),
+    orderId: oid, subject, status: "Resolved",
+    note: "Instant Care desk processed your request. ₹50 credit / priority note applied.",
+    createdAt: "Just now"
+  });
+  saveDB();
+  toast("Ticket created & resolved!");
+  careTab = "tickets";
+  renderCareDrawer();
+};
+
+window.sendCareMessage = e => {
+  e.preventDefault();
+  const inp = $("#careMsgInput");
+  const txt = inp.value.trim();
+  if (!txt) return;
+  careMessages.push({from: "user", text: txt});
+  inp.value = "";
+  careMessages.push({from: "agent", text: "Got it! I've checked with our Pantnagar dispatch desk and prioritized your request. Anything else I can help with?"});
+  renderCareDrawer();
+};
+
+/* =========================================================
+   ZWIGATO AI CONCIERGE (GEMINI + SMART FALLBACK)
+   ========================================================= */
+function setAiOpen(open) { $("#aiBox").classList.toggle("on", open); }
+$("#aiFabBtn").onclick = () => setAiOpen(!$("#aiBox").classList.contains("on"));
+$("#heroAiBtn").onclick = () => setAiOpen(true);
+$("#aiCloseBtn").onclick = () => setAiOpen(false);
+$("#geminiKeyInput").value = safeGet("zwigato_gemini_key") || "";
+$("#saveKeyBtn").onclick = () => {
+  safeSet("zwigato_gemini_key", $("#geminiKeyInput").value.trim());
+  toast("Gemini API key saved!");
+};
+
+document.querySelectorAll(".mood-pill").forEach(btn => {
+  btn.onclick = () => { $("#aiPromptInput").value = btn.dataset.q; $("#aiChatForm").dispatchEvent(new Event("submit")); };
+});
+
+$("#aiChatForm").onsubmit = async e => {
+  e.preventDefault();
+  const prompt = $("#aiPromptInput").value.trim();
+  if (!prompt) return;
+  $("#aiPromptInput").value = "";
+  const feed = $("#aiFeed");
+  feed.innerHTML += `<div class="bubble usr">${esc(prompt)}</div>`;
+  feed.scrollTop = feed.scrollHeight;
+
+  const key = safeGet("zwigato_gemini_key");
+  let reply = "";
+  if (key) {
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(key)}`, {
+        method: "POST", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({contents: [{parts: [{text: `You are Zwigato AI for Pantnagar. Recommend 2 dishes from our kitchens based on: "${prompt}". Include [ADD:restId:itemId] tags like [ADD:4:402] for Steamed Veg Momos or [ADD:1:101] for Dal Makhani.`}]}]})
+      });
+      const data = await res.json();
+      reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    } catch (err) {}
+  }
+
+  if (!reply) {
+    const p = prompt.toLowerCase();
+    if (p.includes("fast") || p.includes("20")) {
+      reply = "For lightning-fast delivery under 20 mins, try <b>Chotu Momos (14m)</b> or <b>Kesari Sweets (15m)</b>! [ADD:8:802] [ADD:6:602]";
+    } else if (p.includes("vegan") || p.includes("gluten") || p.includes("light") || p.includes("energetic")) {
+      reply = "For a light, energetic &amp; plant-based boost, I recommend <b>Quinoa &amp; Roasted Millet Bowl</b> or <b>Steamed Veg Momos</b>: [ADD:12:1201] [ADD:4:402]";
+    } else if (p.includes("happy") || p.includes("celebrate")) {
+      reply = "Let's celebrate! Grab <b>Farmhouse Overload Pizza</b> or <b>Nutella Waffle Sundae</b>: [ADD:3:301] [ADD:7:704]";
+    } else {
+      reply = "For warm comfort food, nothing beats <b>Dal Makhani</b> or <b>Kumaoni Rajma Chawal</b>: [ADD:1:101] [ADD:2:201]";
+    }
+  }
+
+  const parsedHtml = reply.replace(/\[ADD:(\d+):(\d+)\]/g, (_, rid, iid) => {
+    const r = db.restaurants.find(x => x.id === Number(rid));
+    const it = r && r.menu.find(m => m.id === Number(iid));
+    if (!r || !it) return "";
+    return `<div class="ai-dish-rec"><div><b>${esc(it.name)}</b><div style="font-size:11px;color:var(--muted)">${esc(r.name)} · ${inr(getEffectivePrice(it))}</div></div><button type="button" class="btn primary xs" onclick="addToCart(${r.id},${it.id})">+ Add</button></div>`;
+  });
+
+  feed.innerHTML += `<div class="bubble bot">${parsedHtml}</div>`;
+  feed.scrollTop = feed.scrollHeight;
+};
+
+/* =========================================================
+   PROFILE AVATAR MODAL & EXPLORE MODAL
+   ========================================================= */
+$("#navProfileBtn").onclick = () => {
+  const user = getSessionUser();
+  if (!user) return;
   $("#exploreModalCard").innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-      <h3 style="margin:0;font-size:22px">${esc(title)}</h3>
-      <button type="button" class="btn xs" onclick="$('#exploreModalBackdrop').classList.remove('on')">✕</button>
+      <h3 style="margin:0;font-size:21px">Your Profile &amp; Avatar</h3>
+      <button type="button" class="btn xs" onclick="closeExploreModal()">✕</button>
     </div>
-    <p style="color:var(--muted);font-size:14px;margin:0 0 18px">${esc(descriptions[title] || "Exclusive Zwigato Pantnagar experience.")}</p>
-    <button type="button" class="btn primary wide" onclick="$('#exploreModalBackdrop').classList.remove('on');toast('Activated ${esc(title)}!')">Explore Now →</button>
-  `;
-  $("#exploreModalBackdrop").classList.add("on");
-};
-$("#exploreModalBackdrop").onclick = e => { if (e.target.id === "exploreModalBackdrop") $("#exploreModalBackdrop").classList.remove("on"); };
-
-window.openProfileModal = () => {
-  if (!db.session) return;
-  const currAv = db.session.avatar || "initials";
-  $("#exploreModalCard").innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <h3 style="margin:0;font-size:21px">Profile &amp; Avatar Picker</h3>
-      <button type="button" class="btn xs" onclick="$('#exploreModalBackdrop').classList.remove('on')">✕</button>
-    </div>
-    <div style="display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:16px;background:var(--bg);border:1px solid var(--border)">
-      ${renderAvatarHtml(db.session, "lg")}
+    <div style="display:flex;align-items:center;gap:14px;padding:12px;border-radius:16px;background:var(--bg);border:1px solid var(--border)">
+      ${getAvatarHTML(user, "lg")}
       <div>
-        <strong style="display:block;font-size:16px">${esc(db.session.name)}</strong>
-        <div style="font-size:12.5px;color:var(--muted)">${esc(db.session.email)}</div>
+        <div style="font-weight:800;font-size:16px">${esc(user.name)}</div>
+        <div style="font-size:12.5px;color:var(--muted)">${esc(user.email)}</div>
       </div>
     </div>
     <div class="avatar-grid">
       ${AVATAR_PRESETS.map(a => `
-        <button type="button" class="avatar-opt ${currAv === a.id ? "on" : ""}" onclick="selectUserAvatar('${a.id}')">
-          ${renderAvatarHtml({...db.session, avatar: a.id}, "md")}
-          <span>${esc(a.label)}</span>
+        <button type="button" class="avatar-opt ${(user.avatarId || "initials") === a.id ? "on" : ""}" onclick="selectUserAvatar('${a.id}')">
+          <span class="pfp-avatar md" style="background:${a.bg}">${a.icon || esc(user.name[0].toUpperCase())}</span>
+          <span>${a.label}</span>
         </button>
       `).join("")}
     </div>
-    <button type="button" class="btn primary wide" onclick="$('#exploreModalBackdrop').classList.remove('on')">Done</button>
+    <button type="button" class="btn primary wide" onclick="closeExploreModal()">Done</button>
   `;
   $("#exploreModalBackdrop").classList.add("on");
 };
 
 window.selectUserAvatar = avatarId => {
-  if (!db.session) return;
-  db.session.avatar = avatarId;
-  const u = db.users.find(x => x.email === db.session.email);
-  if (u) u.avatar = avatarId;
+  const user = getSessionUser();
+  if (!user) return;
+  user.avatarId = avatarId;
   saveDB();
-  $("#navUserAvatar").innerHTML = renderAvatarHtml(db.session, "sm");
-  openProfileModal();
-  renderDrawer();
-  if ($("#careDrawer").classList.contains("on")) renderCareDrawer();
-  const preset = AVATAR_PRESETS.find(a => a.id === avatarId);
-  toast(`Avatar updated to ${preset ? preset.label : "Custom"}!`);
+  updateNavUserUI(user);
+  $("#navProfileBtn").click();
+  toast("Profile avatar updated!");
 };
-$("#navProfileBtn").onclick = openProfileModal;
+
+window.openExploreModal = title => {
+  $("#exploreModalCard").innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h3 style="margin:0;font-size:22px">${esc(title)}</h3>
+      <button type="button" class="btn xs" onclick="closeExploreModal()">✕</button>
+    </div>
+    <p style="color:var(--muted);font-size:14px;margin:0 0 18px">Zwigato ${esc(title)} is active across Pantnagar Campus, Nagla Road, and Rudrapur. Enjoy priority kitchen dispatch and exclusive partner perks.</p>
+    <button type="button" class="btn primary wide" onclick="closeExploreModal();toast('${esc(title)} activated!')">Got it</button>
+  `;
+  $("#exploreModalBackdrop").classList.add("on");
+};
+window.closeExploreModal = () => $("#exploreModalBackdrop").classList.remove("on");
+$("#exploreModalBackdrop").onclick = e => { if (e.target === $("#exploreModalBackdrop")) closeExploreModal(); };
+
+$("#navLocationBtn").onclick = () => {
+  $("#exploreModalCard").innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h3 style="margin:0;font-size:20px">📍 Delivery Address</h3>
+      <button type="button" class="btn xs" onclick="closeExploreModal()">✕</button>
+    </div>
+    <div class="field"><label>Pantnagar / Kumaon Address</label><input id="modalAddrInp" type="text" value="${esc(checkoutState.address)}"></div>
+    <button type="button" class="btn primary wide" onclick="checkoutState.address=$('#modalAddrInp').value.trim()||'Subhash Bhawan, Pantnagar';$('#navAddressLabel').textContent=checkoutState.address;closeExploreModal();toast('Delivery location updated!')">Save Location</button>
+  `;
+  $("#exploreModalBackdrop").classList.add("on");
+};
 
 window.setBottomTab = tab => {
   bottomTab = tab;
@@ -2843,86 +2838,126 @@ window.setBottomTab = tab => {
     if ($("#bnav" + k)) $("#bnav" + k).classList.toggle("on", tab === l);
     if ($("#dnav" + k)) $("#dnav" + k).classList.toggle("on", tab === l);
   });
-  if (tab === "home") { setDietFilter("All"); window.scrollTo({top: 0, behavior: "smooth"}); }
-  else if (tab === "healthy") { setDietFilter("Vegan"); toast("Showing Healthy, Vegan & Gluten-Free kitchens"); }
-  else if (tab === "dining") { openExploreModal("Plan a Party"); }
+  if (tab === "home") {
+    if (healthyOnly) toggleHealthyMode(false);
+    setDietFilter("All");
+    window.scrollTo({top: 0, behavior: "smooth"});
+  } else if (tab === "healthy") {
+    toggleHealthyMode(true);
+    window.scrollTo({top: $("#catalogHeading").offsetTop - 90, behavior: "smooth"});
+  } else if (tab === "dining") {
+    openExploreModal("Plan a Party");
+  }
 };
 
-window.addToCart = addToCart;
-window.applyPromo = applyPromo;
-window.confirmCheckoutOrder = confirmCheckoutOrder;
-window.advanceOrderStage = advanceOrderStage;
-window.renderDrawer = renderDrawer;
-window.openCareDrawer = openCareDrawer;
-window.renderCareDrawer = renderCareDrawer;
-window.handleCareAction = handleCareAction;
-window.sendCareChat = sendCareChat;
-window.renderCustomerMarketplace = renderCustomerMarketplace;
-window.setAiOpen = open => { $("#aiBox").classList.toggle("on", open); if (open) $("#aiPromptInput").focus(); };
-window.setOrderStatus = (orderId, newStatus) => {
-  const ord = db.orders.find(o => o.id === orderId);
-  if (!ord) return;
-  ord.status = newStatus; saveDB();
-  toast(`Order ${orderId} updated to ${newStatus.replaceAll("_", " ")}`);
-  renderAll();
-};
-window.toggleMenuProp = (restId, itemId, prop) => {
-  const rest = db.restaurants.find(r => r.id === restId);
-  const item = rest?.menu.find(m => m.id === itemId);
-  if (!item) return;
-  item[prop] = !item[prop]; saveDB();
-  toast(`Updated "${item.name}"`);
-  renderAll();
+/* =========================================================
+   RESTAURANT PARTNER DASHBOARD
+   ========================================================= */
+function renderPartnerDashboard() {
+  $("#partnerRestSelect").innerHTML = db.restaurants.map(r => `<option value="${r.id}" ${r.id === managedRestId ? "selected" : ""}>${esc(r.name)}</option>`).join("");
+  const rest = db.restaurants.find(r => r.id === managedRestId) || db.restaurants[0];
+  const orders = db.orders.filter(o => o.restaurantId === rest.id);
+  const rev = orders.reduce((s, o) => s + o.total, 0);
+
+  $("#partnerKpis").innerHTML = `
+    <div class="card kpi-card"><span>Today's Revenue</span><strong>${inr(rev + 4280)}</strong><small>↑ 18% vs yesterday</small></div>
+    <div class="card kpi-card"><span>Active Orders</span><strong>${orders.filter(o => o.status !== "DELIVERED").length}</strong><small>Avg prep ${rest.etaMins} mins</small></div>
+    <div class="card kpi-card"><span>Kitchen Rating</span><strong>★ ${rest.rating}</strong><small>FSSAI ${rest.fssai}</small></div>
+  `;
+
+  const cols = [
+    {k: "PLACED", title: "🆕 New Orders", next: "PREPARING", btn: "Accept & Cook"},
+    {k: "PREPARING", title: "🍳 Preparing", next: "OUT_FOR_DELIVERY", btn: "Dispatch Rider"},
+    {k: "OUT_FOR_DELIVERY", title: "🛵 Out for Delivery", next: "DELIVERED", btn: "Mark Delivered"}
+  ];
+  $("#partnerKdsGrid").innerHTML = cols.map(c => {
+    const list = orders.filter(o => o.status === c.k);
+    return `
+      <div class="card kds-col">
+        <h3>${c.title} <span class="badge-pill">${list.length}</span></h3>
+        ${list.length ? list.map(o => `
+          <div class="order-ticket">
+            <div style="display:flex;justify-content:space-between;font-weight:800;font-size:14px"><span>${esc(o.id)}</span><span>${inr(o.total)}</span></div>
+            <div style="font-size:12px;color:var(--muted);margin:4px 0 8px">${o.items.map(i => `${i.qty}× ${esc(i.name)}`).join(", ")}</div>
+            <button type="button" class="btn primary xs wide" onclick="advanceOrderDemo('${esc(o.id)}');renderPartnerDashboard()">${c.btn}</button>
+          </div>
+        `).join("") : `<div style="font-size:13px;color:var(--muted)">No orders in this stage.</div>`}
+      </div>
+    `;
+  }).join("");
+
+  $("#partnerMenuItems").innerHTML = rest.menu.map(m => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+      <div>
+        <strong style="font-size:14px">${esc(m.name)}</strong>
+        <div style="font-size:12px;color:var(--muted)">${inr(getEffectivePrice(m))} · ${esc(m.course)} ${m.flash ? "· ⚡ Flash -25%" : ""}</div>
+      </div>
+      <button type="button" class="btn xs ${m.flash ? "primary" : ""}" onclick="toggleDishFlash(${rest.id},${m.id})">${m.flash ? "Flash ON" : "Set Flash"}</button>
+    </div>
+  `).join("");
+
+  const top = [...rest.menu].sort((a, b) => (b.ordersToday || 50) - (a.ordersToday || 50)).slice(0, 4);
+  const maxOrd = Math.max(...top.map(t => t.ordersToday || 50), 1);
+  $("#analyticsTopDishes").innerHTML = top.map(t => `
+    <div class="bar-item">
+      <div class="bar-top"><span>${esc(t.name)}</span><span>${t.ordersToday || 50} orders</span></div>
+      <div class="bar-bg"><div class="bar-val" style="width:${Math.round(((t.ordersToday || 50) / maxOrd) * 100)}%"></div></div>
+    </div>
+  `).join("");
+
+  $("#analyticsPayments").innerHTML = `
+    <div class="bar-item"><div class="bar-top"><span>UPI / GPay</span><span>68%</span></div><div class="bar-bg"><div class="bar-val" style="width:68%;background:var(--veg)"></div></div></div>
+    <div class="bar-item"><div class="bar-top"><span>Cards</span><span>20%</span></div><div class="bar-bg"><div class="bar-val" style="width:20%;background:var(--gold)"></div></div></div>
+    <div class="bar-item"><div class="bar-top"><span>Cash on Delivery</span><span>12%</span></div><div class="bar-bg"><div class="bar-val" style="width:12%"></div></div></div>
+  `;
+}
+
+$("#partnerRestSelect").onchange = e => { managedRestId = Number(e.target.value); renderPartnerDashboard(); };
+window.toggleDishFlash = (rid, iid) => {
+  const r = db.restaurants.find(x => x.id === rid);
+  const m = r && r.menu.find(x => x.id === iid);
+  if (m) { m.flash = !m.flash; saveDB(); renderPartnerDashboard(); toast("Updated flash sale status!"); }
 };
 
-$("#partnerRestSelect").onchange = e => { managedRestId = Number(e.target.value); renderPartnerConsole(); };
 $("#partnerAddDishForm").onsubmit = e => {
   e.preventDefault();
   const rest = db.restaurants.find(r => r.id === managedRestId);
   if (!rest) return;
   const name = $("#ndName").value.trim();
-  const price = Number($("#ndPrice").value);
-  rest.menu.unshift(D(Date.now(), name, price, $("#ndCourse").value, [$("#ndDiet").value, "Bestseller"], PHOTOS[$("#ndImgPreset").value] || rest.banner, $("#ndFlash").checked, $("#ndSpecial").checked, 18));
-  saveDB(); e.target.reset(); $("#ndSpecial").checked = true;
-  toast(`Published "${name}" to ${rest.name}!`); renderAll();
+  const price = Number($("#ndPrice").value) || 150;
+  const diet = $("#ndDiet").value;
+  const course = $("#ndCourse").value;
+  const preset = $("#ndImgPreset").value;
+  rest.menu.unshift(D(Date.now(), name, price, course, [diet], PHOTOS[preset] || PHOTOS.paneer, $("#ndFlash").checked, $("#ndSpecial").checked, 10));
+  saveDB();
+  $("#partnerAddDishForm").reset();
+  renderPartnerDashboard();
+  toast(`${name} published live!`);
 };
 
-$("#navHome").onclick = () => {
-  selectedRestId = null; filterCuisine = "All"; filterDiet = "All"; searchQuery = ""; $("#searchInput").value = "";
-  renderAll(); window.scrollTo({top: 0, behavior: "smooth"});
-};
-$("#searchInput").oninput = e => { searchQuery = e.target.value; selectedRestId = null; renderCustomerMarketplace(); };
-$("#clearSearchBtn").onclick = () => { searchQuery = ""; $("#searchInput").value = ""; renderCustomerMarketplace(); };
+/* =========================================================
+   BOOT & TIMERS
+   ========================================================= */
 $("#prevSlideBtn").onclick = () => $("#gemsCarousel").scrollBy({left: -340, behavior: "smooth"});
 $("#nextSlideBtn").onclick = () => $("#gemsCarousel").scrollBy({left: 340, behavior: "smooth"});
 
-function openDrawer() {
-  $("#drawerBackdrop").classList.add("on"); $("#careDrawer").classList.remove("on");
-  $("#checkoutDrawer").classList.add("on"); $("#checkoutDrawer").setAttribute("aria-hidden", "false");
-  renderDrawer();
-}
-function closeAllDrawers() {
-  $("#drawerBackdrop").classList.remove("on"); $("#checkoutDrawer").classList.remove("on"); $("#careDrawer").classList.remove("on");
-  $("#checkoutDrawer").setAttribute("aria-hidden", "true"); $("#careDrawer").setAttribute("aria-hidden", "true");
-}
-$("#openCartBtn").onclick = openDrawer;
-$("#closeDrawerBtn").onclick = closeAllDrawers;
-$("#navHelpBtn").onclick = () => openCareDrawer("instant");
-$("#closeCareBtn").onclick = closeAllDrawers;
-$("#drawerBackdrop").onclick = closeAllDrawers;
+setInterval(() => {
+  flashRemaining = flashRemaining > 0 ? flashRemaining - 1 : 14 * 60 + 59;
+  const m = String(Math.floor(flashRemaining / 60)).padStart(2, "0");
+  const s = String(flashRemaining % 60).padStart(2, "0");
+  if ($("#flashTimer")) $("#flashTimer").textContent = `${m}:${s}`;
+}, 1000);
 
-$("#aiFabBtn").onclick = () => setAiOpen(!$("#aiBox").classList.contains("on"));
-$("#heroAiBtn").onclick = () => setAiOpen(true);
-$("#aiCloseBtn").onclick = () => setAiOpen(false);
-$("#saveKeyBtn").onclick = () => toast("Gemini API key saved for this session");
-document.querySelectorAll(".mood-pill").forEach(p => { p.onclick = () => askZwigatoAI(p.dataset.q); });
-$("#aiChatForm").onsubmit = e => {
-  e.preventDefault();
-  const inp = $("#aiPromptInput"); const val = inp.value; inp.value = ""; askZwigatoAI(val);
-};
+window.addEventListener("storage", e => {
+  if (e.key === DB_KEY) { db = loadDB(); if (!$("#appShell").hidden) renderCurrentRole(); }
+});
 
-window.addEventListener("storage", e => { if (e.key === DB_KEY) { db = loadDB(); renderAll(); } });
-if (db.session) launchSession(db.session);
+populateExistingKitchenSelect();
+syncAuthUI();
+runIntroAnimation(false);
+
+const existingSession = getSessionUser();
+if (existingSession) enterApp(existingSession);
 </script>
 </body>
 </html>
