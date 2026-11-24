@@ -1790,6 +1790,7 @@ const D = (id, name, price, course, tags, img, flash = false, special = false, o
 const DEFAULT_DB = {
   users: [
     {email: "ishaan@zwigato.in", passHash: simpleHash("zwigato123"), name: "Ishaan Verma", address: "Subhash Bhawan, Pantnagar", role: "customer", restaurantId: null},
+    {email: "ishaanthusoo80@gmail.com", passHash: simpleHash("zwigato123"), name: "Ishaan", address: "Subhash Bhawan, Pantnagar", role: "customer", restaurantId: null},
     {email: "welcome@zwigato.in", passHash: simpleHash("kitchen123"), name: "Chef Rajendra", address: "Main Market, Pantnagar", role: "partner", restaurantId: 1}
   ],
   restaurants: [
@@ -2299,17 +2300,35 @@ $("#authForm").onsubmit = e => {
     saveDB();
     launchSession(newUser);
   } else {
-    const found = db.users.find(u => u.email === email && u.passHash === simpleHash(pass));
-    if (!found) {
-      errEl.textContent = "Invalid email or password. Try a 1-click Demo button below.";
-      return;
+    const existing = db.users.find(u => u.email === email);
+    if (existing) {
+      if (existing.passHash !== simpleHash(pass)) {
+        errEl.textContent = "Wrong password for this account. Try again or use a Demo button.";
+        return;
+      }
+      if (authRole === "partner" && existing.role === "partner" && $("#partnerMode").value === "existing") {
+        existing.restaurantId = Number($("#existingKitchenSel").value) || existing.restaurantId || 1;
+      }
+      db.session = existing;
+      saveDB();
+      launchSession(existing);
+    } else {
+      const autoName = email.split("@")[0].replace(/[^a-zA-Z0-9]/g, " ").trim() || "Guest";
+      const prettyName = autoName.charAt(0).toUpperCase() + autoName.slice(1);
+      const newUser = {
+        email,
+        passHash: simpleHash(pass),
+        name: prettyName,
+        address: "Subhash Bhawan, Pantnagar",
+        role: authRole,
+        restaurantId: authRole === "partner" ? (Number($("#existingKitchenSel").value) || 1) : null
+      };
+      db.users.push(newUser);
+      db.session = newUser;
+      saveDB();
+      toast(`Welcome, ${prettyName}! Account created.`);
+      launchSession(newUser);
     }
-    if (authRole === "partner" && found.role === "partner" && $("#partnerMode").value === "existing") {
-      found.restaurantId = Number($("#existingKitchenSel").value) || found.restaurantId || 1;
-    }
-    db.session = found;
-    saveDB();
-    launchSession(found);
   }
 };
 
@@ -2363,6 +2382,7 @@ $("#logoutBtn").onclick = () => {
   saveDB();
   $("#appShell").hidden = true;
   $("#authScreen").hidden = false;
+  $("#aiFabBtn").hidden = true;
   $("#aiBox").classList.remove("on");
   closeAllDrawers();
 };
